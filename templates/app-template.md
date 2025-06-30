@@ -1,4 +1,4 @@
-# Title
+# App Title
 
 ## Summary
 
@@ -8,8 +8,4 @@
 
 ## Host
 
-Test  
-Other test
-
 ## Links
-
