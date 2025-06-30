@@ -13,3 +13,6 @@
 - [ ] Add hardware info
 	- [ ] Networking
 	- [ ] Main server
+
+- [ ] Add Tables of Contents
+
