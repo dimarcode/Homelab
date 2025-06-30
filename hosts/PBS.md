@@ -12,7 +12,7 @@ Using PBS on separate hardware (a recycled HP tower) creates a separation of con
 
 ## Resources
 
-[HP-ENVY-Desktop_(PBS)](HP-ENVY-Desktop_(PBS).md)
+[HP-ENVY-Desktop_(PBS)](hardware/HP-ENVY-Desktop_(PBS).md)
 
 ## Storage
 
