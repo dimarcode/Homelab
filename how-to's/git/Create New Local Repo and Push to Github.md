@@ -8,7 +8,7 @@ This guide walks you through creating a new Git repository on Linux and pushing 
 
 - [Install Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
 	- Check if already installed with `git --version`
-- (Recommended) [Generate-SSH-Key-for-Remote-Github-Access](Generate-SSH-Key-for-Remote-Github-Access.md)
+- (Recommended) [Generate SSH Key for Remote Github Access](Generate%20SSH%20Key%20for%20Remote%20Github%20Access.md)
 
 - Git installed (`git --version`)
 - A GitHub account
