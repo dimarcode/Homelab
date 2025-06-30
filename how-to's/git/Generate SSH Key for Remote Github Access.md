@@ -1,6 +1,7 @@
 # Generate SSH key for github access
 
-[Connecting to GitHub with SSH](https://docs.github.com/en/authentication/connecting-to-github-with-ssh)
+- [Connecting to GitHub with SSH](https://docs.github.com/en/authentication/connecting-to-github-with-ssh)
+- [Debug - ssh errors](Debug%20-%20ssh%20errors.md)
 
 ### Generate an SSH key (if you don't have one):
 
@@ -15,3 +16,5 @@ cat ~/.ssh/id_ed25519.pub
 ```
 
 - Copy the output and paste it into [GitHub SSH Settings](https://github.com/settings/ssh/new)
+
+

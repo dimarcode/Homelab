@@ -1,4 +1,3 @@
-
 # Permission denied (publickey)
 
 ## Error
@@ -10,18 +9,18 @@ fatal: Could not read from remote repository.
 ```
 
 This means that either your ssh key wasn't added to your local ssh agent, or the key is not yet stored in github.
+
 ## Potential Fix (add key to local agent)
 
 ### 1. Check if the ssh agent is running and if your key is already added by listing loaded SSH keys:
 
-Run this command:
-
-```
+```bash
 ssh-add -l
 ```
-### 2. Start the SSH agent
 
-Run this command:
+If you get an error, or don't see the correct key, proceed to the appropriate step below.
+
+### 2. Start the SSH agent
 
 ```bash
 eval "$(ssh-agent -s)"
