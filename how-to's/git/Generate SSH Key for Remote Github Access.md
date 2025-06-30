@@ -16,5 +16,3 @@ cat ~/.ssh/id_ed25519.pub
 ```
 
 - Copy the output and paste it into [GitHub SSH Settings](https://github.com/settings/ssh/new)
-
-

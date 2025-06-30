@@ -4,7 +4,7 @@ All credit to SelfHostBlog.com [Link](https://www.selfhostblog.com/enable-proxmo
 
 ## Generate SMTP Password in GMAIL
 
-## Enable 2-Step Verification
+### Enable 2-Step Verification
 
 Before setting up SMTP using an app password, it’s crucial to enhance the security of your Gmail account. Start by enabling 2-step verification:
 
@@ -13,10 +13,11 @@ Before setting up SMTP using an app password, it’s crucial to enhance the secu
 - Navigate to “Security” in the left sidebar.
 - Under “Signing in to Google,” find and enable 2-step verification. Follow the on-screen instructions to set it up with your phone number or an authenticator app.
 
-## Generate an App Password
+### Generate an App Password
 
 - After enabling 2-step verification, proceed to generate an app-specific password:
-- In the “Security” section, click on “App passwords” or search it for the top search bar and click on it.
+- In the “Security” section, click on “App passwords” or **search it for the top search bar and click on it.** (I had to do this)
+
 - Provide a custom name for the app, like “SMTP for My Email Client.”
 - Click the “Create” button to create a unique 16-character app-specific password.
 - Copy the generated app-specific password to your clipboard. You’ll need it for configuring your email client.
