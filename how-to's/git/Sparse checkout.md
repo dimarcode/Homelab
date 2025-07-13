@@ -1,5 +1,7 @@
 # Sparse checkout
 
+[https://git-scm.com/docs/git-sparse-checkout](https://git-scm.com/docs/git-sparse-checkout)
+
 ## Create sparse checkout (only pull/sync specific files)
 
 ### 1. Enable sparse checkout:
