@@ -1,6 +1,6 @@
 # Fix boot after adding nvme
 
-## Preparation:
+## Preparation
 
 In this instance, I had to boot from [SystemRescue](https://www.system-rescue.org/) installed on a bootable USB. After installing on the USB and booting to it:
 
