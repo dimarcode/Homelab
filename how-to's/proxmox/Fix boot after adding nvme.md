@@ -1,6 +1,6 @@
 # Fix boot after adding nvme
 
-Adding an new NVMe or PCI device can shift the names of other PCI devices, causing boot issues. In some cases, this includes the network adapter, which means that when Proxmox boots it's unreachable.
+Adding an new PCI device (such as an NVMe drive) can shift the names of other PCI devices, causing boot issues. In some cases, this includes the network adapter, which means that when Proxmox boots it's unreachable.
 
 ## Preparation
 
