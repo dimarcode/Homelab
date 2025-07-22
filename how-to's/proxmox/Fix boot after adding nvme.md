@@ -1,5 +1,7 @@
 # Fix boot after adding nvme
 
+Adding an new NVMe or PCI device can shift the names of other PCI devices, causing boot issues. In some cases, this includes the network adapter, which means that when Proxmox boots it's unreachable.
+
 ## Preparation
 
 In this instance, I had to boot from [SystemRescue](https://www.system-rescue.org/) installed on a bootable USB. After installing on the USB and booting to it:
