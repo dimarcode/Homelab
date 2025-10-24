@@ -1,0 +1,62 @@
+services:
+  karakeep-ts:
+    image: tailscale/tailscale:latest
+    hostname: karakeep
+    environment:
+      TS_AUTHKEY: ${TS_AUTHKEY}
+      TS_STATE_DIR: /var/lib/tailscale
+      TS_USERSPACE: true
+    volumes:
+      - ./appdata/tailscale/config:/config
+      - ./appdata/tailscale/ts-state:/var/lib/tailscale
+    restart: unless-stopped
+
+  karakeep-app:
+    image: ghcr.io/karakeep-app/karakeep:${KARAKEEP_VERSION:-release}
+    container_name: karakeep-app
+    restart: unless-stopped
+    network_mode: service:karakeep-ts
+    volumes:
+      # By default, the data is stored in a docker volume called "data".
+      # If you want to mount a custom directory, change the volume mapping to:
+      # - /path/to/your/directory:/data
+      - ./appdata/data:/data
+    env_file:
+      - .env
+    environment:
+      MEILI_ADDR: http://karakeep-meilisearch:7700
+      BROWSER_WEB_URL: http://karakeep-chrome:9222
+      NEXTAUTH_URL: ${NEXTAUTH_URL}
+      NEXTAUTH_SECRET: ${NEXTAUTH_SECRET}
+      MEILI_MASTER_KEY: ${MEILI_MASTER_KEY}
+      CRAWLER_STORE_SCREENSHOT: true
+      CRAWLER_FULL_PAGE_SCREENSHOT: true
+      CRAWLER_ENABLE_ADBLOCKER: true
+      # OPENAI_API_KEY: ...
+      # You almost never want to change the value of the DATA_DIR variable.
+      # If you want to mount a custom directory, change the volume mapping above instead.
+      DATA_DIR: /data # DON'T CHANGE THIS
+  
+  karakeep-chrome:
+    image: gcr.io/zenika-hub/alpine-chrome:123
+    container_name: karakeep-chrome
+    restart: unless-stopped
+    command:
+      - --no-sandbox
+      - --disable-gpu
+      - --disable-dev-shm-usage
+      - --remote-debugging-address=0.0.0.0
+      - --remote-debugging-port=9222
+      - --hide-scrollbars
+  
+  karakeep-meilisearch:
+    image: getmeili/meilisearch:v1.13.3
+    container_name: karakeep-meilisearch
+    env_file: .env
+    environment:
+      MEILI_NO_ANALYTICS: "true"
+      MEILI_MASTER_KEY: ${MEILI_MASTER_KEY}
+    volumes:
+      - ./appdata/meilisearch:/meili_data
+    restart: unless-stopped
+

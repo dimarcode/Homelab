@@ -1,0 +1,41 @@
+name: mealie
+
+services:
+  
+  mealie-ts:
+    image: tailscale/tailscale:latest
+    container_name: mealie-ts
+    hostname: mealie
+    environment:
+      - TS_AUTHKEY=${TS_AUTHKEY}
+      - TS_SERVE_CONFIG=/config/mealie.json
+      - TS_STATE_DIR=/var/lib/tailscale
+      - TS_USERSPACE=false
+    volumes: 
+      - ./appdata/tailscale/config:/config
+      - ./appdata/tailscale/ts-state:/var/lib/tailscale
+    devices:
+      - /dev/net/tun:/dev/net/tun
+    cap_add:
+      - net_admin
+    restart: unless-stopped
+
+  mealie-app:
+    image: ghcr.io/mealie-recipes/mealie:v2.5.0 # 
+    container_name: mealie_app
+    restart: always
+    deploy:
+      resources:
+        limits:
+          memory: 1000M # 
+    env_file:
+      - .env
+    network_mode: service:mealie-ts
+    volumes:
+      - ./appdata:/app/data/
+    environment:
+      # Set Backend ENV Variables Here
+      ALLOW_SIGNUP: "false"
+      PUID: 1000
+      PGID: 1000
+      TZ: America/New_York

@@ -22,6 +22,7 @@ Docker (for backrest)
 ![](config-smb-global-vault.png)
 
 **Advanced:**
+
 ```bash
 fruit:metadata = stream
 fruit:encoding = native
@@ -63,6 +64,7 @@ mp4: tank:subvol-100-disk-0,mp=/data,backup=1,size=12000G
 ![](config-share-data.png)
 
 **Advanced:**
+
 ```bash
 fruit:metadata = stream
 map acl inherit = yes
@@ -99,6 +101,7 @@ mp1: flash:vm-102-disk-1,mp=/docker,backup=1,size=128G
 ![](config-share-docker.png)
 
 **Advanced:**
+
 ```bash
 map acl inherit = yes
 fruit:encoding = native
@@ -134,6 +137,7 @@ mp2: tank:subvol-100-disk-2,mp=/timemachine,size=4000G
 ![](config-share-timemachine.png)
 
 **Advanced:**
+
 ```bash
 map acl inherit = yes
 fruit:nfs_aces = no
@@ -171,6 +175,7 @@ mp0: tank:subvol-100-disk-1,mp=/veeam,size=8000G
 ![](config-share-veeam.png)
 
 **Advanced:**
+
 ```bash
 map acl inherit = yes
 fruit:nfs_aces = no

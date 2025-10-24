@@ -1,0 +1,107 @@
+services:
+  # ts-jellyfin:
+  #   image: tailscale/tailscale:latest
+  #   hostname: jellyfin
+  #   environment:
+  #     - TS_AUTHKEY=${TS_AUTHKEY}
+  #     - "TS_EXTRA_ARGS=--advertise-tags=tag:container --reset"
+  #     - TS_SERVE_CONFIG=/config/serve-config.json
+  #     - TS_STATE_DIR=/var/lib/tailscale
+  #     - TS_USERSPACE=false
+  #   volumes:
+  #     - ${HOME}/docker/appdata/jellyfin/config:/config
+  #     - ${HOME}/docker/appdata/jellyfin/ts_state:/var/lib/tailscale
+  #   devices:
+  #     - /dev/net/tun:/dev/net/tun
+  #   restart: unless-stopped
+  jellyfin:
+    container_name: jellyfin
+    image: lscr.io/linuxserver/jellyfin:latest
+#    network_mode: service:ts-jellyfin
+#    depends_on: jellyfin-ts
+    env_file: .env
+    environment:
+      - PUID=${PUID}
+      - PGID=${PGID}
+      - TZ=America/New_York
+      # - NVIDIA_VISIBLE_DEVICES=all # for NVIDIA gpu access
+      # - NVIDIA_DRIVER_CAPABILITIES=all
+    #  - JELLYFIN_PublishedServerUrl=${JELLYFIN_PublishedServerUrl} #optional
+    volumes:
+      - ./appdata/jellyfin/config:/config
+      - ${MEDIA_SHARE}/tv:/data/tv
+      - ${MEDIA_SHARE}/movies:/data/movies
+    ports:
+      - 8096:8096
+    #  - 8920:8920 #optional
+      - 7359:7359/udp #optional - Service Discovery
+      - 1900:1900/udp #optional - Client Discovery
+    restart: unless-stopped
+    runtime: nvidia
+    networks:
+      - jellyfin-network
+    # deploy:
+    #   resources:
+    #     reservations:
+    #       devices:
+    #         - driver: nvidia
+    #           count: 1
+    #           capabilities: [gpu]
+
+  jellyseerr:
+    container_name: jellyseerr
+    image: fallenbagel/jellyseerr:latest
+    env_file: .env
+    environment:
+      - PUID=${PUID}
+      - PGID=${PGID}
+      - TZ=America/New_York
+    volumes:
+      - ./appdata/jellyseerr/config:/app/config
+    ports:
+      - 5055:5055
+    restart: unless-stopped
+    networks:
+      - jellyfin-network
+
+  jellystat-db:
+    container_name: jellystat-db
+    image: postgres:15.2
+    env_file: .env
+    restart: unless-stopped
+    environment:
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+    volumes:
+      - ./appdata/jellystat/postgres:/var/lib/postgresql/data
+    networks:
+      - jellyfin-network
+    healthcheck:
+      test: ["CMD", "pg_isready", "-U", "${POSTGRES_USER}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  jellystat:
+    image: cyfershepard/jellystat:latest
+    container_name: jellystat
+    restart: unless-stopped
+    environment:
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+      - POSTGRES_IP=jellystat-db
+      - POSTGRES_PORT=5432
+      - JWT_SECRET=${JWT_SECRET}
+      - TZ=America/New_York
+    volumes:
+      - ./appdata/jellystat/backup-data:/app/backend/backup-data
+    ports:
+      - "3000:3000"
+    depends_on:
+      - jellystat-db
+    networks:
+      - jellyfin-network
+
+networks:
+  jellyfin-network:
+    driver: bridge

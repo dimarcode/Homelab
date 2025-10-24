@@ -3,6 +3,7 @@
 ## Purpose
 
 ---
+
 - This doc is created to clearly define what goes in each folder. This makes it easier for me to remember, and will hopefully help readers understand the general layout.
 
 Apps

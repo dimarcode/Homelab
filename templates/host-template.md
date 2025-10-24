@@ -49,11 +49,13 @@
 - **Notes:**
 
 Mount command if using smb credentials file:
+
 ```bash
 sudo mount -t cifs //<source-ip>/<source-path> /<local-path> -o credentials=/<path>/.smbcreds,uid=XXXX,gid=XXXX,defaults
 ```
 
 Mount command if NOT using smb credentials file:
+
 ```
 sudo mount -t cifs //<source-ip>/<source-path> /<local-path> -o username=<smb-username>,password=<smb-password>,uid=XXXX,gid=XXXX,defaults
 ```
@@ -61,6 +63,7 @@ sudo mount -t cifs //<source-ip>/<source-path> /<local-path> -o username=<smb-us
 ### /etc/fstab
 
 **SMB Mount Template:**
+
 ```bash
 //<source-ip>/<source-path> /<local-path> cifs credentials=/<path>/.smbcreds,uid=XXXX,gid=XXXX,defaults 0 0
 ```
