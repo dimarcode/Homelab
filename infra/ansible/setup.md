@@ -20,15 +20,15 @@ ansible_ssh_common_args='-o StrictHostKeyChecking=no'
 
 ## Configure hosts in inventory
 
->[!note] must be done on all hosts you want to manage with ansible
+>[!warning] must be done on all hosts you want to manage with ansible
 
-### Add ansible system user:
+### Add ansible system user
 
 ```bash
 sudo adduser --system --group --home /home/ansible ansible
 ```
 
-### Configure password-less sudo for new ansible user:
+### Configure password-less sudo for new ansible user
 
 ```bash
 sudo nano /etc/sudoers.d/ansible
