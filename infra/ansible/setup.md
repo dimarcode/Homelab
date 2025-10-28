@@ -5,6 +5,12 @@
 ### Create inventory file
 
 ```bash
+nano /infra/ansible/inventory.yml
+```
+
+#### Contents:
+
+```bash
 [all:vars]
 ansible_ssh_common_args='-o StrictHostKeyChecking=no'
 
