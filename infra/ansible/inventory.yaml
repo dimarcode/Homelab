@@ -1,14 +1,21 @@
-testing_containers:
-    hosts:
-        test-lxc-01:
-            ansible_host: test-lxc
+all:
+  vars:
+    ansible_user: cody
+    ansible_become: true
+    ansible_become_method: sudo
+    ansible_python_interpreter: /usr/bin/python3.12
 
-testing_vms:
-    hosts:
-        test-vm-01:
-            ansible_host: test-vm
-
-testing:
-    children:
-        testing-containers:
-        testing-vms:
+  hosts:
+    media:
+    test-vm:
+    deb-shares:
+      ansible_become_password: "{{ become_pass_deb_shares }}"
+    servarr:
+      ansible_become_password: "{{ become_pass_servarr }}"
+    spt:
+      ansible_become_password: "{{ become_pass_spt }}"
+    
+  children:
+    testing:
+      hosts:
+        test-vm:
