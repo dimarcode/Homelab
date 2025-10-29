@@ -9,10 +9,6 @@ all:
       ansible_python_interpreter: /usr/bin/python3.11
     test-vm: {}
     
-    
-    
-    
-
 testing:    
   hosts:
     test-lxc: {}
