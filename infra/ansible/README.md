@@ -1,5 +1,5 @@
-
 # Setup ansible
+
 ## Configure ansible control node
 
 ### Install ansible
