@@ -2,13 +2,20 @@ all:
   hosts:
     ansible: {}
     deb-shares: {}
-    media: {}
+    media:
+      ansible_python_interpreter: /usr/bin/python3.12
     servarr: {}
-    spt: {}
     test-lxc:
       ansible_python_interpreter: /usr/bin/python3.11
     test-vm: {}
     
 testing:    
   hosts:
+    test-lxc: {}
+
+docker:
+  hosts:
+    ansible: {}
+    media: {}
+    servarr: {}
     test-lxc: {}
