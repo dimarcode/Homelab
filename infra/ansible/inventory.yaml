@@ -1,9 +1,9 @@
-testing-containers:
+testing_containers:
     hosts:
         test-lxc-01:
             ansible_host: test-lxc
 
-testing-vms:
+testing_vms:
     hosts:
         test-vm-01:
             ansible_host: test-vm
