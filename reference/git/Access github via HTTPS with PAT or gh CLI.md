@@ -1,3 +1,4 @@
+# Access github via HTTPS with PAT or gh CLI
 
 - Create a Personal Access Token (PAT) on GitHub with repo scope (Settings → Developer settings → Personal access tokens).
 
@@ -8,6 +9,7 @@
 ```bash
 gh auth login
 ```
+
 ### then push normally
 
 ```bash
