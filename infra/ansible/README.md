@@ -1,6 +1,14 @@
-# setup
 
-## Setup ansible
+# Setup ansible
+## Configure ansible control node
+
+### Install ansible
+
+### Generate ssh key
+
+#### Transfer ssh key to hosts in inventory you'd like to manage
+
+### Create ansible github repo
 
 ### Create inventory file
 
@@ -18,9 +26,9 @@ ansible_ssh_common_args='-o StrictHostKeyChecking=no'
 123.456.789.999
 ```
 
-## Configure hosts in inventory
+## Create playbook (example)
 
->[!warning] must be done on all hosts you want to manage with ansible
+## Configure managed nodes
 
 ### Add ansible system user
 
