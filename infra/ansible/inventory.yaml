@@ -1,12 +1,13 @@
 all:
   hosts:
-    media:
-    test-vm:
-    deb-shares:
-    servarr:
-    spt:
-    
-  children:
-    testing:
-      hosts:
-        test-lxc:
+    ansible: {}
+    media: {}
+    test-vm: {}
+    test-lxc: {}
+    deb-shares: {}
+    servarr: {}
+    spt: {}
+
+testing:    
+  hosts:
+    test-lxc: {}
