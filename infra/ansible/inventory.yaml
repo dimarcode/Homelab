@@ -1,21 +1,12 @@
 all:
-  vars:
-    ansible_user: cody
-    ansible_become: true
-    ansible_become_method: sudo
-    ansible_python_interpreter: /usr/bin/python3.12
-
   hosts:
     media:
     test-vm:
     deb-shares:
-      ansible_become_password: "{{ become_pass_deb_shares }}"
     servarr:
-      ansible_become_password: "{{ become_pass_servarr }}"
     spt:
-      ansible_become_password: "{{ become_pass_spt }}"
     
   children:
     testing:
       hosts:
-        test-vm:
+        test-lxc:
