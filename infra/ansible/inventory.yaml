@@ -3,7 +3,8 @@ all:
     ansible: {}
     media: {}
     test-vm: {}
-    test-lxc: {}
+    test-lxc:
+      ansible_python_interpreter: /usr/bin/python3.11
     deb-shares: {}
     servarr: {}
     spt: {}
