@@ -18,7 +18,6 @@ Other than a few small additions, all credit for this cheat-sheet goes to [Chris
 | ----------------- | ------------------------ |
 | `cat /etc/passwd` | List the users on a node |
 
-
 # Group Management
 
 | Command                          | Description                           |
