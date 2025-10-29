@@ -1,4 +1,4 @@
-testing:
+myhosts:
   hosts:
     test-lxc:
       ansible_host: test-lxc
