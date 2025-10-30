@@ -1,4 +1,0 @@
-testing:    
-  hosts:
-    test-lxc: {}
-    test-vm: {}

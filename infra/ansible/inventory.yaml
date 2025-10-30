@@ -8,10 +8,14 @@ all:
     test-lxc:
       ansible_python_interpreter: /usr/bin/python3.11
     test-vm: {}
-    
-testing:    
+
+prod:
   hosts:
-    test-lxc: {}
+    ansible: {}
+    deb-shares: {}
+    media:
+      ansible_python_interpreter: /usr/bin/python3.12
+    servarr: {}
 
 docker:
   hosts:
@@ -19,3 +23,8 @@ docker:
     media: {}
     servarr: {}
     test-lxc: {}
+
+testing:    
+  hosts:
+    test-lxc: {}
+    test-vm: {}
