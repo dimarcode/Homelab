@@ -1,8 +1,8 @@
 # Setup ansible
 
 [Ansible docs](https://docs.ansible.com/)
-[Ansible Installation guide](https://docs.ansible.com/ansible/latest/installation_guide/index.html)
-
+1. Install ansible: [Ansible Installation guide](https://docs.ansible.com/ansible/latest/installation_guide/index.html)
+2. Generate ssh key: [manage-ssh-keys](../../reference/ssh/manage-ssh-keys.md)
 ### Install ansible
 
 ### Generate ssh key
