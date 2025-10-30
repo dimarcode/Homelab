@@ -38,8 +38,6 @@ cd my-project
 git init
 ```
 
----
-
 ### 2. Create your first file and make an initial commit
 
 ```bash
@@ -48,15 +46,11 @@ git add README.md
 git commit -m "Initial commit"
 ```
 
----
-
 ### 3. Create a new repository on GitHub
 
 - Go to: [https://github.com/new](https://github.com/new)
 - Name your repo (e.g., `my-project`)
 - **Do not** initialize it with a README, license, or `.gitignore` (since you already created one)
-
----
 
 ### 4. Link your local repository to GitHub
 

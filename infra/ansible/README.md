@@ -20,13 +20,15 @@ ssh-copy-id -i ~/.ssh/ansible.pub user@target-host
 
 ### Create GitHub repo or pull an existing one
 
+>[!note] Link: [Create New Local Repo and Push to Github](../../reference/git/Create%20New%20Local%20Repo%20and%20Push%20to%20Github.md)
+
 ```bash
 git clone 
 ```
 
 ### Create `inventory.yaml` and add hosts
 
-More info:  [How to build your inventory](https://docs.ansible.com/ansible/latest/inventory_guide/intro_inventory.html) 
+>[!note] More info:  [How to build your inventory](https://docs.ansible.com/ansible/latest/inventory_guide/intro_inventory.html) 
 
 ```bash
 nano ~/Homelab/infra/ansible/inventory.yml
@@ -39,7 +41,9 @@ Leaving this here for now until I can look into it more. This was taken from [th
 ansible_ssh_common_args='-o StrictHostKeyChecking=no'
 ```
 
-### Create `ansible.cfg`
+### Configure with `ansible.cfg`
+
+#### Create the file:
 
 >[!important] The contents of this file will override any other `ansible.cfg` files you might have on your node. For example, the default `/etc/ansible/ansible.cfg`
 
@@ -47,7 +51,7 @@ ansible_ssh_common_args='-o StrictHostKeyChecking=no'
 sudo nano ~/Homelab/infra/ansible/ansible.cfg
 ```
 
-### Add the following to `ansible.cfg`
+#### Add the following:
 
 ```bash
 [defaults]
