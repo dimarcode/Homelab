@@ -1,56 +1,79 @@
 # Setup ansible
 
 [Ansible docs](https://docs.ansible.com/)
-1. Install ansible: [Ansible Installation guide](https://docs.ansible.com/ansible/latest/installation_guide/index.html)
-2. Generate ssh key: [manage-ssh-keys](../../reference/ssh/manage-ssh-keys.md)
-### Install ansible
 
-### Generate ssh key
+## Control node configuration
 
-#### Transfer ssh key to hosts in inventory you'd like to manage
+### Install ansible: [Ansible Installation guide](https://docs.ansible.com/ansible/latest/installation_guide/index.html)
 
-### Create ansible github repo
-
-### Create inventory file
+### Generate ssh key: [manage-ssh-keys](../../reference/ssh/manage-ssh-keys.md)
 
 ```bash
-nano /infra/ansible/inventory.yml
+`ssh-keygen -t ed25519 -C "ansible@$(hostname)" -f ~/.ssh/ansible`
 ```
 
-#### Contents:
+### Transfer ssh key to managed nodes
 
+```bash
+ssh-copy-id -i ~/.ssh/ansible.pub user@target-host
+```
+
+### Create GitHub repo or pull an existing one
+
+```bash
+git clone 
+```
+
+### Create `inventory.yaml` and add hosts
+
+More info:  [How to build your inventory](https://docs.ansible.com/ansible/latest/inventory_guide/intro_inventory.html) 
+
+```bash
+nano ~/Homelab/infra/ansible/inventory.yml
+```
+
+Leaving this here for now until I can look into it more. This was taken from [this article](https://www.learnlinux.tv/complete-ansible-semaphore-tutorial-from-installation-to-automation/)
 ```bash
 [all:vars]
 ansible_ssh_common_args='-o StrictHostKeyChecking=no'
-
-[web_servers]
-123.456.789.999
 ```
 
-## Create playbook (example)
+### Create `ansible.cfg`
+
+>[!important] The contents of this file will override any other `ansible.cfg` files you might have on your node. For example, the default `/etc/ansible/ansible.cfg`
+
+```bash
+sudo nano ~/Homelab/infra/ansible/ansible.cfg
+```
+
+### Add the following to `ansible.cfg`
+
+```bash
+[defaults]
+inventory = inventory.yaml
+private_key_file = ~/.ssh/ansible
+```
+
+### Start creating [playbooks](https://docs.ansible.com/ansible/latest/playbook_guide/playbooks_intro.html#playbook-syntax) or add [roles](https://docs.ansible.com/ansible/latest/playbook_guide/playbooks_reuse_roles.html)
 
 ## Configure managed nodes
 
-### Add ansible system user
-
+1.  Add new system user that you'd like to run ansible on managed node (ex. ansible)
 ```bash
 sudo adduser --system --group --home /home/ansible ansible
 ```
 
-### Configure password-less sudo for new ansible user
-
+2.  Configure password-less sudo for new ansible user
 ```bash
 sudo nano /etc/sudoers.d/ansible
 ```
 
-#### Add this line:
-
+3. Add this line:
 ```bash
 ansible ALL=(ALL) NOPASSWD: ALL
 ```
 
-### Set proper permissions
-
+4. Set proper permissions:
 ```bash
 sudo chmod 440 /etc/sudoers.d/ansible
 ```
