@@ -33,6 +33,7 @@ nano ~/Homelab/infra/ansible/inventory.yml
 ```
 
 Leaving this here for now until I can look into it more. This was taken from [this article](https://www.learnlinux.tv/complete-ansible-semaphore-tutorial-from-installation-to-automation/)
+
 ```bash
 [all:vars]
 ansible_ssh_common_args='-o StrictHostKeyChecking=no'
@@ -54,26 +55,50 @@ inventory = inventory.yaml
 private_key_file = ~/.ssh/ansible
 ```
 
+>[!note] This simplifies your ansible commands:
+>
+>Ad-hoc commands:
+>- OLD: `ansible <target> --key-file ~/.ssh/ansible -i inventory -m <command>`
+>- NEW: `ansible <target> -m <command>`
+>
+>Example:
+>```bash
+>ansible testing -m ping
+>```
+>
+>Ansible-playbook commands:
+>- Old: `ansible-playbook...`
+>- New: `ansible-playbook...`
+>
+>Example:
+>```bash
+>example
+>```
+
 ### Start creating [playbooks](https://docs.ansible.com/ansible/latest/playbook_guide/playbooks_intro.html#playbook-syntax) or add [roles](https://docs.ansible.com/ansible/latest/playbook_guide/playbooks_reuse_roles.html)
 
 ## Configure managed nodes
 
 1.  Add new system user that you'd like to run ansible on managed node (ex. ansible)
+
 ```bash
 sudo adduser --system --group --home /home/ansible ansible
 ```
 
 2.  Configure password-less sudo for new ansible user
+
 ```bash
 sudo nano /etc/sudoers.d/ansible
 ```
 
 3. Add this line:
+
 ```bash
 ansible ALL=(ALL) NOPASSWD: ALL
 ```
 
 4. Set proper permissions:
+
 ```bash
 sudo chmod 440 /etc/sudoers.d/ansible
 ```
