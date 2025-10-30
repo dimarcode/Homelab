@@ -1,6 +1,7 @@
 # Setup ansible
 
-## Configure ansible control node
+[Ansible docs](https://docs.ansible.com/)
+[Ansible Installation guide](https://docs.ansible.com/ansible/latest/installation_guide/index.html)
 
 ### Install ansible
 
