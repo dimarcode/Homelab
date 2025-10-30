@@ -1,0 +1,26 @@
+- name: Update Builtin
+  hosts: testing
+  gather_facts: true
+  remote_user: ansible
+  become: true
+  become_method: sudo
+
+  tasks:
+    - name: Perform a distro upgrade
+      ansible.builtin.apt:
+        upgrade: dist
+        update_cache: true
+
+    - name: Check when a reboot is required
+      ansible.builtin.stat:
+        path: /var/run/reboot-required
+        get_checksum: false
+      register: reboot_required_file
+
+    - name: Reboot the server when necessary
+      ansible.builtin.reboot:
+      when: reboot_required_file.stat.exists
+
+    - name: Remove dependencies that are no longer needed
+      ansible.builtin.apt:
+        autoremove: true
