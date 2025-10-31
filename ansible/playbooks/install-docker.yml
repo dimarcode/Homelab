@@ -1,0 +1,9 @@
+---
+- hosts: testing
+  tasks:
+    - name: Install docker
+      include_role:
+        name: geerlingguy.docker
+      vars:
+        docker_users: [cody]
+        docker_packages_state: present
