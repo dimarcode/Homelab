@@ -41,3 +41,9 @@ Having configured a custom gmail SMTP settings, we need to disable the built-in 
 The last thing we need to do is to modify the notification matcher, so it doesn’t send notifications to the (now disabled) mail-to-root, but to our gmail SMTP:
 
 ![](image-3-modify-notification-matcher-3-1024x295.png)
+
+# Configure notifications for backup-events
+
+Make sure that `Notification mode` is set to **Notification system**
+
+![](Pasted%20image%2020251031180027.png)
