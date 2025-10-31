@@ -4,29 +4,37 @@
 
 ## Control node configuration
 
-### Install ansible: [Ansible Installation guide](https://docs.ansible.com/ansible/latest/installation_guide/index.html)
+### 1. Install ansible: [Ansible Installation guide](https://docs.ansible.com/ansible/latest/installation_guide/index.html)
 
-### Generate ssh key: [manage-ssh-keys](../../reference/ssh/manage-ssh-keys.md)
+### 2. Generate ssh key: [manage-ssh-keys](../../reference/ssh/manage-ssh-keys.md)
 
 ```bash
 `ssh-keygen -t ed25519 -C "ansible@$(hostname)" -f ~/.ssh/ansible`
 ```
 
-### Transfer ssh key to managed nodes
+### 3. Transfer ssh key to managed nodes
 
 ```bash
 ssh-copy-id -i ~/.ssh/ansible.pub user@target-host
 ```
 
-### Create GitHub repo or pull an existing one
+### 4. Create GitHub repo or pull an existing one
 
 >[!note] Link: [Create New Local Repo and Push to Github](../../reference/git/Create%20New%20Local%20Repo%20and%20Push%20to%20Github.md)
 
+With **https**:
+
 ```bash
-git clone 
+git clone https://github.com/dimarcode/Homelab.git
 ```
 
-### Create `inventory.yaml` and add hosts
+With **ssh**:
+
+```bash
+git clone git@github.com:dimarcode/Homelab.git
+```
+
+### 5. Create `inventory.yaml` and add hosts
 
 >[!note] More info:  [How to build your inventory](https://docs.ansible.com/ansible/latest/inventory_guide/intro_inventory.html) 
 
@@ -41,7 +49,7 @@ Leaving this here for now until I can look into it more. This was taken from [th
 ansible_ssh_common_args='-o StrictHostKeyChecking=no'
 ```
 
-### Configure with `ansible.cfg`
+### 6. Configure with `ansible.cfg`
 
 #### Create the file:
 
@@ -61,7 +69,7 @@ private_key_file = ~/.ssh/ansible
 
 >[!note] This simplifies your ansible commands:
 >
->Ad-hoc commands:
+>**Ad-hoc** commands:
 >- OLD: `ansible <target> --key-file ~/.ssh/ansible -i inventory -m <command>`
 >- NEW: `ansible <target> -m <command>`
 >
@@ -70,7 +78,7 @@ private_key_file = ~/.ssh/ansible
 >ansible testing -m ping
 >```
 >
->Ansible-playbook commands:
+>**Ansible-playbook** commands:
 >- Old: `ansible-playbook...`
 >- New: `ansible-playbook...`
 >
@@ -79,7 +87,10 @@ private_key_file = ~/.ssh/ansible
 >example
 >```
 
-### Start creating [playbooks](https://docs.ansible.com/ansible/latest/playbook_guide/playbooks_intro.html#playbook-syntax) or add [roles](https://docs.ansible.com/ansible/latest/playbook_guide/playbooks_reuse_roles.html)
+### 7. Start creating playbooks or add roles
+
+- [Intro to playbooks](https://docs.ansible.com/ansible/latest/playbook_guide/playbooks_intro.html#playbook-syntax)
+- [Using roles](https://docs.ansible.com/ansible/latest/playbook_guide/playbooks_reuse_roles.html)
 
 ## Configure managed nodes
 
