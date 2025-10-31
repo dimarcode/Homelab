@@ -6,7 +6,7 @@
 
 ### 1. Install ansible: [Ansible Installation guide](https://docs.ansible.com/ansible/latest/installation_guide/index.html)
 
-### 2. Generate ssh key: [manage-ssh-keys](../../reference/ssh/manage-ssh-keys.md)
+### 2. Generate ssh key: [manage-ssh-keys](../../docs/reference/ssh/manage-ssh-keys.md)
 
 ```bash
 `ssh-keygen -t ed25519 -C "ansible@$(hostname)" -f ~/.ssh/ansible`
@@ -20,7 +20,7 @@ ssh-copy-id -i ~/.ssh/ansible.pub user@target-host
 
 ### 4. Create GitHub repo or pull an existing one
 
->[!note] Link: [Create New Local Repo and Push to Github](../../reference/git/Create%20New%20Local%20Repo%20and%20Push%20to%20Github.md)
+>[!note] Link: [Create New Local Repo and Push to Github](../../docs/reference/git/Create%20New%20Local%20Repo%20and%20Push%20to%20Github.md)
 
 With **https**:
 
