@@ -15,3 +15,8 @@
 	- [ ] Main server
 
 - [ ] Add Tables of Contents
+
+## Infra-tasks
+
+- [ ] Set up [bitwarden and ansible integration](https://bitwarden.com/help/ansible-integration/)
+- [ ] 
