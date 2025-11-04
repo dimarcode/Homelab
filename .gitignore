@@ -1,15 +1,40 @@
 
-# ansible
-.secrets.yaml
-.vault.yaml
-vault.yaml
-secrets.yaml
-
-# terraform
+# OS / System files
+.DS_Store
+Thumbs.db
 
 # env
 appdata
 backups
+
+# =========================
+# Ansible-specific
+# =========================
+*.retry
+*.log
+*.tmp
+*.bak
+vault_pass.txt
+vault_password_file
+.vault_pass.txt
+
+# Local inventories (keep if generated per-env, ignore otherwise)
+inventory.ini
+inventory.yml
+inventory.yaml
+hosts
+.local_inventory.yml
+inventory/
+
+# Ansible Vault / secrets
+secrets.yml
+.secrets.yaml
+vault.yml
+.vault.yaml
+*.vault.yml
+sudo-secrets.yml
+
+
 
 .env
 compose.env
@@ -26,6 +51,20 @@ spt-fika-3.10.4
 *spt-potential
 
 *.py[cod]
+
+# =========================
+# Terraform-specific
+# =========================
+*.tfstate
+*.tfstate.*
+.terraform/
+.terraform.lock.hcl
+crash.log
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
+main.tf
 
 # C extensions
 *.so
