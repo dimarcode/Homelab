@@ -38,17 +38,25 @@ command -v terraform
 
 ## Commands
 
+**terraform plan**: shows execution plan
+
 ```bash
 terraform plan
 ```
+
+**terraform apply**: creates resources
 
 ```bash
 terraform apply
 ```
 
+**terraform destroy**: destroys resources
+
 ```bash
 terraform destroy
 ```
+
+**terraform init**: initialize a working directory containing Terraform configuration files
 
 ```bash
 terraform init
