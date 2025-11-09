@@ -1,0 +1,20 @@
+---
+- name: Manage Komodo Periphery Service
+  hosts: testing
+  vars_files:
+    - group_vars/secrets.yml
+  vars:
+    ansible_become_pass: "{{ ansible_become_pass_id }}"
+  roles:
+    - role: bpbradley.komodo
+      komodo_action: "install"
+      komodo_version: "latest"
+      # We can specify some additional configurations to override defaults
+      # refer to the `defaults/main.yml` for more details
+      komodo_periphery_port: 8199
+      komodo_stats_polling_rate: "10-sec"
+      komodo_logging_level: "debug"
+      komodo_opentelemetry_service_name: "Komodo-Periphery-Example"
+  
+
+  
