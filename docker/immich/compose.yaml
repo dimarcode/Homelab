@@ -6,6 +6,7 @@
 # The compose file on main may not be compatible with the latest release.
 #
 # this is a test line
+# this is another test line
 name: immich
 
 services:
