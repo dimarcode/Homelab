@@ -1,1 +1,36 @@
-## Add resources to get started
+[[stack]]
+name = "homepage"
+tags = ["prod"]
+[stack.config]
+project_name = "homepage"
+poll_for_updates = true
+git_account = "dimarcode"
+repo = "dimarcode/Homelab"
+run_directory = "docker/homepage"
+environment = """
+  # VARIABLE = value
+PUID = 1000
+GUID = 1000
+"""
+
+##
+
+[[repo]]
+name = "Homelab"
+tags = ["prod"]
+[repo.config]
+git_account = "dimarcode"
+repo = "dimarcode/Homelab"
+
+##
+
+[[resource_sync]]
+name = "Homelab-sync"
+tags = ["prod"]
+[resource_sync.config]
+repo = "dimarcode/Homelab"
+git_account = "dimarcode"
+resource_path = ["komodo.toml"]
+managed = true
+delete = true
+match_tags = ["prod"]
