@@ -8,11 +8,13 @@
 
 ### 2. SSH keys
 
--  [Manage SSH Keys](../../docs/reference/ssh/manage-ssh-keys.md)
+- Generate an ssh key that provides access to control nodes
+	-  [Manage SSH Keys](../../docs/reference/ssh/manage-ssh-keys.md)
 
 ### 3. Git repo
 
-- [Create New Local Repo and Push to Github](../../docs/reference/git/Create%20New%20Local%20Repo%20and%20Push%20to%20Github.md)
+- Create git repo for ansible code (useful but optional)
+	- [Create New Local Repo and Push to Github](../../docs/reference/git/Create%20New%20Local%20Repo%20and%20Push%20to%20Github.md)
 
 ### 4. Manage ansible inventory
 
