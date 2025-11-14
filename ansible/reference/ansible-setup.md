@@ -8,9 +8,9 @@
 
 ### 2. SSH keys
 
--  [Generate ssh key on control node and transfer to managed nodes](../docs/reference/ssh/manage-ssh-keys.md)
+-  [Manage SSH Keys](../../docs/reference/ssh/manage-ssh-keys.md)
 
-### 3. Git rep
+### 3. Git repo
 
 - [Create New Local Repo and Push to Github](../../docs/reference/git/Create%20New%20Local%20Repo%20and%20Push%20to%20Github.md)
 
