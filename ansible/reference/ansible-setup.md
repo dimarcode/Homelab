@@ -67,25 +67,29 @@ private_key_file = ~/.ssh/ansible
 
 ## Configure managed nodes
 
-1.  Add new system user that you'd like to run ansible on managed node (ex. ansible)
+### Ansible system user
+
+- Add new system user that you'd like to run ansible on managed node (ex. ansible)
 
 ```bash
 sudo adduser --system --group --home /home/ansible ansible
 ```
 
-2.  Configure password-less sudo for new ansible user
+### Passwordless sudo
+
+- Configure password-less sudo for new ansible user
 
 ```bash
 sudo nano /etc/sudoers.d/ansible
 ```
 
-3. Add this line:
+- Add this line:
 
 ```bash
 ansible ALL=(ALL) NOPASSWD: ALL
 ```
 
-4. Set proper permissions:
+- Set proper permissions:
 
 ```bash
 sudo chmod 440 /etc/sudoers.d/ansible
