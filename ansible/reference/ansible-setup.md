@@ -14,7 +14,7 @@
 
 - [Create New Local Repo and Push to Github](../../docs/reference/git/Create%20New%20Local%20Repo%20and%20Push%20to%20Github.md)
 
-### 4. Manage inventory
+### 4. Manage ansible inventory
 
 - Create `inventory.yaml` and add hosts
 
