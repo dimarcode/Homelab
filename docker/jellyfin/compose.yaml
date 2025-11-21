@@ -1,3 +1,4 @@
+name: jellyfin
 services:
   # ts-jellyfin:
   #   image: tailscale/tailscale:latest

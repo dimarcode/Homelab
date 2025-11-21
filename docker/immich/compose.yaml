@@ -7,9 +7,7 @@
 #
 
 name: immich
-
 services:
-
   immich-ts:
     image: tailscale/tailscale:latest
     hostname: immich
@@ -24,7 +22,6 @@ services:
       - ./appdata/tailscale/config:/config
       - ./appdata/tailscale/ts-state:/var/lib/tailscale
     restart: always
-
   immich-server:
     container_name: immich_server
     image: ghcr.io/immich-app/immich-server:${IMMICH_VERSION:-release}
@@ -57,8 +54,6 @@ services:
     restart: always
     healthcheck:
       disable: false
-  
-
   immich-machine-learning:
     container_name: immich_machine_learning
     # For hardware acceleration, add one of -[armnn, cuda, openvino] to the image tag.
@@ -82,14 +77,12 @@ services:
     restart: always
     healthcheck:
       disable: false
-
   immich-redis:
     container_name: immich_redis
     image: docker.io/redis:6.2-alpine@sha256:905c4ee67b8e0aa955331960d2aa745781e6bd89afc44a8584bfd13bc890f0ae
     healthcheck:
       test: redis-cli ping || exit 1
     restart: always
-
   immich-database:
     container_name: immich_postgres
     user: 1000:1000
@@ -108,6 +101,5 @@ services:
       # Do not edit the next line. If you want to change the database storage location on your system, edit the value of DB_DATA_LOCATION in the .env file
       - ${DB_DATA_LOCATION}:/var/lib/postgresql/data
     restart: always
-
 volumes:
   model-cache:
