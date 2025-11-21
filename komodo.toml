@@ -1,4 +1,17 @@
 [[stack]]
+name = "backrest-media"
+tags = ["prod", "media"]
+[stack.config]
+project_name = "backrest-media"
+linked_repo = "Homelab"
+run_directory = "docker/backrest-media"
+environment = """
+PERSONAL_MEDIA_LIBRARY = [[PERSONAL_MEDIA_LIBRARY]]
+"""
+
+##
+
+[[stack]]
 name = "homepage"
 tags = ["prod"]
 [stack.config]
