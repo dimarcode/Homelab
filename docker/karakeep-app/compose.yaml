@@ -1,16 +1,16 @@
+name: karakeep
 services:
   karakeep-ts:
     image: tailscale/tailscale:latest
     hostname: karakeep
     environment:
-      TS_AUTHKEY: ${TS_AUTHKEY}
+      TS_AUTHKEY: ${KARAKEEP_TS_AUTHKEY}
       TS_STATE_DIR: /var/lib/tailscale
       TS_USERSPACE: true
     volumes:
       - ./appdata/tailscale/config:/config
       - ./appdata/tailscale/ts-state:/var/lib/tailscale
     restart: unless-stopped
-
   karakeep-app:
     image: ghcr.io/karakeep-app/karakeep:${KARAKEEP_VERSION:-release}
     container_name: karakeep-app
@@ -36,7 +36,6 @@ services:
       # You almost never want to change the value of the DATA_DIR variable.
       # If you want to mount a custom directory, change the volume mapping above instead.
       DATA_DIR: /data # DON'T CHANGE THIS
-  
   karakeep-chrome:
     image: gcr.io/zenika-hub/alpine-chrome:123
     container_name: karakeep-chrome
@@ -48,7 +47,6 @@ services:
       - --remote-debugging-address=0.0.0.0
       - --remote-debugging-port=9222
       - --hide-scrollbars
-  
   karakeep-meilisearch:
     image: getmeili/meilisearch:v1.13.3
     container_name: karakeep-meilisearch
@@ -59,4 +57,3 @@ services:
     volumes:
       - ./appdata/meilisearch:/meili_data
     restart: unless-stopped
-
