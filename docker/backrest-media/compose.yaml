@@ -1,5 +1,4 @@
 name: backrest-media
-
 services:
   backrest-media:
     image: garethgeorge/backrest:latest
