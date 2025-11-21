@@ -1,4 +1,4 @@
-# docker-compose
+name: backrest-template # with rclone config
 services:
   backrest-media:
     image: garethgeorge/backrest:latest
