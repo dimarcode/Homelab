@@ -1,0 +1,29 @@
+services:
+  backrest-media:
+    image: garethgeorge/backrest:latest
+    container_name: backrest-media
+    hostname: backrest-media
+    volumes:
+      - ./appdata/data:/data
+      - ./appdata/config:/config
+      - ./appdata/cache:/cache
+      - ${HOME}/.config/rclone:/root/.config/rclone
+      # Backup directories below here
+      - /home:/userdata/home
+      - /etc:/userdata/etc
+      - /opt:/userdata/opt
+      - /root:/userdata/root
+      - /srv:/userdata/srv
+      - /usr/local:/userdata/usr/local
+      - /var:/userdata/var
+      - /mnt/nvme-thin:/userdata/mnt/nvme-thin
+      - ${PERSONAL_MEDIA_LIBRARY}:/userdata/${PERSONAL_MEDIA_LIBRARY}
+    #  - /MY-REPOS:/repos # [optional] mount repos if using local storage, not necessary for remotes e.g. B2, S3, etc.
+    environment:
+      - BACKREST_DATA=/data # path for backrest data. restic binary and the database are placed here.
+      - BACKREST_CONFIG=/config/config.json # path for the backrest config file.
+      - XDG_CACHE_HOME=/cache # path for the restic cache which greatly improves performance.
+      - TZ=America/New_York # set the timezone for the container, used as the timezone for cron jobs.
+    restart: unless-stopped
+    ports:
+      - 9898:9898
