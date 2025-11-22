@@ -1,9 +1,10 @@
+name: jellyfin
 services:
   # ts-jellyfin:
   #   image: tailscale/tailscale:latest
   #   hostname: jellyfin
   #   environment:
-  #     - TS_AUTHKEY=${TS_AUTHKEY}
+  #     - TS_AUTHKEY=${JELLYFIN_TS_AUTHKEY}
   #     - "TS_EXTRA_ARGS=--advertise-tags=tag:container --reset"
   #     - TS_SERVE_CONFIG=/config/serve-config.json
   #     - TS_STATE_DIR=/var/lib/tailscale
@@ -47,7 +48,6 @@ services:
     #         - driver: nvidia
     #           count: 1
     #           capabilities: [gpu]
-
   jellyseerr:
     container_name: jellyseerr
     image: fallenbagel/jellyseerr:latest
@@ -63,7 +63,6 @@ services:
     restart: unless-stopped
     networks:
       - jellyfin-network
-
   jellystat-db:
     container_name: jellystat-db
     image: postgres:15.2
@@ -77,11 +76,10 @@ services:
     networks:
       - jellyfin-network
     healthcheck:
-      test: ["CMD", "pg_isready", "-U", "${POSTGRES_USER}"]
+      test: ["CMD", "pg_isready", "-U", "${JELLYSTAT_POSTGRES_USER}"]
       interval: 10s
       timeout: 5s
       retries: 5
-
   jellystat:
     image: cyfershepard/jellystat:latest
     container_name: jellystat
@@ -96,12 +94,11 @@ services:
     volumes:
       - ./appdata/jellystat/backup-data:/app/backend/backup-data
     ports:
-      - "3000:3000"
+      - "3033:3000"
     depends_on:
       - jellystat-db
     networks:
       - jellyfin-network
-
 networks:
   jellyfin-network:
     driver: bridge
