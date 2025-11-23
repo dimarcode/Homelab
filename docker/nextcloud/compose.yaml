@@ -1,4 +1,3 @@
-# docker-compose
 name: nextcloud
 services:
   nextcloud-aio-mastercontainer:
