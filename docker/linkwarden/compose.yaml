@@ -1,18 +1,15 @@
 name: linkwarden
-
 services:
-  
   postgres:
     image: postgres:16-alpine
     env_file: .env
     restart: always
     volumes:
       - ./appdata/pgdata:/var/lib/postgresql/data
-  
   linkwarden:
     env_file: .env
     environment:
-      - DATABASE_URL=postgresql://postgres:${POSTGRES_PASSWORD}@postgres:5432/postgres
+      - DATABASE_URL=postgresql://postgres:${LINKWARDEN_POSTGRES_PASSWORD}@postgres:5432/postgres
     restart: always
     # build: . # uncomment to build from source
     image: ghcr.io/linkwarden/linkwarden:latest # comment to build from source
@@ -23,7 +20,6 @@ services:
     depends_on:
       - postgres
       - meilisearch
-  
   meilisearch:
     image: getmeili/meilisearch:v1.12.8
     restart: always
