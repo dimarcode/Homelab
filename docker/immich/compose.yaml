@@ -46,7 +46,7 @@ services:
       DB_HOSTNAME: immich-database
       DB_PASSWORD: ${IMMICH_DB_PASSWORD}
       DB_USERNAME: ${IMMICH_DB_USERNAME}
-      DB_DATABASE_NAME: ${IMMICH_DB_DATABASE_NAME}
+      DB_DATABASE_NAME: immich
       REDIS_HOSTNAME: immich-redis
     depends_on:
       - immich-redis
@@ -91,7 +91,7 @@ services:
     environment:
       POSTGRES_PASSWORD: ${IMMICH_DB_PASSWORD}
       POSTGRES_USER: ${IMMICH_DB_USERNAME}
-      POSTGRES_DB: ${IMMICH_DB_DATABASE_NAME}
+      POSTGRES_DB: ${DB_DATABASE_NAME}
       POSTGRES_INITDB_ARGS: '--data-checksums'
       # Uncomment the DB_STORAGE_TYPE: 'HDD' var if your database isn't stored on SSDs
       # DB_STORAGE_TYPE: 'HDD'
