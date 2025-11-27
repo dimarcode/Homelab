@@ -5,9 +5,9 @@ services:
     container_name: backrest-media
     hostname: backrest-media
     volumes:
-      - ./appdata/data:/data
-      - ./appdata/config:/config
-      - ./appdata/cache:/cache
+      - /mnt/nvme-thin/docker/backrest-media/data:/data
+      - /mnt/nvme-thin/docker/backrest-media/config:/config
+      - /mnt/nvme-thin/docker/backrest-media/cache:/cache
       - ${HOME}/.config/rclone:/root/.config/rclone
       # Backup directories below here
       - /home:/userdata/home
