@@ -19,8 +19,8 @@ services:
       - TS_SERVE_CONFIG=/config/immich.json
       - TS_USERSPACE=true
     volumes: 
-      - ./appdata/tailscale/config:/config
-      - ./appdata/tailscale/ts-state:/var/lib/tailscale
+      - /mnt/nvme-thin/docker/immich/tailscale/config:/config
+      - /mnt/nvme-thin/docker/immich/tailscale/ts-state:/var/lib/tailscale
     restart: always
   immich-server:
     container_name: immich_server
