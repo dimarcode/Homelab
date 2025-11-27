@@ -167,16 +167,16 @@ UPLOAD_LOCATION = [[IMMICH_UPLOAD_LOCATION]]
 ENCODED_VIDEO_LOCATION = [[IMMICH_ENCODED_VIDEO_LOCATION]]
 
   # The location where your backups are stored
-BACKUP_LOCATION = ./appdata/backups
+BACKUP_LOCATION = /mnt/nvme-thin/docker/immich/backups
 
   # The location where your database files are stored
-DB_DATA_LOCATION = ./appdata/postgres
+DB_DATA_LOCATION = /mnt/nvme-thin/docker/immich/postgres
   
   # The location where your profiles are stored
-PROFILE_LOCATION = ./appdata/profile
+PROFILE_LOCATION = /mnt/nvme-thin/docker/immich/profile
 
   # The location where your thumbnails are stored
-THUMB_LOCATION = ./appdata/thumbs
+THUMB_LOCATION = /mnt/nvme-thin/docker/immich/thumbs
 """
 
 ##
