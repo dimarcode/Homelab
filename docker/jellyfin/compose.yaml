@@ -29,7 +29,7 @@ services:
       # - NVIDIA_DRIVER_CAPABILITIES=all
     #  - JELLYFIN_PublishedServerUrl=${JELLYFIN_PublishedServerUrl} #optional
     volumes:
-      - ./appdata/jellyfin/config:/config
+      - /mnt/nvme-thin/docker/jellyfin/jellyfin/config:/config
       - ${MEDIA_LIBRARY_SHARED}/tv:/data/tv
       - ${MEDIA_LIBRARY_SHARED}/movies:/data/movies
     ports:
@@ -57,7 +57,7 @@ services:
       - PGID=${PGID}
       - TZ=America/New_York
     volumes:
-      - ./appdata/jellyseerr/config:/app/config
+      - /mnt/nvme-thin/docker/jellyfin/jellyseerr/config:/app/config
     ports:
       - 5055:5055
     restart: unless-stopped
@@ -72,7 +72,7 @@ services:
       - POSTGRES_USER=${JELLYSTAT_POSTGRES_USER}
       - POSTGRES_PASSWORD=${JELLYSTAT_POSTGRES_PASSWORD}
     volumes:
-      - ./appdata/jellystat/postgres:/var/lib/postgresql/data
+      - /mnt/nvme-thin/docker/jellyfin/jellystat/postgres:/var/lib/postgresql/data
     networks:
       - jellyfin-network
     healthcheck:
@@ -92,13 +92,14 @@ services:
       - JWT_SECRET=${JELLYSTAT_JWT_SECRET}
       - TZ=America/New_York
     volumes:
-      - ./appdata/jellystat/backup-data:/app/backend/backup-data
+      - /mnt/nvme-thin/docker/jellyfin/jellystat/backup-data:/app/backend/backup-data
     ports:
       - "3033:3000"
     depends_on:
       - jellystat-db
     networks:
       - jellyfin-network
+
 networks:
   jellyfin-network:
     driver: bridge
