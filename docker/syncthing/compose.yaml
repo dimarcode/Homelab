@@ -9,7 +9,7 @@ services:
       - PGID=1000
       - TZ=America/New_York #change to your timezone
     volumes:
-      - /mnt/nvme-thin/docker/syncthing/appdata/config:/config
+      - /mnt/nvme-thin/docker/syncthing/config:/config
       - /mnt/nvme-thin/docker/syncthing/sync:/sync
     ports:
       - 8384:8384
