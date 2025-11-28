@@ -35,7 +35,7 @@ services:
     image: docker.io/library/redis:8
     restart: unless-stopped
     volumes:
-      - ./appdata/redisdata:/data
+      - /mnt/nvme-thin/docker/paperless-ngx-postgres/appdata/redisdata:/data
     env_file: .env
     environment:
       PUID: ${PUID}
@@ -45,7 +45,7 @@ services:
     image: docker.io/library/postgres:16
     restart: unless-stopped
     volumes:
-      - ./appdata/pgdata:/var/lib/postgresql/data
+      - /mnt/nvme-thin/docker/paperless-ngx-postgres/appdata/pgdata:/var/lib/postgresql/data
     env_file: .env
     environment:
       POSTGRES_DB: ${PAPERLESS_POSTGRES_DB}
@@ -74,7 +74,7 @@ services:
       PUID: ${PUID}
       PGID: ${PGID}
     volumes:
-      - ./appdata/backups/pgbackups:/backups
+      - /mnt/nvme-thin/docker/paperless-ngx-postgres/appdata/backups/pgbackups:/backups
     links:
       - paperless-db
     depends_on:
@@ -91,7 +91,7 @@ services:
     ports:
       - "8010:8000"
     volumes:
-      - ./appdata/data:/usr/src/paperless/data
+      - /mnt/nvme-thin/docker/paperless-ngx-postgres/appdata/data:/usr/src/paperless/data
       - ${PAPERLESS_MEDIA}:/usr/src/paperless/media
       - ${PAPERLESS_EXPORT}:/usr/src/paperless/export
       - ${PAPERLESS_CONSUME}:/usr/src/paperless/consume
