@@ -69,14 +69,14 @@ services:
     env_file: .env
     restart: unless-stopped
     environment:
-      - POSTGRES_USER=${JELLYSTAT_POSTGRES_USER}
-      - POSTGRES_PASSWORD=${JELLYSTAT_POSTGRES_PASSWORD}
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
     volumes:
       - /mnt/nvme-thin/docker/jellyfin/jellystat/postgres:/var/lib/postgresql/data
     networks:
       - jellyfin-network
     healthcheck:
-      test: ["CMD", "pg_isready", "-U", "${JELLYSTAT_POSTGRES_USER}"]
+      test: ["CMD", "pg_isready", "-U", "${POSTGRES_USER}"]
       interval: 10s
       timeout: 5s
       retries: 5
@@ -85,11 +85,11 @@ services:
     container_name: jellystat
     restart: unless-stopped
     environment:
-      - POSTGRES_USER=${JELLYSTAT_POSTGRES_USER}
-      - POSTGRES_PASSWORD=${JELLYSTAT_POSTGRES_PASSWORD}
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
       - POSTGRES_IP=jellystat-db
       - POSTGRES_PORT=5432
-      - JWT_SECRET=${JELLYSTAT_JWT_SECRET}
+      - JWT_SECRET=${JWT_SECRET}
       - TZ=America/New_York
     volumes:
       - /mnt/nvme-thin/docker/jellyfin/jellystat/backup-data:/app/backend/backup-data

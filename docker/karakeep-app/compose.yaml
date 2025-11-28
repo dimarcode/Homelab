@@ -4,7 +4,7 @@ services:
     image: tailscale/tailscale:latest
     hostname: karakeep
     environment:
-      TS_AUTHKEY: ${KARAKEEP_TS_AUTHKEY}
+      TS_AUTHKEY: ${TS_AUTHKEY}
       TS_STATE_DIR: /var/lib/tailscale
       TS_USERSPACE: true
     volumes:
@@ -27,9 +27,9 @@ services:
     environment:
       MEILI_ADDR: http://karakeep-meilisearch:7700
       BROWSER_WEB_URL: http://karakeep-chrome:9222
-      NEXTAUTH_URL: ${KARAKEEP_NEXTAUTH_URL}
-      NEXTAUTH_SECRET: ${KARAKEEP_NEXTAUTH_SECRET}
-      MEILI_MASTER_KEY: ${KARAKEEP_MEILI_MASTER_KEY}
+      NEXTAUTH_URL: ${NEXTAUTH_URL}
+      NEXTAUTH_SECRET: ${NEXTAUTH_SECRET}
+      MEILI_MASTER_KEY: ${MEILI_MASTER_KEY}
       CRAWLER_STORE_SCREENSHOT: true
       CRAWLER_FULL_PAGE_SCREENSHOT: true
       CRAWLER_ENABLE_ADBLOCKER: true
@@ -56,7 +56,7 @@ services:
     env_file: .env
     environment:
       MEILI_NO_ANALYTICS: "true"
-      MEILI_MASTER_KEY: ${KARAKEEP_MEILI_MASTER_KEY}
+      MEILI_MASTER_KEY: ${MEILI_MASTER_KEY}
     volumes:
       - /mnt/nvme-thin/docker/karakeep-app/meilisearch:/meili_data
     restart: unless-stopped
