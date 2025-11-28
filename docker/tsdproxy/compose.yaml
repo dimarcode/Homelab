@@ -7,7 +7,7 @@ services:
       - /mnt/nvme-thin/docker/tsdproxy/data:/data
       - /mnt/nvme-thin/docker/tsdproxy/config:/config
     environment:
-      - TSDPROXY_AUTHKEY=${TSDPROXY_TS_AUTHKEY}
+      - TSDPROXY_AUTHKEY=${TSDPROXY_AUTHKEY}
       - DOCKER_HOST=unix:///var/run/docker.sock
     restart: unless-stopped
     ports:
