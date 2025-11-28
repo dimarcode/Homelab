@@ -10,8 +10,8 @@ services:
       - TS_STATE_DIR=/var/lib/tailscale
       - TS_USERSPACE=false
     volumes:
-      - ./appdata/tailscale/config:/config
-      - ./appdata/tailscale/ts-state:/var/lib/tailscale
+      - /mnt/nvme-thin/docker/mealie/tailscale/config:/config
+      - /mnt/nvme-thin/docker/mealie/tailscale/ts-state:/var/lib/tailscale
     devices:
       - /dev/net/tun:/dev/net/tun
     cap_add:
@@ -29,7 +29,7 @@ services:
       - .env
     network_mode: service:mealie-ts
     volumes:
-      - ./appdata:/app/data/
+      - /mnt/nvme-thin/docker/mealie/data:/app/data/
     environment:
       # Set Backend ENV Variables Here
       ALLOW_SIGNUP: "false"
