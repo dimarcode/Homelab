@@ -1,4 +1,4 @@
----
+name: syncthing
 services:
   syncthing:
     image: lscr.io/linuxserver/syncthing:latest
@@ -9,8 +9,8 @@ services:
       - PGID=1000
       - TZ=America/New_York #change to your timezone
     volumes:
-      - ./appdata/config:/config
-      - ./sync:/sync
+      - /mnt/nvme-thin/docker/syncthing/appdata/config:/config
+      - /mnt/nvme-thin/docker/syncthing/sync:/sync
     ports:
       - 8384:8384
       - 22000:22000/tcp

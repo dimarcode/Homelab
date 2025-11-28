@@ -1,3 +1,4 @@
+name: paperless-sqlite
 services:
 
   paperless-broker:
