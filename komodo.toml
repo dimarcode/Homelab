@@ -181,6 +181,30 @@ THUMB_LOCATION = /mnt/nvme-thin/docker/immich/thumbs
 
 ##
 
+[[stack]]
+name = "karakeep"
+tags = ["prod"]
+[stack.config]
+project_name = "karakeep"
+git_account = "dimarcode"
+repo = "dimarcode/Homelab"
+run_directory = "docker/karakeep-app"
+environment = """
+TS_AUTHKEY = [[KARAKEEP_TS_AUTHKEY]]
+
+KARAKEEP_VERSION = release
+
+MEILI_MASTER_KEY = [[KARAKEEP_MEILI_MASTER_KEY]]
+
+# command to generate these is `openssl rand -base64 36`
+NEXTAUTH_SECRET = [[KARAKEEP_NEXTAUTH_SECRET]]
+NEXTAUTH_URL = [[KARAKEEP_NEXTAUTH_URL]]
+
+# OPENAI_API_KEY = <key>
+"""
+
+##
+
 [[repo]]
 name = "Homelab"
 tags = ["prod"]
