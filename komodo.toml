@@ -137,22 +137,22 @@ IMMICH_VERSION = "v1.137.3"
 ML_MODEL_CACHE =
 
   #Listens for other containers
-IMMICH_SERVER_HOST = [[IMMICH_SERVER_HOST]]
+SERVER_HOST = [[IMMICH_SERVER_HOST]]
 
   #Authkey for Tailscale VPN access
-IMMICH_TS_AUTHKEY = [[IMMICH_TS_AUTHKEY]]
+TS_AUTHKEY = [[IMMICH_TS_AUTHKEY]]
 
 ####
 # DB
 ####
 
-IMMICH_DB_DATABASE_NAME = [[IMMICH_DB_DATABASE_NAME]]
-IMMICH_DB_USERNAME = [[IMMICH_DB_USERNAME]]
+DB_DATABASE_NAME = [[IMMICH_DB_DATABASE_NAME]]
+DB_USERNAME = [[IMMICH_DB_USERNAME]]
 
   # Connection secret for postgres. You should change it to a random password
   # Please use only the characters `A-Za-z0-9`, without special characters or spaces
 
-IMMICH_DB_PASSWORD = [[IMMICH_DB_PASSWORD]]
+DB_PASSWORD = [[IMMICH_DB_PASSWORD]]
 
 
 ##########################
@@ -164,10 +164,10 @@ IMMICH_DB_PASSWORD = [[IMMICH_DB_PASSWORD]]
   # The location where your uploaded files are stored
 UPLOAD_LOCATION = [[IMMICH_UPLOAD_LOCATION]]
 
-ENCODED_VIDEO_LOCATION = [[IMMICH_ENCODED_VIDEO_LOCATION]]
+ENCODED_VIDEO_LOCATION = [[IMMICH_UPLOAD_LOCATION]]/encoded-video
 
   # The location where your backups are stored
-BACKUP_LOCATION = /mnt/nvme-thin/docker/immich/backups
+BACKUP_LOCATION = [[IMMICH_UPLOAD_LOCATION]]/backups
 
   # The location where your database files are stored
 DB_DATA_LOCATION = /mnt/nvme-thin/docker/immich/postgres
