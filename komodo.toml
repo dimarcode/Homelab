@@ -205,6 +205,32 @@ NEXTAUTH_URL = [[KARAKEEP_NEXTAUTH_URL]]
 
 ##
 
+[[stack]]
+name = "linkwarden"
+tags = ["prod"]
+[stack.config]
+project_name = "linkwarden"
+linked_repo = "Homelab"
+run_directory = "docker/linkwarden"
+environment = """
+NEXTAUTH_URL = [[LINKWARDEN_NEXTAUTH_URL]]
+
+NEXTAUTH_SECRET = [[LINKWARDEN_NEXTAUTH_SECRET]]
+
+# Manual installation database settings
+# Example: DATABASE_URL=postgresql://user:password@localhost:5432/linkwarden
+DATABASE_URL =
+
+# Docker installation database settings
+POSTGRES_PASSWORD = [[LINKWARDEN_POSTGRES_PASSWORD]]
+
+# MeiliSearch Settings
+MEILI_HOST=
+MEILI_MASTER_KEY = [[LINKWARDEN_MEILI_MASTER_KEY]]
+"""
+
+##
+
 [[repo]]
 name = "Homelab"
 tags = ["prod"]
