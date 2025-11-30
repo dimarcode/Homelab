@@ -27,4 +27,3 @@ services:
       - .env
     volumes:
       - /mnt/nvme-thin/docker/linkwarden/meili_data:/meili_data
-      # test line
