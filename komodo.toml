@@ -218,8 +218,7 @@ repo = "dimarcode/Homelab"
 name = "Homelab-sync"
 tags = ["prod"]
 [resource_sync.config]
-repo = "dimarcode/Homelab"
-git_account = "dimarcode"
+linked_repo = "Homelab"
 resource_path = ["komodo.toml"]
 managed = true
 delete = true
