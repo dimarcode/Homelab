@@ -186,13 +186,13 @@ name = "karakeep"
 tags = ["prod"]
 [stack.config]
 project_name = "karakeep"
-git_account = "dimarcode"
-repo = "dimarcode/Homelab"
+linked_repo = "Homelab"
 run_directory = "docker/karakeep-app"
 environment = """
 TS_AUTHKEY = [[KARAKEEP_TS_AUTHKEY]]
-
 KARAKEEP_VERSION = release
+
+TS_AUTHKEY = [[KARAKEEP_TS_AUTHKEY]]
 
 MEILI_MASTER_KEY = [[KARAKEEP_MEILI_MASTER_KEY]]
 
