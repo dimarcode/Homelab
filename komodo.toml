@@ -231,6 +231,21 @@ MEILI_MASTER_KEY = [[LINKWARDEN_MEILI_MASTER_KEY]]
 
 ##
 
+[[stack]]
+name = "mealie"
+tags = ["prod"]
+[stack.config]
+project_name = "mealie"
+linked_repo = "Homelab"
+run_directory = "docker/mealie"
+environment = """
+TS_AUTHKEY = [[MEALIE_TS_AUTHKEY]]
+PUID = 1000
+PGID = 1000
+"""
+
+##
+
 [[repo]]
 name = "Homelab"
 tags = ["prod"]
