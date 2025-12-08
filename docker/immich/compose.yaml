@@ -88,7 +88,6 @@ services:
 
   immich-database:
     container_name: immich_postgres
-    user: ${PUID}:${PGID} # check for redundancy
     hostname: immich_postgres
     image: ghcr.io/immich-app/postgres:14-vectorchord0.3.0-pgvectors0.2.0
     environment:
