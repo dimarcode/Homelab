@@ -14,7 +14,7 @@ services:
   #     - /var/run/docker.sock:/var/run/docker.sock:ro
   #   restart: unless-stopped
   homepage:
-    image: ghcr.io/gethomepage/homepage:latest
+    image: ghcr.io/gethomepage/homepage:v1.7.0
     container_name: homepage
     env_file: .env
     environment:
@@ -24,6 +24,6 @@ services:
     ports:
       - 3000:3000
     volumes:
-      - ~/docker/homepage/config:/app/config # Make sure your local config directory exists
+      - /opt/appdata/homepage/config:/app/config # Make sure your local config directory exists
       # - /var/run/docker.sock:/var/run/docker.sock:ro # optional, for docker integrations
     restart: unless-stopped
