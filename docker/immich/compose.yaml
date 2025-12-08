@@ -88,7 +88,7 @@ services:
 
   immich-database:
     container_name: immich_postgres
-    user: 1000:1000
+    user: ${PUID}:${PGID} # check for redundancy
     hostname: immich_postgres
     image: ghcr.io/immich-app/postgres:14-vectorchord0.3.0-pgvectors0.2.0
     environment:
@@ -98,8 +98,8 @@ services:
       POSTGRES_INITDB_ARGS: '--data-checksums'
       # Uncomment the DB_STORAGE_TYPE: 'HDD' var if your database isn't stored on SSDs
       # DB_STORAGE_TYPE: 'HDD'
-      PUID: 1000
-      PGID: 1000
+      PUID: ${PUID}
+      PGID: ${PGID}
     volumes:
       # Do not edit the next line. If you want to change the database storage location on your system, edit the value of DB_DATA_LOCATION in the .env file
       - ${DB_DATA_LOCATION}:/var/lib/postgresql/data
