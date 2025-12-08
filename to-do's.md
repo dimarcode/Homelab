@@ -40,28 +40,32 @@ TEST FIRST WITH EXISTING STACK SON TESTING LXC:
 Path to docker files:
 
 ```
-/mnt/nvme-thin/docker
+/opt/appdata/<app>
 ```
 
-| App            | Stack created | compose.yaml | secrets | env variables |
-| -------------- | ------------- | ------------ | ------- | ------------- |
-| jellyfin       |               |              |         |               |
-| karakeep       |               |              |         |               |
-| linkwarden     |               |              |         |               |
-| mealie         |               |              |         |               |
-| nextcloud      |               |              |         |               |
-| paperless-ngx  |               |              |         |               |
-| syncthing      |               |              |         |               |
-| ts-linkwarden  |               |              |         |               |
-| tsdproxy       |               |              |         |               |
-| backrest-media |               |              |         |               |
+| App              | Host    | Stack created | compose.yaml | paths correct (`/opt/appdata/<app>`) | secrets | env variables |
+| ---------------- | ------- | ------------- | ------------ | ------------------------------------ | ------- | ------------- |
+| immich           | Media   | x             | x            |                                      |         |               |
+| jellyfin         | Media   |               |              |                                      |         |               |
+| karakeep         | Media   | x             | x            |                                      |         |               |
+| linkwarden       | Media   | x             | x            | x                                    | x       | x             |
+| mealie           | Media   | x             | x            |                                      |         |               |
+| nextcloud        | Media   |               |              |                                      |         |               |
+| paperless-ngx    | Media   |               |              |                                      |         |               |
+| syncthing        | Media   |               |              |                                      |         |               |
+| tsdproxy         | Media   |               |              |                                      |         |               |
+| backrest-media   | Media   | x             | x            |                                      |         |               |
+| backrest-ansible | Ansible |               |              |                                      |         |               |
+| homepage         | Ansible | x             | x            |                                      |         |               |
+| komodo           | Ansible |               |              |                                      |         |               |
+| arr-stack        | Servarr |               |              |                                      |         |               |
 
 ### Ansible vm
 
 Path to docker files:
 
 ```
-/home/cody/docker
+/opt/appdata
 ```
 
 | App              | Docker-compose | secrets | env variables |
