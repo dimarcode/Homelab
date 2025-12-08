@@ -1,0 +1,29 @@
+services:
+  backrest:
+    image: garethgeorge/backrest:v1.9.2
+    container_name: backrest
+    hostname: backrest
+    volumes:
+    # container data
+      - /opt/appdata/backrest-ansible/cache:/cache
+      - /opt/appdata/backrest-ansible/config:/config
+      - /opt/appdata/backrest-ansible/data:/data
+    # rclone config to provide dropbox access
+      - ${RCLONE_CONFIG_PATH}:/root/.config/rclone
+    # Backup directories below here
+      - /home:/userdata/home
+      - /etc:/userdata/etc
+      - /opt:/userdata/opt
+      - /root:/userdata/root
+      - /srv:/userdata/srv
+      - /usr/local:/userdata/usr/local
+      - /var:/userdata/var
+    #  - /MY-REPOS:/repos # [optional] mount repos if using local storage, not necessary for remotes e.g. B2, S3, etc.
+    environment:
+      - BACKREST_DATA=/data # path for backrest data. restic binary and the database are placed here.
+      - BACKREST_CONFIG=/config/config.json # path for the backrest config file.
+      - XDG_CACHE_HOME=/cache # path for the restic cache which greatly improves performance.
+      - TZ=America/New_York # set the timezone for the container, used as the timezone for cron jobs.
+    restart: unless-stopped
+    ports:
+      - 9898:9898
