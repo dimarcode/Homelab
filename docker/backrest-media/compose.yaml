@@ -5,10 +5,10 @@ services:
     container_name: backrest-media
     hostname: backrest-media
     volumes:
-      - /mnt/nvme-thin/docker/backrest-media/data:/data
-      - /mnt/nvme-thin/docker/backrest-media/config:/config
-      - /mnt/nvme-thin/docker/backrest-media/cache:/cache
-      - ${HOME}/.config/rclone:/root/.config/rclone
+      - /opt/appdata/backrest-media/data:/data
+      - /opt/appdata/backrest-media/config:/config
+      - /opt/appdata/backrest-media/cache:/cache
+      - ${RCLONE_CONFIG_PATH}:/root/.config/rclone
       # Backup directories below here
       - /home:/userdata/home
       - /etc:/userdata/etc
@@ -17,7 +17,6 @@ services:
       - /srv:/userdata/srv
       - /usr/local:/userdata/usr/local
       - /var:/userdata/var
-      - /mnt/nvme-thin:/userdata/mnt/nvme-thin
       - ${MEDIA_LIBRARY_PERSONAL}:/userdata/${MEDIA_LIBRARY_PERSONAL}
     #  - /MY-REPOS:/repos # [optional] mount repos if using local storage, not necessary for remotes e.g. B2, S3, etc.
     environment:
