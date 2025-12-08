@@ -5,7 +5,7 @@ services:
     env_file: .env
     restart: always
     volumes:
-      - /mnt/nvme-thin/docker/linkwarden/pgdata:/var/lib/postgresql/data
+      - /opt/appdata/linkwarden/pgdata:/var/lib/postgresql/data
   linkwarden:
     env_file: .env
     environment:
@@ -16,7 +16,7 @@ services:
     ports:
       - 3000:3000
     volumes:
-      - /mnt/nvme-thin/docker/linkwarden/data:/data/data
+      - /opt/appdata/linkwarden/data:/data/data
     depends_on:
       - postgres
       - meilisearch
@@ -26,4 +26,4 @@ services:
     env_file:
       - .env
     volumes:
-      - /mnt/nvme-thin/docker/linkwarden/meili_data:/meili_data
+      - /opt/appdata/linkwarden/meili_data:/meili_data
