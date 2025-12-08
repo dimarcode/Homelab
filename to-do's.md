@@ -47,7 +47,7 @@ Path to docker files:
 | ---------------- | ------- | ------------- | ------------ | ------------------------------------ | ------- | ------------- |
 | immich           | Media   | x             | x            | x                                    | x       | x             |
 | jellyfin         | Media   |               |              |                                      |         |               |
-| karakeep         | Media   | x             | x            |                                      |         |               |
+| karakeep         | Media   | x             | x            | x                                    | x       | x             |
 | linkwarden       | Media   | x             | x            | x                                    | x       | x             |
 | mealie           | Media   | x             | x            |                                      |         |               |
 | nextcloud        | Media   |               |              |                                      |         |               |
