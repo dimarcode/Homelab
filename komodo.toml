@@ -1,4 +1,17 @@
 [[stack]]
+name = "backrest-ansible"
+tags = ["prod"]
+[stack.config]
+linked_repo = "Homelab"
+run_directory = "docker/backrest-ansible"
+environment = """
+  # VARIABLE = value
+RCLONE_CONFIG_PATH = [[RCLONE_CONFIG_PATH_ANSIBLE]]
+"""
+
+##
+
+[[stack]]
 name = "backrest-media"
 tags = ["prod", "media"]
 [stack.config]
@@ -7,6 +20,7 @@ linked_repo = "Homelab"
 run_directory = "docker/backrest-media"
 environment = """
 MEDIA_LIBRARY_PERSONAL = [[MEDIA_LIBRARY_PERSONAL]]
+RCLONE_CONFIG_PATH = [[RCLONE_CONFIG_PATH_MEDIA]]
 """
 
 ##
@@ -130,6 +144,9 @@ run_directory = "docker/immich"
 environment = """
   # VARIABLE = value
 
+PUID = 1000
+PGID = 1000
+
   # The Immich version to use. You can pin this to a specific version like "v1.71.0"
 IMMICH_VERSION = "v1.137.3"
 
@@ -161,22 +178,22 @@ DB_PASSWORD = [[IMMICH_DB_PASSWORD]]
 
 # DO NOT CHANGE THE VARIABLE NAMES!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
-  # The location where your uploaded files are stored
+# The location where your uploaded files are stored
 UPLOAD_LOCATION = [[IMMICH_UPLOAD_LOCATION]]
 
 ENCODED_VIDEO_LOCATION = [[IMMICH_UPLOAD_LOCATION]]/encoded-video
 
-  # The location where your backups are stored
+# The location where your backups are stored
 BACKUP_LOCATION = [[IMMICH_UPLOAD_LOCATION]]/backups
 
-  # The location where your database files are stored
-DB_DATA_LOCATION = /mnt/nvme-thin/docker/immich/postgres
-  
-  # The location where your profiles are stored
-PROFILE_LOCATION = /mnt/nvme-thin/docker/immich/profile
+# The location where your database files are stored
+DB_DATA_LOCATION = /opt/appdata/immich/postgres
 
-  # The location where your thumbnails are stored
-THUMB_LOCATION = /mnt/nvme-thin/docker/immich/thumbs
+# The location where your profiles are stored
+PROFILE_LOCATION = /opt/appdata/immich/profile
+
+# The location where your thumbnails are stored
+THUMB_LOCATION = /opt/appdata/immich/thumbs
 """
 
 ##
@@ -187,7 +204,7 @@ tags = ["prod"]
 [stack.config]
 project_name = "karakeep"
 linked_repo = "Homelab"
-run_directory = "docker/karakeep-app"
+run_directory = "docker/karakeep"
 environment = """
 TS_AUTHKEY = [[KARAKEEP_TS_AUTHKEY]]
 KARAKEEP_VERSION = release
