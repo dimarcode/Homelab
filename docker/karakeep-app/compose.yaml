@@ -8,8 +8,8 @@ services:
       TS_STATE_DIR: /var/lib/tailscale
       TS_USERSPACE: true
     volumes:
-      - /mnt/nvme-thin/docker/karakeep-app/tailscale/config:/config
-      - /mnt/nvme-thin/docker/karakeep-app/tailscale/ts-state:/var/lib/tailscale
+      - /opt/appdata/karakeep/tailscale/config:/config
+      - /opt/appdata/karakeep/tailscale/ts-state:/var/lib/tailscale
     restart: unless-stopped
 
   karakeep-app:
@@ -21,7 +21,7 @@ services:
       # By default, the data is stored in a docker volume called "data".
       # If you want to mount a custom directory, change the volume mapping to:
       # - /path/to/your/directory:/data
-      - /mnt/nvme-thin/docker/karakeep-app/data:/data
+      - /opt/appdata/karakeep/data:/data
     env_file:
       - .env
     environment:
@@ -58,6 +58,6 @@ services:
       MEILI_NO_ANALYTICS: "true"
       MEILI_MASTER_KEY: ${MEILI_MASTER_KEY}
     volumes:
-      - /mnt/nvme-thin/docker/karakeep-app/meilisearch:/meili_data
+      - /opt/appdata/karakeep/meilisearch:/meili_data
     restart: unless-stopped
 

@@ -45,7 +45,7 @@ Path to docker files:
 
 | App              | Host    | Stack created | compose.yaml | paths correct (`/opt/appdata/<app>`) | secrets | env variables |
 | ---------------- | ------- | ------------- | ------------ | ------------------------------------ | ------- | ------------- |
-| immich           | Media   | x             | x            |                                      |         |               |
+| immich           | Media   | x             | x            | x                                    | x       | x             |
 | jellyfin         | Media   |               |              |                                      |         |               |
 | karakeep         | Media   | x             | x            |                                      |         |               |
 | linkwarden       | Media   | x             | x            | x                                    | x       | x             |
