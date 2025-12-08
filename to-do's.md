@@ -56,7 +56,7 @@ Path to docker files:
 | tsdproxy         | Media   |               |              |                                      |         |               |
 | backrest-media   | Media   | x             | x            |                                      |         |               |
 | backrest-ansible | Ansible |               |              |                                      |         |               |
-| homepage         | Ansible | x             | x            |                                      |         |               |
+| homepage         | Ansible | x             | x            | x                                    | x       | x             |
 | komodo           | Ansible |               |              |                                      |         |               |
 | arr-stack        | Servarr |               |              |                                      |         |               |
 
