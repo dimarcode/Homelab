@@ -4,7 +4,7 @@ services:
   #   image: tailscale/tailscale:latest
   #   hostname: jellyfin
   #   environment:
-  #     - TS_AUTHKEY=${JELLYFIN_TS_AUTHKEY}
+  #     - TS_AUTHKEY=${TS_AUTHKEY}
   #     - "TS_EXTRA_ARGS=--advertise-tags=tag:container --reset"
   #     - TS_SERVE_CONFIG=/config/serve-config.json
   #     - TS_STATE_DIR=/var/lib/tailscale
@@ -29,7 +29,7 @@ services:
       # - NVIDIA_DRIVER_CAPABILITIES=all
     #  - JELLYFIN_PublishedServerUrl=${JELLYFIN_PublishedServerUrl} #optional
     volumes:
-      - /mnt/nvme-thin/docker/jellyfin/jellyfin/config:/config
+      - /opt/appdata/jellyfin/jellyfin/config:/config
       - ${MEDIA_LIBRARY_SHARED}/tv:/data/tv
       - ${MEDIA_LIBRARY_SHARED}/movies:/data/movies
     ports:
@@ -57,7 +57,7 @@ services:
       - PGID=${PGID}
       - TZ=America/New_York
     volumes:
-      - /mnt/nvme-thin/docker/jellyfin/jellyseerr/config:/app/config
+      - /opt/appdata/jellyfin/jellyseerr/config:/app/config
     ports:
       - 5055:5055
     restart: unless-stopped
@@ -72,7 +72,7 @@ services:
       - POSTGRES_USER=${POSTGRES_USER}
       - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
     volumes:
-      - /mnt/nvme-thin/docker/jellyfin/jellystat/postgres:/var/lib/postgresql/data
+      - /opt/appdata/jellyfin/jellystat/postgres:/var/lib/postgresql/data
     networks:
       - jellyfin-network
     healthcheck:
@@ -80,6 +80,7 @@ services:
       interval: 10s
       timeout: 5s
       retries: 5
+
   jellystat:
     image: cyfershepard/jellystat:latest
     container_name: jellystat
@@ -88,11 +89,11 @@ services:
       - POSTGRES_USER=${POSTGRES_USER}
       - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
       - POSTGRES_IP=jellystat-db
-      - POSTGRES_PORT=5432
+      - POSTGRES_PORT=${POSTGRES_PORT}
       - JWT_SECRET=${JWT_SECRET}
       - TZ=America/New_York
     volumes:
-      - /mnt/nvme-thin/docker/jellyfin/jellystat/backup-data:/app/backend/backup-data
+      - /opt/appdata/jellyfin/jellystat/backup-data:/app/backend/backup-data
     ports:
       - "3033:3000"
     depends_on:

@@ -49,12 +49,12 @@ Path to docker files:
 | jellyfin         | Media   |               |              |                                      |         |               |
 | karakeep         | Media   | x             | x            | x                                    | x       | x             |
 | linkwarden       | Media   | x             | x            | x                                    | x       | x             |
-| mealie           | Media   | x             | x            |                                      |         |               |
+| mealie           | Media   | x             | x            | x                                    | x       | x             |
 | nextcloud        | Media   |               |              |                                      |         |               |
 | paperless-ngx    | Media   |               |              |                                      |         |               |
 | syncthing        | Media   |               |              |                                      |         |               |
 | tsdproxy         | Media   |               |              |                                      |         |               |
-| backrest-media   | Media   | x             | x            |                                      |         |               |
+| backrest-media   | Media   | x             | x            | x                                    | x       | x             |
 | backrest-ansible | Ansible |               |              |                                      |         |               |
 | homepage         | Ansible | x             | x            | x                                    | x       | x             |
 | komodo           | Ansible |               |              |                                      |         |               |
