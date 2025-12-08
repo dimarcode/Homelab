@@ -10,8 +10,8 @@ services:
       - TS_STATE_DIR=/var/lib/tailscale
       - TS_USERSPACE=false
     volumes:
-      - /mnt/nvme-thin/docker/mealie/tailscale/config:/config
-      - /mnt/nvme-thin/docker/mealie/tailscale/ts-state:/var/lib/tailscale
+      - /opt/appdata/mealie/tailscale/config:/config
+      - /opt/appdata/mealie/tailscale/ts-state:/var/lib/tailscale
     devices:
       - /dev/net/tun:/dev/net/tun
     cap_add:
@@ -20,7 +20,7 @@ services:
   mealie-app:
     image: ghcr.io/mealie-recipes/mealie:v2.5.0 # 
     container_name: mealie_app
-    restart: always
+    restart: unless-stopped
     deploy:
       resources:
         limits:
@@ -29,7 +29,7 @@ services:
       - .env
     network_mode: service:mealie-ts
     volumes:
-      - /mnt/nvme-thin/docker/mealie/data:/app/data/
+      - /opt/appdata/mealie/data:/app/data/
     environment:
       # Set Backend ENV Variables Here
       ALLOW_SIGNUP: "false"
