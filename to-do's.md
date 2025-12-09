@@ -57,7 +57,6 @@ Path to docker files:
 | backrest-media   | Media   | x             | x            | x                                    | x       | x             |
 | backrest-ansible | Ansible | x             | x            | x                                    | x       | x             |
 | homepage         | Ansible | x             | x            | x                                    | x       | x             |
-| komodo           | Ansible |               |              |                                      |         |               |
 | arr-stack        | Servarr |               |              |                                      |         |               |
 
 ### Ansible vm
