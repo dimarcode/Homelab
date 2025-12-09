@@ -1,12 +1,4 @@
-################################
-# 🦎 KOMODO COMPOSE - MONGO 🦎 #
-################################
-
-## This compose file will deploy:
-##   1. MongoDB
-##   2. Komodo Core
-##   3. Komodo Periphery
-
+name: komodo
 services:
   mongo:
     image: mongo
@@ -17,8 +9,8 @@ services:
     # ports:
     #   - 27017:27017
     volumes:
-      - ./appdata/core/mongo-data:/data/db
-      - ./appdata/core/mongo-config:/data/configdb
+      - /opt/appdata/komodo/core/mongo-data:/data/db
+      - /opt/appdata/komodo/core/mongo-config:/data/configdb
     environment:
       MONGO_INITDB_ROOT_USERNAME: ${KOMODO_DB_USERNAME}
       MONGO_INITDB_ROOT_PASSWORD: ${KOMODO_DB_PASSWORD}
@@ -67,4 +59,4 @@ services:
       ## Must be the same inside and outside the container,
       ## or docker will get confused. See https://github.com/moghtech/komodo/discussions/180.
       ## Default: /etc/komodo.
-      - ${PERIPHERY_ROOT_DIRECTORY:-/home/cody/docker/komodo/appdata/periphery}:${PERIPHERY_ROOT_DIRECTORY:-/home/cody/docker/komodo/appdata/periphery}
+      - ${PERIPHERY_ROOT_DIRECTORY:-/opt/appdata/komodo/periphery}:${PERIPHERY_ROOT_DIRECTORY:-/opt/appdata/komodo/periphery}
