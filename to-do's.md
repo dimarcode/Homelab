@@ -65,7 +65,7 @@ Path to docker files:
 Path to docker files:
 
 ```
-/opt/appdata
+/opt/appdata/<app>
 ```
 
 | App              | Docker-compose | secrets | env variables |
