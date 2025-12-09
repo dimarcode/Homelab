@@ -53,11 +53,12 @@ Path to docker files:
 | nextcloud        | Media   |               |              |                                      |         |               |
 | paperless-ngx    | Media   |               |              |                                      |         |               |
 | syncthing        | Media   | x             | x            | x                                    | x       | x             |
-| tsdproxy         | Media   |               |              |                                      |         |               |
+| tsdproxy         | Media   | x             | x            | x                                    | x       | x             |
 | backrest-media   | Media   | x             | x            | x                                    | x       | x             |
 | backrest-ansible | Ansible | x             | x            | x                                    | x       | x             |
 | homepage         | Ansible | x             | x            | x                                    | x       | x             |
 | arr-stack        | Servarr |               |              |                                      |         |               |
+| backrest-servarr | Servarr |               |              |                                      |         |               |
 
 ### Ansible vm
 

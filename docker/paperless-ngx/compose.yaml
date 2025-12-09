@@ -71,8 +71,8 @@ services:
       BACKUP_KEEP_WEEKS: 4
       BACKUP_KEEP_MONTHS: 6
       HEALTHCHECK_PORT: 8080
-      PUID: ${PUID}
-      PGID: ${PGID}
+      # PUID: ${PUID}
+      # PGID: ${PGID}
     volumes:
       - /opt/appdata/paperless-ngx/backups:/backups
     links:
