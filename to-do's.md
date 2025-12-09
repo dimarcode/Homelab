@@ -46,16 +46,16 @@ Path to docker files:
 | App              | Host    | Stack created | compose.yaml | paths correct (`/opt/appdata/<app>`) | secrets | env variables |
 | ---------------- | ------- | ------------- | ------------ | ------------------------------------ | ------- | ------------- |
 | immich           | Media   | x             | x            | x                                    | x       | x             |
-| jellyfin         | Media   |               |              |                                      |         |               |
+| jellyfin         | Media   | x             | x            | x                                    | x       | x             |
 | karakeep         | Media   | x             | x            | x                                    | x       | x             |
 | linkwarden       | Media   | x             | x            | x                                    | x       | x             |
 | mealie           | Media   | x             | x            | x                                    | x       | x             |
 | nextcloud        | Media   |               |              |                                      |         |               |
 | paperless-ngx    | Media   |               |              |                                      |         |               |
-| syncthing        | Media   |               |              |                                      |         |               |
+| syncthing        | Media   | x             | x            | x                                    | x       | x             |
 | tsdproxy         | Media   |               |              |                                      |         |               |
 | backrest-media   | Media   | x             | x            | x                                    | x       | x             |
-| backrest-ansible | Ansible |               |              |                                      |         |               |
+| backrest-ansible | Ansible | x             | x            | x                                    | x       | x             |
 | homepage         | Ansible | x             | x            | x                                    | x       | x             |
 | komodo           | Ansible |               |              |                                      |         |               |
 | arr-stack        | Servarr |               |              |                                      |         |               |
