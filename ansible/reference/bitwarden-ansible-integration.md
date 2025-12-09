@@ -78,3 +78,22 @@ if [ -f "$VIRTUAL_ENV/.env" ]; then
     . "$VIRTUAL_ENV/.env"
 fi
 ```
+
+### Reference in playbook
+
+To use bitwarden-ansible integration, first install then:
+
+- create secrets.yml and add: 
+
+```yaml
+ansible_become_pass: "{{ lookup('bitwarden.secrets.lookup', '<bitwarden-secret-UUID>') }}"
+```
+
+- Then in any playbooks that require the become password, add:
+
+```yaml
+vars_files:
+    - group_vars/secrets.yml
+  vars:
+    ansible_become_pass: "{{ ansible_become_pass_id }}"
+```
