@@ -18,7 +18,7 @@ services:
       - net_admin
     restart: unless-stopped
   mealie-app:
-    image: ghcr.io/mealie-recipes/mealie:v2.5.0 # 
+    image: ghcr.io/mealie-recipes/mealie:latest # 
     container_name: mealie_app
     restart: unless-stopped
     deploy:
