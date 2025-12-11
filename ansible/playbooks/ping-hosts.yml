@@ -1,6 +1,8 @@
 ---
-- name: My first play
-  hosts: testing
+- name: Ping hosts and print a message
+  hosts: all
+  become: true
+  
   tasks:
    - name: Ping my hosts
      ansible.builtin.ping:
