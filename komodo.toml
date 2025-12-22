@@ -8,6 +8,43 @@ enabled = true
 ##
 
 [[stack]]
+name = "arr-stack"
+tags = ["prod", "servarr"]
+[stack.config]
+project_name = "arr-stack"
+linked_repo = "Homelab"
+run_directory = "docker/servarr"
+environment = """
+##########
+# Global #
+##########
+APPDATA = /opt/appdata/servarr  # Where the app's data will be stored (config, etc.), ex.: ${APPDATA}/gluetun:/gluetun
+MEDIA_ROOT = /mnt/tank/media/shared  # Where your media will be stored - should be one level above media, torrents, usenet if following Trashguides
+PUID = 1000
+PGID = 1000
+TZ = America/New_York
+
+###########
+# Gluetun #
+###########
+VPN_SERVICE_PROVIDER = [[SERVARR_VPN_SERVICE_PROVIDER]]
+VPN_TYPE = [[SERVARR_VPN_TYPE]]
+OPENVPN_USER = [[SERVARR_OPENVPN_USER]]
+OPENVPN_PASSWORD = [[SERVARR_OPENVPN_PASSWORD]]
+SERVER_COUNTRIES = [[SERVARR_SERVER_COUNTRIES]]
+QBITTORRENT_WEBUI_PORT = [[SERVARR_QBITTORRENT_WEBUI_PORT]]  # default is 8080 
+QBITTORRENT_TORRENTING_PORT = [[SERVARR_QBITTORRENT_TORRENTING_PORT]] # default is 6881 
+
+##########
+# Nzbget #
+##########
+NZBGET_USER = [[SERVARR_NZBGET_USER]]
+NZBGET_PASS = [[SERVARR_NZBGET_PASS]]
+"""
+
+##
+
+[[stack]]
 name = "backrest-ansible"
 tags = ["prod"]
 [stack.config]
@@ -212,6 +249,7 @@ THUMB_LOCATION = /opt/appdata/immich/thumbs
 
 [[stack]]
 name = "jellyfin"
+template = true
 tags = ["prod"]
 [stack.config]
 project_name = "jellyfin"
@@ -303,6 +341,7 @@ PGID = 1000
 
 [[stack]]
 name = "paperless-ngx"
+template = true
 tags = ["prod"]
 [stack.config]
 project_name = "paperless-ngx"
@@ -377,6 +416,7 @@ run_directory = "docker/syncthing"
 
 [[stack]]
 name = "tsdproxy"
+template = true
 tags = ["prod"]
 [stack.config]
 project_name = "tsdproxy"
