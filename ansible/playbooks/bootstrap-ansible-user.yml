@@ -1,0 +1,38 @@
+---
+- name: Bootstrap ansible system user
+  hosts: test
+  become: true
+  vars:
+    ansible_user_name: ansible
+    ansible_ssh_pubkey: "{{ lookup('file', lookup('env', 'HOME') + '/.ssh/ansible.pub') }}"
+
+  tasks:
+    - name: Ensure ansible user exists
+      ansible.builtin.user:
+        name: "{{ ansible_user_name }}"
+        shell: /bin/bash
+        create_home: true
+        state: present
+
+    - name: Create .ssh directory
+      ansible.builtin.file:
+        path: "/home/{{ ansible_user_name }}/.ssh"
+        state: directory
+        owner: "{{ ansible_user_name }}"
+        group: "{{ ansible_user_name }}"
+        mode: "0700"
+
+    - name: Install authorized SSH key
+      ansible.builtin.authorized_key:
+        user: "{{ ansible_user_name }}"
+        key: "{{ ansible_ssh_pubkey }}"
+        state: present
+
+    - name: Grant passwordless sudo
+      ansible.builtin.copy:
+        dest: "/etc/sudoers.d/{{ ansible_user_name }}"
+        content: "{{ ansible_user_name }} ALL=(ALL) NOPASSWD:ALL\n"
+        owner: root
+        group: root
+        mode: "0440"
+        validate: "visudo -cf %s"

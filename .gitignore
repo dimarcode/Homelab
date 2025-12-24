@@ -23,6 +23,8 @@ backups
 vault_pass.txt
 vault_password_file
 .vault_pass.txt
+roles
+collections
 
 # Local inventories (keep if generated per-env, ignore otherwise)
 inventory.ini
