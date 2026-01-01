@@ -48,6 +48,7 @@ NZBGET_PASS = [[SERVARR_NZBGET_PASS]]
 name = "backrest-ansible"
 tags = ["prod"]
 [stack.config]
+server = "Local"
 project_name = "backrest-ansible"
 linked_repo = "Homelab"
 run_directory = "docker/backrest-ansible"
@@ -77,10 +78,14 @@ RCLONE_CONFIG_PATH = [[RCLONE_CONFIG_PATH_MEDIA]]
 name = "homepage"
 tags = ["prod"]
 [stack.config]
+server = "Local"
 project_name = "homepage"
 poll_for_updates = true
+destroy_before_deploy = true
 linked_repo = "Homelab"
 run_directory = "docker/homepage"
+extra_args = ["--build"]
+build_extra_args = ["--build"]
 environment = """
 ##########
 # HOMEPAGE
