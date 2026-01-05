@@ -39,7 +39,7 @@ pveum user token add terraform@pve terraform --privsep 0
 
 ### Install Terraform
 
-Go to [[https://developer.hashicorp.com/terraform/install#linux]] and download for your specific cpu architecture:
+Go to [[https://developer.hashicorp.com/terraform/install#linux]] and download for your specific CPU architecture:
 
 - Copy link address for achitecture
 

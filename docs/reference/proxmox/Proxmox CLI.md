@@ -2,6 +2,8 @@
 
 All credit for this cheat-sheet goes to [Christian Lempa](https://github.com/ChristianLempa/cheat-sheets)
 
+## User Management
+
 ## VM Management
 
 | Command                       | Command Description                                                         |
@@ -161,3 +163,54 @@ qm create <vm> --memory <memory-amount> --core <core-amount> --name <vm-name> --
 | Command | Command Description |
 | --- | --- |
 | `service pveproxy restart` | Restart the Proxmox web GUI |
+
+## User Management
+
+[pveum(1)](https://pve.proxmox.com/pve-docs/pveum.1.html)
+
+pveum - Proxmox VE User Manager
+
+| Command                                                                      | Command Description |
+| ---------------------------------------------------------------------------- | ------------------- |
+| `pveum user add <userid> [OPTIONS]`                                          |                     |
+| `pveum user delete <userid>`                                                 |                     |
+| `pveum user list  [OPTIONS] [FORMAT_OPTIONS]`                                |                     |
+| `pveum user modify <userid> [OPTIONS]`                                       |                     |
+| `pveum user tfa unlock <userid>`                                             |                     |
+| `pveum user tfa delete <userid> [OPTIONS]`                                   |                     |
+| `pveum user tfa list [<userid>]`                                             |                     |
+| `pveum user token add <userid> <tokenid> [OPTIONS] [FORMAT_OPTIONS]`         |                     |
+| `pveum user token delete <userid> <tokenid> [FORMAT_OPTIONS]`                |                     |
+| `pveum user token list <userid> [FORMAT_OPTIONS]`                            |                     |
+| `pveum user token modify <userid> <tokenid> [OPTIONS] [FORMAT_OPTIONS]`      |                     |
+| `pveum user token permissions <userid> <tokenid> [OPTIONS] [FORMAT_OPTIONS]` |                     |
+| `pveum user permissions [<userid>] [OPTIONS] [FORMAT_OPTIONS]`               |                     |
+|                                                                              |                     |
+| `pveum passwd <userid> [OPTIONS]`                                            |                     |
+| `pveum ticket <username> [OPTIONS]`                                          |                     |
+|                                                                              |                     |
+| `pveum acl list  [FORMAT_OPTIONS]`                                           |                     |
+| `pveum acl modify <path> --roles <string> [OPTIONS]`                         |                     |
+|                                                                              |                     |
+| `pveum group add <groupid> [OPTIONS]`                                        |                     |
+| `pveum group delete <groupid>`                                               |                     |
+| `pveum group list  [FORMAT_OPTIONS]`                                         |                     |
+| `pveum group modify <groupid> [OPTIONS]`                                     |                     |
+|                                                                              |                     |
+| `pveum pool add <poolid> [OPTIONS]`                                          |                     |
+| `pveum pool delete <poolid>`                                                 |                     |
+| `pveum pool list  [OPTIONS] [FORMAT_OPTIONS]`                                |                     |
+| `pveum pool modify <poolid> [OPTIONS]`                                       |                     |
+|                                                                              |                     |
+| `pveum realm add <realm> --type <string> [OPTIONS]`                          |                     |
+| `pveum realm delete <realm>`                                                 |                     |
+| `pveum realm list  [FORMAT_OPTIONS]`                                         |                     |
+| `pveum realm modify <realm> [OPTIONS]`                                       |                     |
+| `pveum realm sync <realm> [OPTIONS]`                                         |                     |
+|                                                                              |                     |
+| `pveum role add <roleid> [OPTIONS]`                                          |                     |
+| `pveum role delete <roleid>`                                                 |                     |
+| `pveum role list  [FORMAT_OPTIONS]`                                          |                     |
+| `pveum role modify <roleid> [OPTIONS]`                                       |                     |
+|                                                                              |                     |
+| `pveum help [<extra-args>] [OPTIONS]`                                        |                     |
