@@ -1,6 +1,34 @@
 # Terraform Project
 
-## Install terraform
+## Prerequisites
+
+### Proxmox group, role, and user with the necessary permissions for Terraform
+
+Create terraform user
+
+```bash
+pveum useradd terraform@pve
+```
+
+Set password for terraform user
+
+```bash
+pveum passwd terraform@pve
+```
+
+Add TerraformProvision role with necessary permissions
+
+```bash
+pveum roleadd TerraformProvision -privs "Datastore.AllocateSpace Datastore.Audit Pool.Allocate SDN.Use Sys.Audit Sys.Console Sys.Modify Sys.PowerMgmt VM.Allocate VM.Audit VM.Clone VM.Config.CDROM VM.Config.CPU VM.Config.Cloudinit VM.Config.Disk VM.Config.HWType VM.Config.Memory VM.Config.Network VM.Config.Options VM.Migrate VM.PowerMgmt"
+```
+
+Associate terraform user with TerraformProvision role
+
+```bash
+pveum aclmod / -user terraform@pve -role TerraformProvision
+```
+
+## Install Terraform
 
 Go to [[https://developer.hashicorp.com/terraform/install#linux]] and download for your specific cpu architecture:
 
@@ -62,7 +90,7 @@ terraform destroy
 terraform init
 ```
 
-## Required role permissions (Proxmox 8)
+## Required role permissions (Proxmox 9)
 
 ```bash
 Datastore.AllocateSpace
@@ -85,6 +113,5 @@ VM.Config.Memory
 VM.Config.Network
 VM.Config.Options
 VM.Migrate
-VM.Monitor
 VM.PowerMgmt
 ```
