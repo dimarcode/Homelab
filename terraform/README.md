@@ -28,7 +28,16 @@ Associate terraform user with TerraformProvision role
 pveum aclmod / -user terraform@pve -role TerraformProvision
 ```
 
-## Install Terraform
+Create API token `terraform` for packer user
+
+>[!warning] 
+>Write down the token value!!!!
+
+```bash
+pveum user token add terraform@pve terraform --privsep 0
+```
+
+### Install Terraform
 
 Go to [[https://developer.hashicorp.com/terraform/install#linux]] and download for your specific cpu architecture:
 
