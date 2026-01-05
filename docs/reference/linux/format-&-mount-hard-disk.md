@@ -2,7 +2,7 @@
 
 ## Identify the new disk
 
-```
+```bash
 lsblk
 ```
 
@@ -18,7 +18,7 @@ sudo fdisk /dev/sdb
 
 ## Format it
 
-```
+```bash
 sudo mkfs.ext4 /dev/sdb1
 ```
 
@@ -48,7 +48,7 @@ sudo blkid /dev/sdb1
 
 You’ll get output like:
 
-```
+```bash
 /dev/sdb1: UUID="1234-5678-abcd-ef01" TYPE="ext4"
 ```
 
@@ -72,7 +72,7 @@ Add new line:
 
 Example:
 
-```
+```bash
 UUID=abcdefg-1234-5678-abcd-1234567890123 /mnt/dir-name ext4 defaults 0 2
 ```
 

@@ -6,7 +6,7 @@ Taken from [TRaSH Guides](https://trash-guides.info/File-and-Folder-Structure/)
 mkdir -p torrents/{books,movies,music,tv} && mkdir -p usenet/incomplete && mkdir -p usenet/complete/{books,movies,music,tv} && mkdir -p media/{books,movies,music,tv}
 ```
 
-```
+```bash
 data
 ├── torrents
 │   ├── books
