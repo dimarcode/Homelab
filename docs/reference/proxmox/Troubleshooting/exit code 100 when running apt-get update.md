@@ -3,11 +3,22 @@
 Links:
 - https://pve.proxmox.com/wiki/Package_Repositories
 
-You are seeing this because your system is still pointing to the **Proxmox Enterprise repository**, which requires a valid subscription. Without a subscription, apt correctly returns **401 Unauthorized** and then blocks updates because the repo cannot be verified.
+Your system is pointing to the **Proxmox Enterprise repository**
 
 To resolve this, disable the enterprise repo and enable the **no-subscription** repo.
 
-## 1. Disable the enterprise repository
+## Before anything complicated, check the UI
+
+**[pve-node] > updates > repositories**
+
+- Click `File: /etc/apt/sources.list.d/pve-enterprise.sources` and disable
+- Run `apt-get update` again
+
+If for whatever reason you need to use the CLI, here are the steps:
+
+## Using the CLI/shell
+
+### 1. Disable the enterprise repository
 
 Edit the enterprise repo file:
 
@@ -21,9 +32,7 @@ Comment out the existing line by adding `#` at the front:
 deb https://enterprise.proxmox.com/debian/pve trixie pve-enterprise
 ```
 
-Save and exit.
-
-## 2. Enable the _no-subscription_ repository
+### 2. Enable the _no-subscription_ repository
 
 Create or edit this file:
 
@@ -39,13 +48,13 @@ deb http://download.proxmox.com/debian/pve trixie pve-no-subscription
 
 Save and exit.
 
-## 3. Update packages again
+### 3. Update packages again
 
 ```bash
 apt-get update
 ```
 
-## 4. (Optional) Disable the enterprise repo for Ceph too
+### 4. (Optional) Disable the enterprise repo for Ceph too
 
 ```bash
 nano /etc/apt/sources.list.d/ceph.list

@@ -6,7 +6,8 @@ Adding an new PCI device (such as an NVMe drive) can shift the names of other PC
 
 In this instance, I had to boot from [SystemRescue](https://www.system-rescue.org/) installed on a bootable USB. After installing on the USB and booting to it:
 
->[!note] You may also want to stop any VM's from booting that have PCI passthrough configured. To do this, I had to remove the new nvme, boot into PVE and change the config.
+>[!note]
+>You may also want to stop any VM's from booting that have PCI passthrough configured. To do this, I had to remove the new nvme, boot into PVE and change the config.
 
 ## Step 1: Activate your LVM volumes
 
