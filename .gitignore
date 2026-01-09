@@ -1,4 +1,14 @@
 
+# Folders
+# directories
+.obsidian
+ignore
+clippings
+immich-old
+spt-fika-3.9.8
+spt-fika-3.10.4
+*spt-potential
+
 # OS / System files
 .DS_Store
 Thumbs.db
@@ -35,6 +45,7 @@ hosts
 .local_inventory.yml
 inventory/
 
+
 # Ansible Vault / secrets
 secrets.yml
 .secrets.yaml
@@ -51,13 +62,7 @@ env.env
 .env-old
 stack.env
 
-# directories
-.obsidian
-ignore
-immich-old
-spt-fika-3.9.8
-spt-fika-3.10.4
-*spt-potential
+
 
 *.py[cod]
 
