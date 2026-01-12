@@ -1,3 +1,4 @@
+name: actual-budget
 services:
   actual_ts:
     image: tailscale/tailscale:latest
