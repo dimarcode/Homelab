@@ -29,6 +29,7 @@ cat ~/.ssh/id_ed25519.pub
 ## Steps to Create and Push a New Git Repository
 
 - Create a new folder, or in a preexisting local project:
+
 ### 1. Initialize Git
 
 ```bash
