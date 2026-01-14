@@ -9,8 +9,6 @@ This guide walks you through creating a new Git repository on Linux and pushing 
 - [Install Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
 	- Check if already installed with `git --version`
 - (Recommended) [Generate SSH Key for Remote Github Access](Generate%20SSH%20Key%20for%20Remote%20Github%20Access.md)
-
-- Git installed (`git --version`)
 - A GitHub account
 - (Recommended) An SSH key added to your GitHub account
 
@@ -30,19 +28,16 @@ cat ~/.ssh/id_ed25519.pub
 
 ## Steps to Create and Push a New Git Repository
 
-### 1. Create a new project folder and initialize Git
+- Create a new folder, or in a preexisting local project:
+### 1. Initialize Git
 
 ```bash
-mkdir my-project
-cd my-project
 git init
 ```
 
-### 2. Create your first file and make an initial commit
+### 2. Make initial commit
 
 ```bash
-echo "# My Project" > README.md
-git add README.md
 git commit -m "Initial commit"
 ```
 
