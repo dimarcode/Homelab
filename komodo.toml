@@ -8,6 +8,21 @@ enabled = true
 ##
 
 [[stack]]
+name = "actual-budget"
+tags = ["prod"]
+[stack.config]
+server = "media"
+project_name = "actual-budget"
+linked_repo = "Homelab"
+run_directory = "docker/actual-budget"
+environment = """
+  # VARIABLE = value
+TS_AUTHKEY = [[ACTUAL_TS_AUTHKEY]]
+"""
+
+##
+
+[[stack]]
 name = "arr-stack"
 tags = ["prod", "servarr"]
 [stack.config]
@@ -61,7 +76,7 @@ RCLONE_CONFIG_PATH = [[RCLONE_CONFIG_PATH_ANSIBLE]]
 
 [[stack]]
 name = "backrest-media"
-tags = ["prod", "media"]
+tags = ["prod"]
 [stack.config]
 server = "media"
 project_name = "backrest-media"
