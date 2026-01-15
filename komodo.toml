@@ -24,7 +24,7 @@ TS_AUTHKEY = [[ACTUAL_TS_AUTHKEY]]
 
 [[stack]]
 name = "arr-stack"
-tags = ["prod", "servarr"]
+tags = ["prod"]
 [stack.config]
 project_name = "arr-stack"
 linked_repo = "Homelab"
