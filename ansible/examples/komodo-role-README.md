@@ -300,7 +300,7 @@ komodo_agent_secrets:
 
     You will get an output like this, which we will use later. 
 
-    ```
+    ```bash
     !vault |
       $ANSIBLE_VAULT;1.1;AES256
       65353234373130353539663661376563613539303866643963363830376661316638333139343366
