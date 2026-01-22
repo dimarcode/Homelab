@@ -75,7 +75,7 @@ services:
       # PUID: ${PUID}
       # PGID: ${PGID}
     volumes:
-      - /opt/appdata/paperless-ngx/backups:/backups
+      - ${DB_BACKUPS_LOCATION}:/backups
     links:
       - paperless-db
     depends_on:
