@@ -43,7 +43,7 @@ services:
       # PGID: ${PGID}
 
   paperless-db:
-    image: docker.io/library/postgres:16
+    image: docker.io/library/postgres:18
     restart: unless-stopped
     volumes:
       - /opt/appdata/paperless-ngx/db:/var/lib/postgresql/data
@@ -107,7 +107,7 @@ services:
       # PGID: ${PGID}
 
   paperless-gotenberg:
-    image: docker.io/gotenberg/gotenberg:8.20
+    image: docker.io/gotenberg/gotenberg:8.25
     restart: unless-stopped
 
     # The gotenberg chromium route is used to convert .eml files. We do not
