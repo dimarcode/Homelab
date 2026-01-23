@@ -131,6 +131,7 @@ HOMEPAGE_VAR_PBS_PASSWORD = [[HOMEPAGE_VAR_PBS_PASSWORD]]
 HOMEPAGE_VAR_UNIFI_URL = [[HOMEPAGE_VAR_UNIFI_URL]]
 HOMEPAGE_VAR_UNIFI_USERNAME = [[HOMEPAGE_VAR_UNIFI_USERNAME]]
 HOMEPAGE_VAR_UNIFI_PASSWORD = [[HOMEPAGE_VAR_UNIFI_PASSWORD]]
+# HOMEPAGE_VAR_UNIFI_KEY = [[HOMEPAGE_VAR_UNIFI_KEY]]
 
 # KOMODO
 HOMEPAGE_VAR_KOMODO_URL = [[HOMEPAGE_VAR_KOMODO_URL]]
@@ -208,7 +209,10 @@ tags = ["prod"]
 [stack.config]
 server = "media"
 project_name = "immich"
+poll_for_updates = true
+destroy_before_deploy = true
 linked_repo = "Homelab"
+webhook_enabled = false
 run_directory = "docker/immich"
 environment = """
   # VARIABLE = value
@@ -217,7 +221,7 @@ PUID = 1000
 PGID = 1000
 
   # The Immich version to use. You can pin this to a specific version like "v1.71.0"
-IMMICH_VERSION = "v1.137.3"
+IMMICH_VERSION = "v2.4.1"
 
   # Machine learning cache
 ML_MODEL_CACHE =
@@ -360,7 +364,74 @@ PGID = 1000
 ##
 
 [[stack]]
-name = "paperless-ngx"
+name = "paperless-ngx-postgres"
+tags = ["prod"]
+[stack.config]
+server = "media"
+project_name = "paperless-ngx"
+poll_for_updates = true
+linked_repo = "Homelab"
+run_directory = "docker/paperless-ngx"
+environment = """
+  # VARIABLE = value
+###############################################################################
+# Paperless-ngx settings                                                      #
+###############################################################################
+
+# See http://docs.paperless-ngx.com/configuration/ for all available options.
+
+# The UID and GID of the user used to run paperless in the container. Set this
+# to your UID and GID on the host so that you have write access to the
+# consumption directory.
+
+USERMAP_UID=1000
+USERMAP_GID=1000
+
+###########
+# DEFAULT #
+###########
+
+PAPERLESS_TIME_ZONE = America/New_York
+PAPERLESS_OCR_LANGUAGE = eng
+
+# my secret key
+PAPERLESS_SECRET_KEY = [[PAPERLESS_SECRET_KEY]]
+
+COMPOSE_PROJECT_NAME = paperless
+PUID=1000
+PGID=1000
+
+##########
+# BROKER #
+##########
+
+REDISDATA=
+
+######
+# DB #
+######
+
+POSTGRES_DATA =
+POSTGRES_HOST = paperless-db
+POSTGRES_DB = paperless
+POSTGRES_USER = paperless
+POSTGRES_PASSWORD = [[PAPERLESS_POSTGRES_PASSWORD]]
+
+DB_BACKUPS_LOCATION = /mnt/backups/docker/paperless-ngx/db
+
+#############
+# WEBSERVER #
+#############
+
+PAPERLESS_MEDIA = /opt/appdata/paperless-ngx/media  # where your documents will be stored
+PAPERLESS_EXPORT = [[PAPERLESS_EXPORT]]  # where paperless-ngx will export documents to and dump data
+PAPERLESS_CONSUME = [[PAPERLESS_CONSUME]]  # where paperless-ngx will automatically upload documents from
+"""
+
+##
+
+[[stack]]
+name = "paperless-template"
 template = true
 tags = ["prod"]
 [stack.config]
@@ -411,6 +482,8 @@ POSTGRES_HOST = paperless-db
 POSTGRES_DB = paperless
 POSTGRES_USER = paperless
 POSTGRES_PASSWORD = [[PAPERLESS_POSTGRES_PASSWORD]]
+
+DB_BACKUPS_LOCATION = /mnt/backups/docker/paperless-ngx/db
 
 #############
 # WEBSERVER #
