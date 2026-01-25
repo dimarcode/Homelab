@@ -1,16 +1,16 @@
 ---
 - name: Manage Komodo Periphery Service
-  hosts: testing
+  hosts: test
   vars_files:
     - group_vars/secrets.yml
   tasks:
     - group:
         name: ansible
-        gid: 1005
+        gid: 1000
         state: present
     - user:
         name: ansible
-        uid: 1005
+        uid: 1000
         group: ansible
         groups: cdrom,floppy,audio,dip,video,plugdev,netdev
         password: "{{ ansible_password_crypted }}"
