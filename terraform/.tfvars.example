@@ -1,0 +1,16 @@
+virtual_environment_endpoint = "virtual_environment_endpoint"
+
+# Choose one authentication method:
+virtual_environment_token = "virtual_environment_api_token"
+
+# OR
+virtual_environment_username  = "virtual_environment_username"
+virtual_environment_password = "virtual_environment_password"
+
+# OR
+virtual_environment_auth_ticket = "virtual_environment_auth_ticket"
+virtual_environment_csrf_prevention_token = "virtual_environment_csrf_prevention_token"
+
+---
+
+virtual_environment_node_name = "virtual_environment_node_name"
