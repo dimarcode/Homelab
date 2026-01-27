@@ -12,7 +12,7 @@ Recycled HP tower repurposed as a dedicated Proxmox Backup Server.
 - **Product #:** 319J4AA
 - **CPU:** [Intel Core i3-10100T](https://www.intel.com/content/www/us/en/products/sku/199284/intel-core-i310100t-processor-6m-cache-up-to-3-80-ghz/specifications.html)  
   *Note: Actual CPU differs from what’s listed on HP's product page.*
-- **RAM:** GNRC RAM UDIMM 16GB DDR4 3200MHz (L93627-800)
+- **RAM:** GNRC RAM UDIMM 16GB DDR4 3200MHz (L47722-001) Product family: L93627-800
 - **Motherboard:** [Baker H470](https://support.hp.com/us-en/document/c06638240) (L75365-601)
 - **PSU:** 180W ENT20 Gold (L81008-800)
 - **Case Size:** 13.28" x 6.12" x 11.97"
