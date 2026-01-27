@@ -68,6 +68,11 @@ stack.env
 *.py[cod]
 
 # =========================
+# Packer-specific
+# =========================
+credentials.pkr.hcl
+
+# =========================
 # Terraform-specific
 # =========================
 *.tfstate
