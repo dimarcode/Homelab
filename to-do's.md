@@ -1,8 +1,8 @@
 # To-Do's
 
-- Automation with packer -> terraform -> ansible
+- Automation with terraform -> ansible
 - [Packer](https://developer.hashicorp.com/packer)
-- 
+- Configure [ssh-agent forwarding](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/using-ssh-agent-forwarding) with Forward Agent in ssh-config
 
 ## Komodo / Ansible checklist
 

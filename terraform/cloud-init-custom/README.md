@@ -44,4 +44,4 @@ terraform apply
 
 ## To-Do:
 
-- [ ] Verify whether actually using ssh to connect
+- [x] Verify whether actually using ssh to connect
