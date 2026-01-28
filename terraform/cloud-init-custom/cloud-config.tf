@@ -11,7 +11,7 @@ resource "proxmox_virtual_environment_file" "user_data_cloud_config" {
     data = <<-EOF
     #cloud-config
     hostname: test-ubuntu
-    timezone: America/Toronto
+    timezone: America/New_York
     users:
       - default
       - name: ansible

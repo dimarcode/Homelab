@@ -13,7 +13,7 @@ provider "proxmox" {
   insecure = true            # <- disables certificate verification
   ssh {
     agent    = true
-    username = "terraform"
+    username = "root"
   }
 
 }
