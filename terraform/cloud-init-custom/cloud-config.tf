@@ -1,11 +1,11 @@
 data "local_file" "ssh_public_key" {
-  filename = "./id_rsa.pub"
+  filename = pathexpand("~/.ssh/id_ed25519_ansible.pub")
 }
 
 resource "proxmox_virtual_environment_file" "user_data_cloud_config" {
   content_type = "snippets"
   datastore_id = "local"
-  node_name    = var.virtual_environment_node_name
+  node_name    = "proxmox-bertha"
 
   source_raw {
     data = <<-EOF
@@ -14,7 +14,7 @@ resource "proxmox_virtual_environment_file" "user_data_cloud_config" {
     timezone: America/Toronto
     users:
       - default
-      - name: ubuntu
+      - name: ansible
         groups:
           - sudo
         shell: /bin/bash

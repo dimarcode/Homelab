@@ -1,7 +1,7 @@
 virtual_environment_endpoint = "virtual_environment_endpoint"
 
 # Choose one authentication method:
-virtual_environment_token = "virtual_environment_api_token"
+virtual_environment_token = "terraform@pve!provider=xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
 
 # OR
 virtual_environment_username  = "virtual_environment_username"

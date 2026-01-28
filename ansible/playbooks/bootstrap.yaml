@@ -1,5 +1,5 @@
 ---
-- name: Manage Komodo Periphery Service
+- name: Bootstrap ansible user on ansible control nodes
   hosts: test
   vars_files:
     - group_vars/secrets.yml

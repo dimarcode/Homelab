@@ -84,8 +84,8 @@ override.tf
 override.tf.json
 *_override.tf
 *_override.tf.json
-main.tf
 .tfvars
+terraform.tfvars
 # C extensions
 *.so
 
