@@ -1,28 +1,47 @@
+# README
+
 ## Setup
 
-### Input secrets in terraform.tfvars
+### Input secrets in terraform.tfvars**
 
 ```bash
-cp cp terraform.tfvars.example terraform.tfvars && nano terraform.tfvars
+cp terraform.tfvars.example terraform.tfvars && nano terraform.tfvars
 ```
 
 ### Maybe: add ssh key to ssh-agent
 
-#### Start ssh-agent
+**Start ssh-agent**
+
 ```bash
 eval "$(ssh-agent -s)"
 ```
 
-#### Add your private key
+**Add your private key**
+
 ```bash
 ssh-add ~/.ssh/id_ed25519_terraform
 ```
 
-#### Verify
+**Verify**
+
 ```bash
 ssh-add -L
 ```
 
+## Run it:
+
+```bash
+terraform init
+```
+
+```bash
+terraform plan
+```
+
+```bash
+terraform apply
+```
+
 ## To-Do:
 
-- Verify whether actually using ssh to connect
+- [ ] Verify whether actually using ssh to connect
