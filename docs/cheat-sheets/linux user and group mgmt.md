@@ -13,7 +13,6 @@ Other than a few small additions, all credit for this cheat-sheet goes to [Chris
 | `passwd`                                 | Set password (self)                                              |
 | `passwd <user>`                          | Set password for specified user (must be root)                   |
 
-
 | Command           | Description              |
 | ----------------- | ------------------------ |
 | `cat /etc/passwd` | List the users on a node |

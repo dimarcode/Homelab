@@ -1,7 +1,7 @@
 # Generate SSH key for github access
 
 - [Connecting to GitHub with SSH](https://docs.github.com/en/authentication/connecting-to-github-with-ssh)
-- [Debug - ssh errors](Debug%20-%20ssh%20errors.md)
+- [ssh-errors](../../troubleshooting/git/ssh-errors.md)
 
 ### Generate an SSH key (if you don't have one):
 

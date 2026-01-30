@@ -1,5 +1,0 @@
-# Apps
-
-| App | Paths correct |
-| --- | ------------- |
-|     |               |

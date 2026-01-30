@@ -3,7 +3,7 @@
 ## Prerequisites:
 
 - Working Proxmox node
-- [Create Debian VM Template](../proxmox/Guides/Create%20Debian%20VM%20Template.md)
+- [Create Debian VM Template](../../runbooks/proxmox/Create%20Debian%20VM%20Template.md)
 - URL for main Proxmox node
 - Name of VM template
 
