@@ -21,7 +21,3 @@ terraform plan
 ```bash
 terraform apply
 ```
-
-## To-Do:
-
-- [x] Verify whether actually using ssh to connect
