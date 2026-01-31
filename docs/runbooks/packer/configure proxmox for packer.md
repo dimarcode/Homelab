@@ -1,6 +1,4 @@
-# Packer Project 
-
-## Prerequisites
+# configure proxmox for packer
 
 ### Proxmox group, role, and user with the necessary permissions for Packer
 
@@ -36,5 +34,3 @@ Create API token `packer` for packer user
 ```bash
 pveum user token add packer@pve packer --privsep 0
 ```
-
-### Install Packer

@@ -1,5 +1,31 @@
 # Terraform Cheat-Sheet
 
+## Basic
+
+Show execution plan:
+
+```bash
+terraform plan
+```
+
+Create resources
+
+```bash
+terraform apply
+```
+
+Destroy resources:
+
+```bash
+terraform destroy
+```
+
+Initialize a working directory containing Terraform configuration files:
+
+```bash
+terraform init
+```
+
 ## Format and Validate
 
 | Command              | Description                                       |
