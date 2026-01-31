@@ -9,7 +9,7 @@
 ### 2. SSH keys
 
 - Generate an ssh key that provides access to control nodes
-	-  [Manage SSH Keys](../../docs/runbooks/ssh/manage-ssh-keys.md)
+	-  [Manage SSH Keys](../../docs/runbooks/ssh/generate-ssh-keys.md)
 
 ### 3. Git repo
 

@@ -27,14 +27,14 @@ https://proxmox-bertha:8006
 
 **Add group:**
 
-![](add-permissions.png)
+![](../../../assets/Terraform%20for%20Proxmox/add-permissions.png)
 
 **Add terraform user to new group:**
 
-![](Pasted%20image%2020250810202713.png)
+![](../../../assets/Terraform%20for%20Proxmox/Pasted%20image%2020250810202713.png)
 
 **Create API token:**
 
-![](Pasted%20image%2020250810202939.png)
+![](../../../assets/Terraform%20for%20Proxmox/Pasted%20image%2020250810202939.png)
 
 >[!note] Don't forget to uncheck Privilege Separation
