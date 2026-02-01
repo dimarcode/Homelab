@@ -1,11 +1,11 @@
 # bitwarden-ansible integration
 
 - [Bitwarden docs](https://bitwarden.com/help/ansible-integration/)
-- [Install the Bitwarden Ansible collection](bitwarden-ansible-integration.md#Install%20the%20Bitwarden%20Ansible%20collection)
-- [Fetch Bitwarden secrets](bitwarden-ansible-integration.md#Fetch%20Bitwarden%20secrets)
-	- [Set access token in local environment](bitwarden-ansible-integration.md#Set%20access%20token%20in%20local%20environment)
-	- [Supply access token in playbook](bitwarden-ansible-integration.md#Supply%20access%20token%20in%20playbook)
-	- [Set access token in venv](bitwarden-ansible-integration.md#Set%20access%20token%20in%20venv)
+- [Install the Bitwarden Ansible collection](bitwarden%20ansible%20integration.md#Install%20the%20Bitwarden%20Ansible%20collection)
+- [Fetch Bitwarden secrets](bitwarden%20ansible%20integration.md#Fetch%20Bitwarden%20secrets)
+	- [Set access token in local environment](bitwarden%20ansible%20integration.md#Set%20access%20token%20in%20local%20environment)
+	- [Supply access token in playbook](bitwarden%20ansible%20integration.md#Supply%20access%20token%20in%20playbook)
+	- [Set access token in venv](bitwarden%20ansible%20integration.md#Set%20access%20token%20in%20venv)
 
 ## Install the Bitwarden Ansible collection
 
@@ -61,7 +61,7 @@ export BWS_ACCESS_TOKEN="<your-token-here>"
 sudo nano ~/Homelab/ansible/.venv/bin/activate
 ```
 
-Add:
+Add (anywhere in middle of file)...:
 
 ```bash
 deactivate () {
@@ -71,7 +71,7 @@ unset BWS_ACCESS_TOKEN
 }
 ```
 
-and towards the end of the file:
+...and towards the end of the file:
 
 ```bash
 if [ -f "$VIRTUAL_ENV/.env" ]; then
