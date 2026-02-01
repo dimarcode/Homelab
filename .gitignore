@@ -14,6 +14,7 @@ spt-fika-3.10.4
 # OS / System files
 .DS_Store
 Thumbs.db
+.vscode
 
 # dev containers
 .devcontainer
@@ -23,7 +24,7 @@ appdata
 backups
 
 # python
-.venv/
+.venv
 
 # =========================
 # Ansible-specific
