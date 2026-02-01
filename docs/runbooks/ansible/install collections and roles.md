@@ -1,8 +1,8 @@
 # Useful links
 
 - [Ansible docs](https://docs.ansible.com/)
-- [Setup Ansible](ansible-setup.md)
-- [Bitwarden-Ansible integration](bitwarden-ansible-integration.md)
+- [Setup Ansible](ansible%20setup.md)
+- [Bitwarden-Ansible integration](bitwarden%20ansible%20integration.md)
 
 ## Easy way to install packages/collections/roles:
 

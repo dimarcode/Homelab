@@ -1,9 +1,11 @@
-# Folder Structure
+# configure media folder structure
+
+## Folder Structure
 
 Taken from [TRaSH Guides](https://trash-guides.info/File-and-Folder-Structure/)
 
 ```bash
-data
+< media - library - root >
 ├── torrents
 │   ├── books
 │   ├── movies

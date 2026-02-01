@@ -23,7 +23,7 @@
 >[!note] More info:  [How to build your inventory](https://docs.ansible.com/ansible/latest/inventory_guide/intro_inventory.html) 
 
 ```bash
-nano ~/Homelab/infra/ansible/inventory.yml
+nano ~/Homelab/ansible/inventory/hosts.ini
 ```
 
 Leaving this here for now until I can look into it more. This was taken from [this article](https://www.learnlinux.tv/complete-ansible-semaphore-tutorial-from-installation-to-automation/)
@@ -45,10 +45,13 @@ sudo nano ~/Homelab/ansible/ansible.cfg
 
 - Add the following:
 
-```bash
+```yml
 [defaults]
-inventory = inventory.yaml
+inventory = inventory/hosts.ini
 private_key_file = ~/.ssh/ansible
+roles_path = ./roles
+collections_path = ./collections
+host_key_checking = False
 ```
 
 >[!note] This simplifies your ansible commands:
@@ -74,7 +77,7 @@ private_key_file = ~/.ssh/ansible
 - Add new system user that you'd like to run ansible on managed node (ex. ansible)
 
 ```bash
-sudo adduser --system --group --home /home/ansible ansible
+sudo adduser --group --home /home/ansible ansible
 ```
 
 ### Passwordless sudo
