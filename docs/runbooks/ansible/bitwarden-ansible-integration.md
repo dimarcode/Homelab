@@ -1,11 +1,11 @@
 # bitwarden-ansible integration
 
 - [Bitwarden docs](https://bitwarden.com/help/ansible-integration/)
-- [Install the Bitwarden Ansible collection](#Install%20the%20Bitwarden%20Ansible%20collection)
-- [Fetch Bitwarden secrets](#Fetch%20Bitwarden%20secrets)
-	- [Set access token in local environment](#Set%20access%20token%20in%20local%20environment)
-	- [Supply access token in playbook](#Supply%20access%20token%20in%20playbook)
-	- [Set access token in venv](#Set%20access%20token%20in%20venv)
+- [Install the Bitwarden Ansible collection](bitwarden-ansible-integration.md#Install%20the%20Bitwarden%20Ansible%20collection)
+- [Fetch Bitwarden secrets](bitwarden-ansible-integration.md#Fetch%20Bitwarden%20secrets)
+	- [Set access token in local environment](bitwarden-ansible-integration.md#Set%20access%20token%20in%20local%20environment)
+	- [Supply access token in playbook](bitwarden-ansible-integration.md#Supply%20access%20token%20in%20playbook)
+	- [Set access token in venv](bitwarden-ansible-integration.md#Set%20access%20token%20in%20venv)
 
 ## Install the Bitwarden Ansible collection
 

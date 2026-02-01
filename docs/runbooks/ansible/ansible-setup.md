@@ -9,12 +9,12 @@
 ### 2. SSH keys
 
 - Generate an ssh key that provides access to control nodes
-	-  [Manage SSH Keys](../../docs/runbooks/ssh/generate-ssh-keys.md)
+	-  [Manage SSH Keys](../ssh/generate-ssh-keys.md)
 
 ### 3. Git repo
 
 - Create git repo for ansible code (useful but optional)
-	- [Create New Local Repo and Push to Github](../../docs/runbooks/git/Create%20New%20Local%20Repo%20and%20Push%20to%20Github.md)
+	- [Create New Local Repo and Push to Github](../git/Create%20New%20Local%20Repo%20and%20Push%20to%20Github.md)
 
 ### 4. Manage ansible inventory
 
