@@ -4,9 +4,7 @@
   become: true
   roles:
     - geerlingguy.docker
-  vars_files:
-    - group_vars/secrets.yml
   vars:
-    ansible_become_pass: "{{ ansible_become_pass_id }}"
+    ansible_become_pass: "{{ ansible_become_pass }}"
    
 

@@ -38,6 +38,8 @@ vault_password_file
 roles
 collections
 host_vars
+.vault_pass
+*.vault_pass
 
 # Local inventories (keep if generated per-env, ignore otherwise)
 inventory.ini

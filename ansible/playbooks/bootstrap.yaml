@@ -1,18 +1,50 @@
----
-- name: Bootstrap ansible user on ansible control nodes
-  hosts: test
+- hosts: all
   vars_files:
-    - group_vars/secrets.yml
+    - vault.yaml
+  become: "{{ ansible_ssh_user is undefined or ansible_user == ansible_ssh_user | ternary('yes', 'no') }}"
+  become_method: su
   tasks:
     - group:
         name: ansible
-        gid: 1000
+        gid: 1005
         state: present
     - user:
         name: ansible
-        uid: 1000
+        uid: 1005
         group: ansible
         groups: cdrom,floppy,audio,dip,video,plugdev,netdev
-        password: "{{ ansible_password_crypted }}"
+        password: "{{ ansible_control_password }}"
         shell: /bin/bash
         state: present
+    - apt:
+        update_cache: yes
+        name:
+          - curl
+          - sudo
+        state: present
+    - copy:
+        content: "ansible	ALL = (ALL) NOPASSWD:ALL"
+        dest: /etc/sudoers.d/ansible
+    - ansible.posix.authorized_key:
+        user: ansible
+        key: ~/.ssh/id_ed25519_ansible.pub
+        exclusive: yes
+        state: present
+    - copy:
+        content: |
+          PermitRootLogin no
+          PasswordAuthentication no
+          ChallengeResponseAuthentication no
+          AcceptEnv LANG LC_*
+          Subsystem sftp /usr/lib/openssh/sftp-server
+        dest: /etc/ssh/sshd_config
+      register: sshd_config
+    - service:
+        name: sshd
+        enabled: yes
+        state: started
+    - service:
+        name: sshd
+        state: restarted
+      when: sshd_config.changed
+
