@@ -15,4 +15,3 @@ python /opt/mealie/lib64/python3.12/site-packages/mealie/scripts/reset_locked_us
 ```
 
 >[!warning] This will unlock **ALL** locked user accounts.
-
