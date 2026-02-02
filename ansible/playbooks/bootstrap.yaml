@@ -13,7 +13,7 @@
         uid: 1005
         group: ansible
         groups: cdrom,floppy,audio,dip,video,plugdev,netdev
-        password: "{{ ansible_control_password }}"
+        password: "{{ ansible_user_password }}"
         shell: /bin/bash
         state: present
     - apt:

@@ -1,38 +1,76 @@
 ---
-- name: Bootstrap ansible system user
+# Run this playbook on serv
+- name: Bootstrap ansible user and harden SSH
   hosts: test
   become: true
+
   vars:
-    ansible_user_name: ansible
-    ansible_ssh_pubkey: "{{ lookup('file', lookup('env', 'HOME') + '/.ssh/ansible.pub') }}"
+    username: ansible
+    pubkey_name: ansible
+    pubkey: "{{ lookup('file', lookup('env', 'HOME') ~ '/.ssh/' ~ pubkey_name ~ '.pub') }}"
+    ssh_service_name: "{{ 'sshd' if ansible_facts.os_family in ['RedHat', 'Suse'] else 'ssh' }}"
 
   tasks:
+    - name: Ensure SSH public key exists on controller
+      ansible.builtin.stat:
+        path: "{{ lookup('env', 'HOME') }}/.ssh/{{ pubkey_name }}.pub"
+      delegate_to: localhost
+      run_once: true
+      register: pubkey_stat
+
+    - name: Abort if SSH public key is missing
+      ansible.builtin.fail:
+        msg: "Missing SSH public key: ~/.ssh/{{ pubkey_name }}.pub"
+      when: not pubkey_stat.stat.exists
+
     - name: Ensure ansible user exists
       ansible.builtin.user:
-        name: "{{ ansible_user_name }}"
+        name: "{{ username }}"
         shell: /bin/bash
         create_home: true
         state: present
 
-    - name: Create .ssh directory
-      ansible.builtin.file:
-        path: "/home/{{ ansible_user_name }}/.ssh"
-        state: directory
-        owner: "{{ ansible_user_name }}"
-        group: "{{ ansible_user_name }}"
-        mode: "0700"
-
     - name: Install authorized SSH key
       ansible.builtin.authorized_key:
-        user: "{{ ansible_user_name }}"
-        key: "{{ ansible_ssh_pubkey }}"
+        user: "{{ username }}"
+        key: "{{ pubkey }}"
+        manage_dir: true
         state: present
 
     - name: Grant passwordless sudo
       ansible.builtin.copy:
-        dest: "/etc/sudoers.d/{{ ansible_user_name }}"
-        content: "{{ ansible_user_name }} ALL=(ALL) NOPASSWD:ALL\n"
+        dest: "/etc/sudoers.d/{{ username }}"
+        content: "{{ username }} ALL=(ALL) NOPASSWD:ALL\n"
         owner: root
         group: root
         mode: "0440"
         validate: "visudo -cf %s"
+
+    - name: Ensure sshd_config.d exists
+      ansible.builtin.file:
+        path: /etc/ssh/sshd_config.d
+        state: directory
+        owner: root
+        group: root
+        mode: "0755"
+
+    - name: Harden SSH configuration
+      ansible.builtin.blockinfile:
+        path: /etc/ssh/sshd_config.d/99-ansible-hardening.conf
+        create: true
+        owner: root
+        group: root
+        mode: "0644"
+        block: |
+          PermitRootLogin no
+          PasswordAuthentication no
+          ChallengeResponseAuthentication no
+          AllowUsers {{ username }}
+        validate: "/usr/sbin/sshd -t -f %s"
+      notify: restart ssh
+
+  handlers:
+    - name: restart ssh
+      ansible.builtin.service:
+        name: "{{ ssh_service_name }}"
+        state: restarted
