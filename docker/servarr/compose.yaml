@@ -4,7 +4,7 @@
 # share to aviod permissions issues of downloaded files, please refer
 # the read me file for more information.
 name: arr-stack
-# test comment
+
 services:
 
   gluetun:
