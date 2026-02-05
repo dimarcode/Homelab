@@ -26,7 +26,7 @@ Before setting up SMTP using an app password, it’s crucial to enhance the secu
 
 Go to `Datacenter`, scroll down to `Notifications` and click `Add`:
 
-![](../../../assets/Enable%20Gmail%20Notifications/image-1-add-notification-1-1024x578-1.png)
+![](assets/Enable%20Gmail%20Notifications/image-1-add-notification-1-1024x578-1.png)
 
 Enter `smtp.gmail.com` and the Server, your email as the Username, `STARTTLS` as the Encryption, `587` as the port number. The password will be the gmail smtp password we’ve created in the last step. Optionally, you can provide the Author field with the name of your Proxmox server – it will be used in the subject of the notification emails, allowing you to setup rules in your inbox (moving to a folder, adding a label etc.)
 
@@ -34,16 +34,16 @@ Enter `smtp.gmail.com` and the Server, your email as the Username, `STARTTLS` as
 
 Having configured a custom gmail SMTP settings, we need to disable the built-in mail-to-root configuration:
 
-![](../../../assets/Enable%20Gmail%20Notifications/image-2-disable-mail-to-root-2-1024x780.png)
+![](assets/Enable%20Gmail%20Notifications/image-2-disable-mail-to-root-2-1024x780.png)
 
 ## Modify the Notification Matcher
 
 The last thing we need to do is to modify the notification matcher, so it doesn’t send notifications to the (now disabled) mail-to-root, but to our gmail SMTP:
 
-![](../../../assets/Enable%20Gmail%20Notifications/image-3-modify-notification-matcher-3-1024x295.png)
+![](assets/Enable%20Gmail%20Notifications/image-3-modify-notification-matcher-3-1024x295.png)
 
 # Configure notifications for backup-events
 
 Make sure that `Notification mode` is set to **Notification system**
 
-![](../../../assets/Enable%20Gmail%20Notifications/Pasted%20image%2020251031180027.png)
+![](assets/Enable%20Gmail%20Notifications/Pasted%20image%2020251031180027.png)

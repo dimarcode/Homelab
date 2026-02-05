@@ -1,54 +1,216 @@
-# add ups to home assistant
+# Runbook: Add UPS to Home Assistant (NUT)
 
-## Add Network UPS Tools Addon
+## 1. Overview
 
-First, [find vendor id of UPS devices](find%20vendor%20id%20of%20UPS%20devices.md)
+This runbook documents how to:
 
-## Add Network UPS Tools Integration
+1. Install and configure the **Network UPS Tools (NUT) Add-on**
+2. Add the **NUT integration**
+3. Create helper sensors for:
+    - Real power calculation
+    - Energy (kWh) tracking
 
-## Create Helper - Sensor Template for UPS
+**Home Assistant Version:** 2026.1.3
+Reference: https://www.home-assistant.io/integrations/nut/
 
-Settings > Helpers > Create Helper > Template
+## 2. Prerequisites
 
-**Name:** [Descriptive name for your UPS] Real Load
+- UPS connected via USB to Home Assistant host
+- Vendor ID identified (see: [find vendor id of USB devices](find%20vendor%20id%20of%20USB%20devices.md))
+- Wattage of your UPS identified
+- Desired display name for UPS (used consistently below)
 
-**State (may be under `template options`):**
+## 3. Install and Configure NUT Add-on
+
+### 3.1 Install Add-on
+
+Path:
+
+`Settings > Add-ons > Add-on Store > Network UPS Tools > Install`
+
+### 3.2 Configure Add-on
+
+#### 3.2.1 Set Mode
+
+**mode:** netserver
+
+#### 3.2.2 Create User
+
+##### YAML Configuration
 
 ```yml
-{{ ( states('sensor.[Descriptive name for your UPS]_load')|float(0) * 0.01 * 330 /0.75 )|round(2) }}
+users:
+  - username: <nut_username>
+    password: "<nut_password>"
+    instcmds:
+      - all
+    actions: []
+
+mode: netserver
+shutdown_host: false
 ```
 
-**Unit of measurement:** W
+##### GUI Path
 
-**Device Class:** Power
+`Settings > Add-ons > Network UPS Tools > Configuration > Users > Add`
 
-**State Class:** Measurement
+Required:
+- Username
+- Password
 
-**Device:** UPS you integrated during [Add Network UPS Tools Integration](#Add%20Network%20UPS%20Tools%20Integration)
+#### 3.2.3 Add UPS Devices
 
-**Advanced options > Availability template:**
+First, determine the Vendor ID:
+- See: [find vendor id of USB devices](find%20vendor%20id%20of%20USB%20devices.md)
 
-```yml
-{{ has_value('sensor.[Same descriptive name for your UPS]_load') }}
+##### YAML example
+
+```yaml
+devices:
+  - name: APC-BE600M1-BackUPS
+    driver: usbhid-ups
+    port: auto
+    config:
+      - vendorid = 051d
+
+  - name: CyberPower-CP1500VA-UPS
+    driver: usbhid-ups
+    port: auto
+    config:
+      - vendorid = 0764
 ```
 
-Preview should look like this:
+Optional: set `power value` to 1 if the UPS is powering the Home Assistant host
 
-![](../../../assets/add%20ups%20to%20home%20assistant/Pasted%20image%2020260202223543-add%20ups%20to%20home%20assistant-20260202223543734.jpg)
+##### GUI Path
 
-## Create Helper - Integral Sensor for UPS
+`Settings > Add-ons > Network UPS Tools > Configuration > Devices > Add`
 
-Settings > Helpers > Create Helper > Integral Sensor
+### 3.3 Start Add-on
 
-**Name:** [Descriptive name for your ups] UPS
+Click **Start** and confirm:
+- Add-on status = Running
+- No startup errors in logs
 
-**Input Sensor:** Sensor you configured during [Create Helper - Sensor Template for UPS](#Create%20Helper%20-%20Sensor%20Template%20for%20UPS)
-- In this example, `Proxmox UPS Real Load`
+### 3.4 Record Hostname
 
-**Integration method:** Left Riemann sum
+Path:  
+`Add-on > Info > Hostname`
 
-**Precision:** 2
+You will need:
+- Hostname
+- Username
+- Password
+- Port (default: 3494)
 
-**Metric prefix:** k (kilo)
+## 4. Add NUT Integration
 
-**Time unit:** Hours
+Path:  
+`Settings > Devices & Services > Integrations > Add Integration > Network UPS Tools`
+
+Configuration:
+- **Host:** <addon_hostname>
+- **Port:** 3494 (default)
+- **Username:** <nut_username>
+- **Password:** <nut_password>
+- Select the UPS device(s) to add.
+- Verify sensors populate under the device
+
+## 5. Create Helper – Real Load Sensor
+
+Purpose: Convert UPS load percentage to estimated real wattage.
+
+Path:  
+`Settings > Helpers > Create Helper > Template`
+
+### 5.1 Configure Real Load Sensor
+
+| Field               | Value                                                                              |
+| ------------------- | ---------------------------------------------------------------------------------- |
+| Name                | `<UPS Name> Real Load` <br><br>example:<br><br>`CyberPower-CP1500VA-UPS_Real-Load` |
+| Unit of Measurement | W                                                                                  |
+| Device Class        | Power                                                                              |
+| State Class         | Measurement                                                                        |
+
+#### State Template:
+
+>[!important]
+>You must adjust:
+>- `sensor.<ups_name>_load` -> Replace with your actual UPS load sensor
+>- Maximum UPS real power (in watts) -> Either enter manually or use the `nominal_real_power` sensor
+>- Efficiency divisor (if you don't know, use 0.75) See explanation below
+
+##### Option A — Manual Max Watt Rating
+
+- Use this if your UPS does not expose `nominal_real_power`.
+- Replace `<max_watts>` with the UPS real power rating (e.g., 330).
+
+```yaml
+{{ ( 
+	states('sensor.<ups_name>_load') | float(0) 
+	* 0.01 
+	* <max_watts> 
+	/ 0.90 
+	) | round(2) }}
+```
+
+Example (330W UPS):
+
+```yaml
+{{ ( 
+	states('sensor.<ups_name>_load') | float(0) 
+	* 0.01 
+	* 330
+	/ 0.90 
+	) | round(2) }}
+```
+
+##### Option B — Use UPS Nominal Real Power Sensor
+
+- Use this if your UPS exposes `sensor.<ups_name>_nominal_real_power`:
+
+```yaml
+{{ ( 
+	states('sensor.<ups_name>_load') | float(0) 
+	* 0.01 
+	* states('sensor.<ups_name>_nominal_real_power') | float(0) 
+	/ 0.90 
+	) | round(2) }}
+```
+
+**Availability Template:**
+
+```yaml
+{{ has_value('sensor.<ups_name>_load') }}
+```
+
+Verify the preview shows a numeric watt value:
+
+![](assets/add%20ups%20to%20home%20assistant/file-20260204230540418.png)
+
+## 6. Create Helper – Energy (kWh) Sensor
+
+Purpose: Track total energy consumption over time.
+
+Path:  
+`Settings > Helpers > Create Helper > Integral Sensor`
+
+### Configuration
+
+| Field              | Value                        |
+| ------------------ | ---------------------------- |
+| Name               | `<UPS Name> Energy Consumed` |
+| Metric Prefix      | k                            |
+| Time Unit          | Hours                        |
+| Input Sensor       | `<UPS Name> Real Load`       |
+| Integration Method | Left Riemann Sum             |
+| Precision          | 2                            |
+
+Result: Energy tracked in kWh.
+
+## 7. Add UPS to `Energy` page in Home Assistant
+
+Path:
+`Energy > edit dashboard > Grid consumption > + Add consumption`
+
+Result: you should now see a graph of your overall electricity usage displayed on the `Energy` page
