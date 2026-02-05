@@ -40,10 +40,8 @@ Under the **Application keys** menu, add a new key:
 
 Creation of this new key will create three values: **keyID**, **keyName** and **applicationKey**.
 
-
 > [!important]
 > You will need to save *keyID* and *keyName*, as these represent your `aws_access_key_id` and `aws_secret_access_key`, respectively.
-
 
 ### Create a restic repository
 

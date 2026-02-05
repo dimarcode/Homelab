@@ -56,7 +56,7 @@
 - [ ] Create zfs partition on new disk
 - [ ] Find partition ID's
 
-```
+```bash
 zpool status
 ```
 
@@ -78,7 +78,7 @@ New partition id (/dev/sda):  `/dev/disk/by-id/wwn-0x5000cca258c166d8
 
 Command:
 
-```
+```bash
 zpool attach vault dev/disk/by-id/wwn-0x5000cca2a3f2dbba /dev/disk/by-id/wwn-0x5000cca258c166d8
 ```
 
@@ -118,6 +118,6 @@ root@proxmox-bertha:~#
 
 ```
 
-```
+```bash
 zpool attach vault /dev/disk/by-partuuid/43d16fbc-b55a-4449-a1da-6a410e09c562 /dev/disk/by-partuuid/3aad12cc-8d94-604a-9b02-cfdff2ad3e16
 ```
