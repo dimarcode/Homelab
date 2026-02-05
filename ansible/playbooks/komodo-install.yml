@@ -1,10 +1,8 @@
 ---
 - name: Manage Komodo Periphery Service
   hosts: komodo
-  vars_files:
-    - group_vars/secrets.yml
-  vars:
-    ansible_become_pass: "{{ ansible_become_pass }}"
+  # vars:
+  #   ansible_become_pass: "{{ ansible_become_pass }}"
   roles:
     - role: bpbradley.komodo
       komodo_action: "install"
@@ -17,6 +15,3 @@
       komodo_opentelemetry_service_name: "Komodo-Periphery-Example"
       komodo_passkeys:
         - "{{ komodo_passkey }}"
-  
-
-  
