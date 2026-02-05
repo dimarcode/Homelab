@@ -10,8 +10,6 @@ services:
       - /opt/appdata/backrest-servarr/tmp:/tmp
 
       # Backup directories below here
-      - /data:/userdata/data
-      - /docker:/userdata/docker
       - /home:/userdata/home
       - /etc:/userdata/etc
       - /opt:/userdata/opt
