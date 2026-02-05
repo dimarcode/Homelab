@@ -31,13 +31,19 @@ In the admin panel of your account, create a new bucket: give it a name, and kee
 
 Under the **Application keys** menu, add a new key:
 
-![](../../../Attachments/{{title}}/Pasted%20image%2020260204224433.png)
+![](assets/Backup%20your%20data%20to%20B2%20with%20restic%20and%20Backrest%20-%20LinuxServer.io/file-20260204231656809.png)
 
 - Allow access to Bucket(s): either left blank for all bucket access, or your bucket
+	- If you do specify a bucket, make sure to check `Allow List All Bucket Names`
 - Type of Access: **Read and Write**
 - Everything else left blank
 
-Creation of this new key will create three values: **keyID**, **keyName** and **applicationKey**. You will need to save *keyID* and *keyName*, as these represent your `aws_access_key_id` and `aws_secret_access_key`, respectively.
+Creation of this new key will create three values: **keyID**, **keyName** and **applicationKey**.
+
+
+> [!important]
+> You will need to save *keyID* and *keyName*, as these represent your `aws_access_key_id` and `aws_secret_access_key`, respectively.
+
 
 ### Create a restic repository
 
