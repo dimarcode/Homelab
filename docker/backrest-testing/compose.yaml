@@ -1,0 +1,32 @@
+services:
+  backrest:
+    image: garethgeorge/backrest:v1.11.2
+    container_name: backrest
+    hostname: backrest
+    volumes:
+      - /opt/appdata/backrest-servarr/data:/data
+      - /opt/appdata/backrest-servarr/config:/config
+      - /opt/appdata/backrest-servarr/cache:/cache
+      - /opt/appdata/backrest-servarr/tmp:/tmp
+
+      # Backup directories below here
+      - /home:/userdata/home
+      - /etc:/userdata/etc
+      - /opt:/userdata/opt
+      - /root:/userdata/root
+      - /srv:/userdata/srv
+      - /usr/local:/userdata/usr/local
+      - /var:/userdata/var
+    #  - /MY-REPOS:/repos # [optional] mount repos if using local storage, not necessary for remotes e.g. B2, S3, etc.
+    # you can configure backrest to ignore specific 
+    environment:
+      - BACKREST_DATA=/data # path for backrest data. restic binary and the database are placed here.
+      - BACKREST_CONFIG=/config/config.json # path for the backrest config file.
+      - XDG_CACHE_HOME=/cache # path for the restic cache which greatly improves performance.
+      - TMPDIR=/tmp
+      - TZ=America/New_York # set the timezone for the container, used as the timezone for cron jobs.
+      
+
+    restart: unless-stopped
+    ports:
+      - 9898:9898
