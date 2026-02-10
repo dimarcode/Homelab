@@ -7,6 +7,15 @@ enabled = true
 
 ##
 
+[[server]]
+name = "servarr"
+tags = ["prod"]
+[server.config]
+address = "https://100.127.177.60:8199"
+enabled = true
+
+##
+
 [[stack]]
 name = "actual-budget"
 tags = ["prod"]
@@ -26,6 +35,7 @@ TS_AUTHKEY = [[ACTUAL_TS_AUTHKEY]]
 name = "arr-stack"
 tags = ["prod"]
 [stack.config]
+server = "servarr"
 project_name = "arr-stack"
 linked_repo = "Homelab"
 run_directory = "docker/servarr"
@@ -86,6 +96,16 @@ environment = """
 MEDIA_LIBRARY_PERSONAL = [[MEDIA_LIBRARY_PERSONAL]]
 RCLONE_CONFIG_PATH = [[RCLONE_CONFIG_PATH_MEDIA]]
 """
+
+##
+
+[[stack]]
+name = "backrest-servarr"
+tags = ["prod"]
+[stack.config]
+server = "servarr"
+linked_repo = "Homelab"
+run_directory = "docker/backrest-servarr"
 
 ##
 
