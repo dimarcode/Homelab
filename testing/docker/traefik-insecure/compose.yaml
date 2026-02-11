@@ -1,4 +1,5 @@
 # docker-compose.yml
+name: test-traefik-insecure
 services:
   traefik:
     image: traefik:v3.6
