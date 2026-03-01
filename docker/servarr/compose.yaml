@@ -185,20 +185,6 @@ services:
       - ${MEDIA_ROOT}:/data/media
     network_mode: service:gluetun
 
-  readarr:
-    image: lscr.io/linuxserver/readarr:latest
-    container_name: readarr
-    restart: unless-stopped
-    environment:
-      - PUID=${PUID}
-      - PGID=${PGID}
-      - TZ=${TZ}
-    volumes:
-      - /etc/localtime:/etc/localtime:ro
-      - ${APPDATA}/readarr:/config
-      - ${MEDIA_ROOT}:/data
-    network_mode: service:gluetun
-
   # recyclarr:
   #   image: ghcr.io/recyclarr/recyclarr
   #   container_name: recyclarr
