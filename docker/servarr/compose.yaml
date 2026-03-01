@@ -28,11 +28,17 @@ services:
     volumes:
       - ${APPDATA}/gluetun:/gluetun
     environment:
+      - TZ=${TZ}
+      - UPDATER_PERIOD=24h
       - VPN_SERVICE_PROVIDER=${VPN_SERVICE_PROVIDER}
       - VPN_TYPE=${VPN_TYPE}
-  # Note: to find openvpn username and password go to https://my.nordaccount.com/dashboard services -> nordvpn -> manual setup -> **service credentials**
+      - BLOCK_MALICIOUS=off
       - OPENVPN_USER=${OPENVPN_USER}
       - OPENVPN_PASSWORD=${OPENVPN_PASSWORD}
+      - OPENVPN_CIPHERS=AES-256-GCM
+      - PORT_FORWARD_ONLY=on
+      - VPN_PORT_FORWARDING=on
+      - VPN_PORT_FORWARDING_UP_COMMAND=/bin/sh -c 'wget -O- --retry-connrefused --post-data "json={\"listen_port\":{{PORTS}}}" http://127.0.0.1:8080/api/v2/app/setPreferences 2>&1'
       - SERVER_COUNTRIES=${SERVER_COUNTRIES}
       - HEALTH_VPN_DURATION_INITIAL=120s
     healthcheck:
