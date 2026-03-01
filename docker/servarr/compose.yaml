@@ -186,7 +186,7 @@ services:
     network_mode: service:gluetun
 
   readarr:
-    image: lscr.io/linuxserver/readarr:develop
+    image: lscr.io/linuxserver/readarr:latest
     container_name: readarr
     restart: unless-stopped
     environment:
