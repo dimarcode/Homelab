@@ -183,7 +183,7 @@ services:
     volumes:
       - /etc/localtime:/etc/localtime:ro
       - ${APPDATA}/bazarr:/config
-      - ${MEDIA_ROOT}:/data/media
+      - ${MEDIA_ROOT}:/data
     network_mode: service:gluetun
 
   # recyclarr:
