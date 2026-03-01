@@ -15,7 +15,7 @@ services:
     devices:
       - /dev/net/tun:/dev/net/tun
     ports:
-      - ${QBITTORRENT_WEBUI_PORT}:8080 # qbittorrent web interface
+      - 8080:8080/tcp # qbittorrent web interface
       - ${QBITTORRENT_TORRENTING_PORT}:6881 # qbittorrent torrent port
       - 6789:6789 # nzbget
       - 9696:9696 # prowlarr
