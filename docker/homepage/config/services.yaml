@@ -1,0 +1,165 @@
+---
+# For configuration options and examples, please see:
+# https://gethomepage.dev/configs/services/
+#
+
+- Management:
+
+    - Proxmox Virtual Environment:
+        icon: proxmox.png
+        description: PVE
+        href: {{HOMEPAGE_VAR_PVE_URL}}
+        widget:
+            type: proxmox
+            url: {{HOMEPAGE_VAR_PVE_URL}}
+            username: {{HOMEPAGE_VAR_PVE_USERNAME}}
+            password: {{HOMEPAGE_VAR_PVE_PASSWORD}}
+            # fields: ["vms", "lxc", "resources.cpu", "resources.mem"]
+    
+    - Proxmox Backup Server:
+        icon: proxmox.png
+        description: PBS 
+        href: {{HOMEPAGE_VAR_PBS_URL}}
+        widget:
+            type: proxmoxbackupserver
+            url: {{HOMEPAGE_VAR_PBS_URL}}
+            username: {{HOMEPAGE_VAR_PBS_USERNAME}}
+            password: {{HOMEPAGE_VAR_PBS_PASSWORD}}
+
+    - UniFi Controller:
+        icon: unifi.png
+        description: UniFi
+        href: https://192.168.50.1
+        widget:
+            type: unifi
+            url: https://192.168.50.1
+            username: {{HOMEPAGE_VAR_UNIFI_USERNAME}} # local
+            password: {{HOMEPAGE_VAR_UNIFI_PASSWORD}} # i9rcpR&!5%KC3$C9JxSh94Ck 
+            # key: {{HOMEPAGE_VAR_UNIFI_KEY}}
+    
+    - Komodo:
+        icon: komodo.png
+        description: Komodo docker manager
+        href: {{HOMEPAGE_VAR_KOMODO_URL}}
+        widget:
+            type: komodo
+            url: {{HOMEPAGE_VAR_KOMODO_URL}}
+            key: {{HOMEPAGE_VAR_KOMODO_KEY}}
+            secret: {{HOMEPAGE_VAR_KOMODO_SECRET}}
+            showSummary: true # optional, default: false
+            showStacks: true # optional, default: false
+
+    - Home Assistant:
+        icon: home-assistant.png
+        href: {{HOMEPAGE_VAR_HOMEASSISTANT_URL}}
+
+- Personal Media:
+    - Karakeep:
+        icon: hoarder.png
+        description: Bookmark-everything app
+        href: {{HOMEPAGE_VAR_KARAKEEP_URL}}
+        widget:
+            type: hoarder
+            url: {{HOMEPAGE_VAR_KARAKEEP_URL}}
+            key: {{HOMEPAGE_VAR_KARAKEEP_KEY}}
+
+    - Linkwarden:
+        icon: linkwarden.png
+        description: Bookmark manager
+        href: {{HOMEPAGE_VAR_LINKWARDEN_URL}}
+        widget:
+            type: linkwarden
+            url: {{HOMEPAGE_VAR_LINKWARDEN_URL}}
+            key: {{HOMEPAGE_VAR_LINKWARDEN_KEY}} # On your Linkwarden install, go to Settings > Access Tokens. Generate a token.
+          
+
+    - Paperless-ngx:
+        icon: paperless.png
+        description: Document manager
+        href: {{HOMEPAGE_VAR_PAPERLESS_URL}}
+        widget:
+            type: paperlessngx
+            url: {{HOMEPAGE_VAR_PAPERLESS_URL}}
+            key: {{HOMEPAGE_VAR_PAPERLESS_KEY}}
+
+    - Immich:
+        icon: immich.png
+        description: Photo and video media manager
+        href: {{HOMEPAGE_VAR_IMMICH_URL}}
+        widget:
+            type: immich
+            url: {{HOMEPAGE_VAR_IMMICH_URL}}
+            key: {{HOMEPAGE_VAR_IMMICH_KEY}}
+            version: 2 # optional, default is 1
+
+    - Mealie:
+        icon: mealie.png
+        description: Recipe manager
+        href: {{HOMEPAGE_VAR_MEALIE_URL}}
+        widget:
+            type: mealie
+            url: {{HOMEPAGE_VAR_MEALIE_URL}}
+            key: {{HOMEPAGE_VAR_MEALIE_KEY}}
+            version: 2
+
+- Servarr:
+    - qBittorrent:
+        icon: qbittorrent.png
+        href: {{HOMEPAGE_VAR_QBITTORRENT_URL}}
+        widget:
+            type: qbittorrent
+            url: {{HOMEPAGE_VAR_QBITTORRENT_URL}}
+            username: {{HOMEPAGE_VAR_QBITTORRENT_USERNAME}}
+            password: {{HOMEPAGE_VAR_QBITTORRENT_PASSWORD}}
+            enableLeechProgress: true # optional, defaults to false
+
+    - NZBget:
+        icon: nzbget.png
+        href: {{HOMEPAGE_VAR_NZBGET_URL}}
+        widget:
+            type: nzbget
+            url: {{HOMEPAGE_VAR_NZBGET_URL}}
+            username: {{HOMEPAGE_VAR_NZBGET_USERNAME}}
+            password: {{HOMEPAGE_VAR_NZBGET_PASSWORD}}
+
+    - Prowlarr:
+        icon: prowlarr.png
+        href: {{HOMEPAGE_VAR_PROWLARR_URL}}
+        widget:
+            type: prowlarr
+            url: {{HOMEPAGE_VAR_PROWLARR_URL}}
+            key: {{HOMEPAGE_VAR_PROWLARR_KEY}} # Not required if /v1/publicip/ip endpoint is configured with `auth = none`
+
+    - Sonarr:
+        icon: sonarr.png
+        href: {{HOMEPAGE_VAR_SONARR_URL}}   
+        widget:
+            type: sonarr
+            url: {{HOMEPAGE_VAR_SONARR_URL}}
+            key: {{HOMEPAGE_VAR_SONARR_KEY}}
+            enableQueue: true # optional, defaults to false
+    
+    - Radarr:
+        icon: radarr.png
+        href: {{HOMEPAGE_VAR_RADARR_URL}}
+        widget:
+            type: radarr
+            url: {{HOMEPAGE_VAR_RADARR_URL}}
+            key: {{HOMEPAGE_VAR_RADARR_KEY}}
+            enableQueue: true # optional, defaults to false
+    
+    - Lidarr:
+        icon: lidarr.png
+        href: {{HOMEPAGE_VAR_LIDARR_URL}}
+        widget:
+            type: lidarr
+            url: {{HOMEPAGE_VAR_LIDARR_URL}}
+            key: {{HOMEPAGE_VAR_LIDARR_KEY}}
+
+    - Bazarr:
+        icon: bazarr.png
+        href: {{HOMEPAGE_VAR_BAZARR_URL}}    
+        widget:
+            type: bazarr
+            url: {{HOMEPAGE_VAR_BAZARR_URL}}
+            key: {{HOMEPAGE_VAR_BAZARR_KEY}}

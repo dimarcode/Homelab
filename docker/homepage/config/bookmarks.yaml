@@ -1,0 +1,63 @@
+---       
+# For configuration options and examples, please see:
+# https://gethomepage.dev/configs/bookmarks
+
+- Developer:
+    - Github:
+        - abbr: GH
+          icon: github.png
+          href: https://github.com/dimarcode/
+    - Homepage:
+        - abbr: HP
+          icon: homepage.png
+          href: https://gethomepage.dev/
+    - PVE Helper Scripts:
+        - abbr: HS
+          icon: proxmox.png
+          href: https://community-scripts.github.io/ProxmoxVE/
+- Homelab:
+    - Router:
+        - abbr: AS
+          icon: asus.png
+          href: https://asusrouter.com:8443/
+    - Tailscale:
+        - abbr: TS
+          icon: tailscale.png
+          href: https://login.tailscale.com/admin/machines
+    - Cockpit:
+        - abbr: CO
+          icon: cockpit.png
+          href: https://deb-shares:9090/
+    - Cockpit:
+        - abbr: CO
+          icon: cockpit.png
+          href: https://media:9090/
+    - Cockpit: 
+        - abbr: CO
+          icon: cockpit.png
+          href: https://pi:9090/
+- Backups:
+    - Backrest:
+        - abbr: BR
+          icon: backrest.png
+          href: http://ansible:9898
+    - Backrest:
+        - abbr: BR
+          icon: backrest.png
+          href: http://media:9898
+    - Backrest:
+        - abbr: BR
+          icon: backrest.png
+          href: http://localhost:9898
+    - Backrest:
+        - abbr: BR
+          icon: backrest.png
+          href: http://servarr:9898
+    - Backrest:
+        - abbr: BR
+          icon: backrest.png
+          href: http://test-vm:9898
+    - Backrest:
+        - abbr: BR
+          icon: backrest.png
+          href: http://localhost:9898
