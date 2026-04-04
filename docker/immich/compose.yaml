@@ -40,6 +40,7 @@ services:
 
       - /etc/localtime:/etc/localtime:ro
     network_mode: service:immich-ts
+    # note
     # ports:
     #   - '2283:2283'
     environment:
