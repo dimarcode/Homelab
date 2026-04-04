@@ -16,6 +16,7 @@ services:
       - TS_STATE_DIR=/var/lib/tailscale
       - TS_SERVE_CONFIG=/config/immich.json
       - TS_USERSPACE=true
+      - TS_AUTH_ONCE=true
     volumes: 
       - /opt/appdata/immich/tailscale/config:/config
       - /opt/appdata/immich/tailscale/ts-state:/var/lib/tailscale
