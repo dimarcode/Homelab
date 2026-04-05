@@ -2,6 +2,10 @@
 # For configuration options and examples, please see:
 # https://gethomepage.dev/configs/docker/
 
+local:
+  host: dockerproxy
+  port: 2375
+
 media:
   host: 192.168.50.68    # Your media server's LAN IP
   port: 2375
