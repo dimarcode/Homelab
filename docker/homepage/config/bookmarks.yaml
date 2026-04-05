@@ -3,10 +3,6 @@
 # https://gethomepage.dev/configs/bookmarks
 
 - Developer:
-    - Google:
-        - abbr: GO
-          icon: google.png
-          href: https://google.com/
     - Github:
         - abbr: GH
           icon: github.png
