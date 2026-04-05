@@ -121,6 +121,13 @@ poll_for_updates = true
 destroy_before_deploy = true
 linked_repo = "Homelab"
 run_directory = "docker/homepage"
+config_files = [
+  { path = "config/bookmarks.yaml" },
+  { path = "config/docker.yaml" },
+  { path = "config/services.yaml" },
+  { path = "config/settings.yaml" },
+  { path = "config/widgets.yaml" }
+]
 extra_args = ["--build"]
 build_extra_args = ["--build"]
 environment = """
@@ -224,74 +231,6 @@ HOMEPAGE_VAR_BAZARR_KEY = [[HOMEPAGE_VAR_BAZARR_KEY]]
 # READARR
 HOMEPAGE_VAR_READARR_URL = [[HOMEPAGE_VAR_READARR_URL]]
 HOMEPAGE_VAR_READARR_KEY = [[HOMEPAGE_VAR_READARR_KEY]]
-"""
-
-##
-
-[[stack]]
-name = "immich"
-tags = ["prod"]
-[stack.config]
-server = "media"
-project_name = "immich"
-poll_for_updates = true
-destroy_before_deploy = true
-linked_repo = "Homelab"
-webhook_enabled = false
-run_directory = "docker/immich"
-environment = """
-  # VARIABLE = value
-
-PUID = 1000
-PGID = 1000
-
-  # The Immich version to use. You can pin this to a specific version like "v1.71.0"
-IMMICH_VERSION = "v2.4.1"
-
-  # Machine learning cache
-ML_MODEL_CACHE =
-
-  #Listens for other containers
-SERVER_HOST = [[IMMICH_SERVER_HOST]]
-
-  #Authkey for Tailscale VPN access
-TS_AUTHKEY = [[IMMICH_TS_AUTHKEY]]
-
-####
-# DB
-####
-
-DB_DATABASE_NAME = [[IMMICH_DB_DATABASE_NAME]]
-DB_USERNAME = [[IMMICH_DB_USERNAME]]
-
-  # Connection secret for postgres. You should change it to a random password
-  # Please use only the characters `A-Za-z0-9`, without special characters or spaces
-
-DB_PASSWORD = [[IMMICH_DB_PASSWORD]]
-
-
-##########################
-# Custom storage locations
-##########################
-
-# DO NOT CHANGE THE VARIABLE NAMES!!!!!!!!!!!!!!!!!!!!!!!!!!!
-
-# The location where your uploaded files are stored
-UPLOAD_LOCATION = [[IMMICH_UPLOAD_LOCATION]]
-
-ENCODED_VIDEO_LOCATION = [[IMMICH_UPLOAD_LOCATION]]/encoded-video
-
-# The location where your backups are stored
-BACKUP_LOCATION = [[IMMICH_UPLOAD_LOCATION]]/backups
-
-# The location where your database files are stored
-DB_DATA_LOCATION = /opt/appdata/immich/postgres
-
-# The location where your profiles are stored
-PROFILE_LOCATION = /opt/appdata/immich/profile
-
-# The location where your thumbnails are stored
-THUMB_LOCATION = /opt/appdata/immich/thumbs
 """
 
 ##
