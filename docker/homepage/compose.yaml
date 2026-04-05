@@ -28,5 +28,7 @@ services:
       - ./config/bookmarks.yaml:/app/config/bookmarks.yaml
       - ./config/docker.yaml:/app/config/docker.yaml
       - ./config/services.yaml:/app/config/services.yaml
+      - ./config/settings.yaml:/app/config/settings.yaml
+      - ./config/widgets.yaml:/app/config/widgets.yaml
       # - /var/run/docker.sock:/var/run/docker.sock:ro # optional, for docker integrations
     restart: unless-stopped
