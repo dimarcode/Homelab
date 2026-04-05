@@ -26,5 +26,7 @@ services:
     volumes:
       - /opt/appdata/homepage/config:/app/config # Make sure your local config directory exists
       - ./config/bookmarks.yaml:/app/config/bookmarks.yaml
+      - ./config/docker.yaml:/app/config/docker.yaml
+      - ./config/services.yaml:/app/config/services.yaml
       # - /var/run/docker.sock:/var/run/docker.sock:ro # optional, for docker integrations
     restart: unless-stopped
