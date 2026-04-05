@@ -37,17 +37,17 @@
             password: {{HOMEPAGE_VAR_UNIFI_PASSWORD}} # i9rcpR&!5%KC3$C9JxSh94Ck 
             # key: {{HOMEPAGE_VAR_UNIFI_KEY}}
     
-    - Komodo:
-        icon: komodo.png
-        description: Komodo docker manager
-        href: {{HOMEPAGE_VAR_KOMODO_URL}}
-        widget:
-            type: komodo
-            url: {{HOMEPAGE_VAR_KOMODO_URL}}
-            key: {{HOMEPAGE_VAR_KOMODO_KEY}}
-            secret: {{HOMEPAGE_VAR_KOMODO_SECRET}}
-            showSummary: true # optional, default: false
-            showStacks: true # optional, default: false
+    # - Komodo:
+    #     icon: komodo.png
+    #     description: Komodo docker manager
+    #     href: {{HOMEPAGE_VAR_KOMODO_URL}}
+    #     widget:
+    #         type: komodo
+    #         url: {{HOMEPAGE_VAR_KOMODO_URL}}
+    #         key: {{HOMEPAGE_VAR_KOMODO_KEY}}
+    #         secret: {{HOMEPAGE_VAR_KOMODO_SECRET}}
+    #         showSummary: true # optional, default: false
+    #         showStacks: true # optional, default: false
 
     - Home Assistant:
         icon: home-assistant.png
