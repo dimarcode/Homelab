@@ -29,7 +29,7 @@
     - UniFi Controller:
         icon: unifi.png
         description: UniFi
-        href: https://192.168.50.1
+        href: https://account.ui.com/login
         widget:
             type: unifi
             url: https://192.168.50.1
