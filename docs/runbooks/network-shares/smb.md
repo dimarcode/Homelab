@@ -21,7 +21,7 @@ Configure `/etc/samba/smb.conf`:
 sudo nano /etc/samba/smb.conf
 ```
 
-```
+```bash
 [shared]
    path = /srv/smb/shared
    browseable = yes
@@ -48,7 +48,7 @@ password=your_samba_password
 
 3. Secure the file permissions:
 
-```
+```bash
 chmod 600 ~/.smbcreds
 ```
 
@@ -62,6 +62,6 @@ sudo mount -t cifs //<source-ip>/<source-share> /<local-path> -o credentials=/<p
 
 Mount command if NOT using smb credentials file:
 
-```
+```bash
 sudo mount -t cifs //<source-ip>/<source-share> /<local-path> -o username=<smb-username>,password=<smb-password>,uid=XXXX,gid=XXXX,defaults
 ```

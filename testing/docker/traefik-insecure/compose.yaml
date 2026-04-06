@@ -1,4 +1,4 @@
-# docker-compose.yml
+# compose.yml
 name: test-traefik-insecure
 services:
   traefik:
@@ -7,6 +7,7 @@ services:
       - "--api.insecure=true"
       - "--providers.docker=true"
       - "--entrypoints.web.address=:80"
+      - "--entrypoints.websecure.address=:443"
     ports:
       - "80:80"
       - "8080:8080"
