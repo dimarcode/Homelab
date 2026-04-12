@@ -66,9 +66,9 @@ services:
     volumes:
       - /opt/appdata/paperless-ngx/redisdata:/data
     # env_file: .env
-    environment:
-      USERMAP_UID: ${USERMAP_UID}
-      USERMAP_GID: ${USERMAP_GID}
+    # environment:
+      # PUID: ${PUID}
+      # PGID: ${PGID}
 
   paperless-db:
     image: docker.io/library/postgres:18
@@ -80,8 +80,8 @@ services:
       POSTGRES_DB: ${POSTGRES_DB}
       POSTGRES_USER: ${POSTGRES_USER}
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
-      USERMAP_UID: ${USERMAP_UID}
-      USERMAP_GID: ${USERMAP_GID}
+      # PUID: ${PUID}
+      # PGID: ${PGID}
 
   paperless-db-backup:
     container_name: paperless-db-backup
@@ -100,8 +100,8 @@ services:
       BACKUP_KEEP_WEEKS: 4
       BACKUP_KEEP_MONTHS: 6
       HEALTHCHECK_PORT: 8080
-      USERMAP_UID: ${USERMAP_UID}
-      USERMAP_GID: ${USERMAP_GID}
+      # PUID: ${PUID}
+      # PGID: ${PGID}
     volumes:
       - ${DB_BACKUPS_LOCATION}:/backups
     links:
