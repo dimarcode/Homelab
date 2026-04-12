@@ -57,8 +57,8 @@ services:
       PAPERLESS_TIKA_ENABLED: 1
       PAPERLESS_TIKA_GOTENBERG_ENDPOINT: http://paperless-gotenberg:3000
       PAPERLESS_TIKA_ENDPOINT: http://paperless-tika:9998
-      # PUID: ${PUID}
-      # PGID: ${PGID}
+      USERMAP_UID: ${USERMAP_UID}
+      USERMAP_GID: ${USERMAP_GID}
   
   paperless-broker:
     image: docker.io/library/redis:8
