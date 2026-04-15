@@ -31,12 +31,12 @@ services:
       # komodo.skip: # Prevent Komodo from stopping with StopAllContainers
       # homepage
       # homepage.weight: 0
-      homepage.group: Backups
-      homepage.name: Backrest - Ansible
-      homepage.icon: backrest.png
-      homepage.description: "Backrest backups for Ansible node"
-      homepage.href: ${BACKREST_ANSIBLE_URL}
-      homepage.widget.type: backrest
-      homepage.widget.url: ${BACKREST_ANSIBLE_URL}
-      homepage.widget.username: ${BACKREST_ANSIBLE_USERNAME}
-      homepage.widget.password: ${BACKREST_ANSIBLE_PASSWORD}
+      # homepage.group: Backups
+      # homepage.name: Backrest - Ansible
+      # homepage.icon: backrest.png
+      # homepage.description: "Backrest backups for Ansible node"
+      # homepage.href: ${BACKREST_ANSIBLE_URL}
+      # homepage.widget.type: backrest
+      # homepage.widget.url: ${BACKREST_ANSIBLE_URL}
+      # homepage.widget.username: ${BACKREST_ANSIBLE_USERNAME}
+      # homepage.widget.password: ${BACKREST_ANSIBLE_PASSWORD}
