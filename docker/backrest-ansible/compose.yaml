@@ -27,7 +27,7 @@ services:
     restart: unless-stopped
     ports:
       - 9898:9898
-    labels:
+    # labels:
       # komodo.skip: # Prevent Komodo from stopping with StopAllContainers
       # homepage
       # homepage.weight: 0
