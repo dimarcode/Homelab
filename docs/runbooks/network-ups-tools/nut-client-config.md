@@ -2,6 +2,7 @@
 
 Resources:
 - https://technotim.com/posts/NUT-server-guide/
+- https://github.com/geerlingguy/ansible-role-nut_client
 
 ##
 
