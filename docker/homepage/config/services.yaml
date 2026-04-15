@@ -163,4 +163,3 @@
             type: bazarr
             url: {{HOMEPAGE_VAR_BAZARR_URL}}
             key: {{HOMEPAGE_VAR_BAZARR_KEY}}
-- Backups:
