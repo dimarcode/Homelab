@@ -39,6 +39,15 @@ services:
       # If you want to mount a custom directory, change the volume mapping above instead.
       DATA_DIR: /data # DON'T CHANGE THIS
   
+    labels:
+      homepage.name: Karakeep
+      homepage.icon: hoarder.png
+      homepage.description: Bookmark-everything app
+      homepage.href: ${HOMEPAGE_VAR_KARAKEEP_URL}
+      homepage.widget.type: hoarder 
+      homepage.widget.url: ${HOMEPAGE_VAR_KARAKEEP_URL}
+      homepage.widget.key: ${HOMEPAGE_VAR_KARAKEEP_KEY}
+
   karakeep-chrome:
     image: gcr.io/zenika-hub/alpine-chrome:123
     container_name: karakeep-chrome
