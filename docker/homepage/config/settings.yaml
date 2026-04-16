@@ -31,10 +31,10 @@ layout:
     style: row
     columns: 2
 
-  # Backups:
-   #  tab: Backups
-    # style: row
-    # columns: 2
+  Backups-2:
+    tab: Backups-2
+    style: row
+    columns: 2
 
 quicklaunch:
   searchDescriptions: true
