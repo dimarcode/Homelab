@@ -57,7 +57,7 @@ services:
       disable: false
     labels:
       homepage.icon: immich.png
-      homepage.description: Photo and video media manager
+      homepage.description: "Photo and video media manager"
       homepage.href: ${HOMEPAGE_VAR_IMMICH_URL}
       homepage.group: Media
       homepage.widget.type: immich
