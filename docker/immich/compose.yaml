@@ -55,6 +55,15 @@ services:
     restart: always
     healthcheck:
       disable: false
+    labels:
+      homepage.icon: immich.png
+      homepage.description: Photo and video media manager
+      homepage.href: ${HOMEPAGE_VAR_IMMICH_URL}
+      homepage.widget.:
+      homepage.widget.type: immich
+      homepage.widget.url: ${HOMEPAGE_VAR_IMMICH_URL}
+      homepage.widget.key: ${HOMEPAGE_VAR_IMMICH_KEY}
+      homepage.widget.version: 2 # optional, default is 1
   
 
   immich-machine-learning:
