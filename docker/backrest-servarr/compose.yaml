@@ -25,8 +25,16 @@ services:
       - XDG_CACHE_HOME=/cache # path for the restic cache which greatly improves performance.
       - TMPDIR=/tmp
       - TZ=America/New_York # set the timezone for the container, used as the timezone for cron jobs.
-      
-
     restart: unless-stopped
     ports:
       - 9898:9898
+    labels:
+      homepage.group: Backups
+      homepage.name: Backrest - Servarr
+      homepage.icon: backrest.png
+      homepage.description: "Backrest backups for Servarr media automation server"
+      homepage.href: ${BACKREST_SERVARR_URL}
+      homepage.widget.type: backrest
+      homepage.widget.url: ${BACKREST_SERVARR_URL}
+      homepage.widget.username: ${BACKREST_SERVARR_USERNAME}
+      homepage.widget.password: ${BACKREST_SERVARR_PASSWORD}
