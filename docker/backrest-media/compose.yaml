@@ -27,3 +27,14 @@ services:
     restart: unless-stopped
     ports:
       - 9898:9898
+    labels:
+      # homepage.weight: 0
+      homepage.group: Backups
+      homepage.name: Backrest - Media
+      homepage.icon: backrest.png
+      homepage.description: "Backrest backups for Media server"
+      homepage.href: ${BACKREST_MEDIA_URL}
+      homepage.widget.type: backrest
+      homepage.widget.url: ${BACKREST_MEDIA_URL}
+      homepage.widget.username: ${BACKREST_MEDIA_USERNAME}
+      homepage.widget.password: ${BACKREST_MEDIA_PASSWORD}
