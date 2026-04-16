@@ -43,13 +43,6 @@
 
 - Personal Media:
     - Karakeep:
-        icon: hoarder.png
-        description: Bookmark-everything app
-        href: {{HOMEPAGE_VAR_KARAKEEP_URL}}
-        widget:
-            type: hoarder
-            url: {{HOMEPAGE_VAR_KARAKEEP_URL}}
-            key: {{HOMEPAGE_VAR_KARAKEEP_KEY}}
 
     - Linkwarden:
         icon: linkwarden.png
