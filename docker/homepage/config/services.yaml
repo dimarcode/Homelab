@@ -135,6 +135,5 @@
             key: {{HOMEPAGE_VAR_BAZARR_KEY}}
 
 - Backups:
-    - Backrest - Ansible:
     
             
