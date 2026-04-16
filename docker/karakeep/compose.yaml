@@ -40,6 +40,7 @@ services:
       DATA_DIR: /data # DON'T CHANGE THIS
   
     labels:
+      homepage.group: Personal Media
       homepage.name: Karakeep
       homepage.icon: hoarder.png
       homepage.description: Bookmark-everything app
