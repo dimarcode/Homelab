@@ -126,12 +126,14 @@
             url: {{HOMEPAGE_VAR_LIDARR_URL}}
             key: {{HOMEPAGE_VAR_LIDARR_KEY}}
 
-- Backups-2:
-    - Backrest - Ansible:
     - Bazarr:
         icon: bazarr.png
         href: {{HOMEPAGE_VAR_BAZARR_URL}}    
         widget:
             type: bazarr
             url: {{HOMEPAGE_VAR_BAZARR_URL}}
+
+- Backups-2:
+    - Backrest - Ansible:
+    
             key: {{HOMEPAGE_VAR_BAZARR_KEY}}
