@@ -36,18 +36,6 @@
             username: {{HOMEPAGE_VAR_UNIFI_USERNAME}} # local
             password: {{HOMEPAGE_VAR_UNIFI_PASSWORD}} # i9rcpR&!5%KC3$C9JxSh94Ck 
             # key: {{HOMEPAGE_VAR_UNIFI_KEY}}
-    
-    # - Komodo:
-    #     icon: komodo.png
-    #     description: Komodo docker manager
-    #     href: {{HOMEPAGE_VAR_KOMODO_URL}}
-    #     widget:
-    #         type: komodo
-    #         url: {{HOMEPAGE_VAR_KOMODO_URL}}
-    #         key: {{HOMEPAGE_VAR_KOMODO_KEY}}
-    #         secret: {{HOMEPAGE_VAR_KOMODO_SECRET}}
-    #         showSummary: true # optional, default: false
-    #         showStacks: true # optional, default: false
 
     - Home Assistant:
         icon: home-assistant.png
@@ -81,16 +69,6 @@
             type: paperlessngx
             url: {{HOMEPAGE_VAR_PAPERLESS_URL}}
             key: {{HOMEPAGE_VAR_PAPERLESS_KEY}}
-
-    # - Immich:
-    #     icon: immich.png
-    #     description: Photo and video media manager
-    #     href: {{HOMEPAGE_VAR_IMMICH_URL}}
-    #     widget:
-    #         type: immich
-    #         url: {{HOMEPAGE_VAR_IMMICH_URL}}
-    #         key: {{HOMEPAGE_VAR_IMMICH_KEY}}
-    #         version: 2 # optional, default is 1
 
     - Mealie:
         icon: mealie.png
