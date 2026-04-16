@@ -31,7 +31,7 @@ services:
       # komodo.skip: # Prevent Komodo from stopping with StopAllContainers
       # homepage
       # homepage.weight: 0
-      homepage.group: Backups
+      homepage.group: Backups-2
       homepage.name: Backrest - Ansible
       homepage.icon: backrest.png
       homepage.description: "Backrest backups for Ansible node"
