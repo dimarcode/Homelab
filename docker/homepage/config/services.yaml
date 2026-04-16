@@ -82,15 +82,15 @@
             url: {{HOMEPAGE_VAR_PAPERLESS_URL}}
             key: {{HOMEPAGE_VAR_PAPERLESS_KEY}}
 
-    - Immich:
-        icon: immich.png
-        description: Photo and video media manager
-        href: {{HOMEPAGE_VAR_IMMICH_URL}}
-        widget:
-            type: immich
-            url: {{HOMEPAGE_VAR_IMMICH_URL}}
-            key: {{HOMEPAGE_VAR_IMMICH_KEY}}
-            version: 2 # optional, default is 1
+    # - Immich:
+    #     icon: immich.png
+    #     description: Photo and video media manager
+    #     href: {{HOMEPAGE_VAR_IMMICH_URL}}
+    #     widget:
+    #         type: immich
+    #         url: {{HOMEPAGE_VAR_IMMICH_URL}}
+    #         key: {{HOMEPAGE_VAR_IMMICH_KEY}}
+    #         version: 2 # optional, default is 1
 
     - Mealie:
         icon: mealie.png
