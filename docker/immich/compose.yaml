@@ -59,7 +59,7 @@ services:
       homepage.icon: immich.png
       homepage.description: Photo and video media manager
       homepage.href: ${HOMEPAGE_VAR_IMMICH_URL}
-      homepage.widget.:
+      homepage.group: Media
       homepage.widget.type: immich
       homepage.widget.url: ${HOMEPAGE_VAR_IMMICH_URL}
       homepage.widget.key: ${HOMEPAGE_VAR_IMMICH_KEY}
