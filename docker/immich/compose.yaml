@@ -56,7 +56,7 @@ services:
     healthcheck:
       disable: false
     labels:
-      homepage.group: Media
+      homepage.group: Personal Media
       homepage.name: Immich
       homepage.icon: immich.png
       homepage.description: "Photo and video media manager"
