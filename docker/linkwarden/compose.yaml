@@ -20,7 +20,15 @@ services:
     depends_on:
       - postgres
       - meilisearch
-    
+   # labels:
+      # homepage.group: Personal Media
+      # homepage.name: Linkwarden
+      # homepage.icon: linkwarden.png
+      # homepage.description: "Bookmark manager"
+      # homepage.href: ${HOMEPAGE_VAR_LINKWARDEN_URL}
+      # homepage.widget.type: linkwarden
+      # homepage.widget.url: ${HOMEPAGE_VAR_LINKWARDEN_URL}
+      # homepage.widget.key: ${HOMEPAGE_VAR_LINKWARDEN_KEY} # On your Linkwarden install, go to Settings > Access Tokens. Generate a token.
   meilisearch:
     image: getmeili/meilisearch:v1.12.8
     restart: always
