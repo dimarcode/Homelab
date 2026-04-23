@@ -24,7 +24,6 @@ services:
       - 8989:8989 # sonarr
       - 8686:8686 # lidarr
       - 6767:6767 # bazarr
-
     volumes:
       - ${APPDATA}/gluetun:/gluetun
     environment:
