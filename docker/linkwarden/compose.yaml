@@ -9,7 +9,7 @@ services:
   linkwarden:
     env_file: .env
     environment:
-      - DATABASE_URL=postgresql://postgres:${POSTGRES_PASSWORD}@postgres:5432/postgres
+      DATABASE_URL: postgresql://postgres:${POSTGRES_PASSWORD}@postgres:5432/postgres
     restart: always
     # build: . # uncomment to build from source
     image: ghcr.io/linkwarden/linkwarden:latest # comment to build from source
@@ -20,6 +20,13 @@ services:
     depends_on:
       - postgres
       - meilisearch
+    labels:
+      homepage.icon: linkwarden.png
+      homepage.description: "Bookmark manager"
+      homepage.href: ${HOMEPAGE_VAR_LINKWARDEN_URL}
+      homepage.widget.type: linkwarden
+      homepage.widget.url: ${HOMEPAGE_VAR_LINKWARDEN_URL}
+      homepage.widget.key: ${HOMEPAGE_VAR_LINKWARDEN_KEY} # On your Linkwarden install, go to Settings > Access Tokens. Generate a token.
   meilisearch:
     image: getmeili/meilisearch:v1.12.8
     restart: always
