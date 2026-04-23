@@ -82,6 +82,9 @@ run_directory = "docker/backrest-ansible"
 environment = """
   # VARIABLE = value
 RCLONE_CONFIG_PATH = [[RCLONE_CONFIG_PATH_ANSIBLE]]
+BACKREST_ANSIBLE_URL = [[BACKREST_ANSIBLE_URL]]
+BACKREST_ANSIBLE_USERNAME = [[BACKREST_ANSIBLE_USERNAME]]
+BACKREST_ANSIBLE_PASSWORD = [[BACKREST_ANSIBLE_PASSWORD]]
 """
 
 ##
@@ -92,11 +95,18 @@ tags = ["prod"]
 [stack.config]
 server = "media"
 project_name = "backrest-media"
+destroy_before_deploy = true
 linked_repo = "Homelab"
 run_directory = "docker/backrest-media"
 environment = """
 MEDIA_LIBRARY_PERSONAL = [[MEDIA_LIBRARY_PERSONAL]]
 RCLONE_CONFIG_PATH = [[RCLONE_CONFIG_PATH_MEDIA]]
+
+# homepage vars
+
+BACKREST_MEDIA_URL = [[BACKREST_MEDIA_URL]]
+BACKREST_MEDIA_USERNAME = [[BACKREST_MEDIA_USERNAME]] 
+BACKREST_MEDIA_PASSWORD = [[BACKREST_MEDIA_PASSWORD]]
 """
 
 ##
@@ -106,8 +116,37 @@ name = "backrest-servarr"
 tags = ["prod"]
 [stack.config]
 server = "servarr"
+destroy_before_deploy = true
 linked_repo = "Homelab"
 run_directory = "docker/backrest-servarr"
+environment = """
+  # VARIABLE = value
+BACKREST_SERVARR_URL = [[BACKREST_SERVARR_URL]]
+BACKREST_SERVARR_USERNAME = [[BACKREST_SERVARR_USERNAME]] 
+BACKREST_SERVARR_PASSWORD = [[BACKREST_SERVARR_PASSWORD]]
+"""
+
+##
+
+[[stack]]
+name = "dockerproxy-media"
+tags = ["prod"]
+[stack.config]
+server = "media"
+project_name = "docker-proxy-media"
+linked_repo = "Homelab"
+run_directory = "docker/dockerproxy-media"
+
+##
+
+[[stack]]
+name = "dockerproxy-servarr"
+tags = ["prod"]
+[stack.config]
+server = "servarr"
+project_name = "docker-proxy-media"
+linked_repo = "Homelab"
+run_directory = "docker/dockerproxy-servarr"
 
 ##
 
@@ -122,11 +161,12 @@ destroy_before_deploy = true
 linked_repo = "Homelab"
 run_directory = "docker/homepage"
 config_files = [
-  { path = "config/bookmarks.yaml" },
-  { path = "config/docker.yaml" },
-  { path = "config/services.yaml" },
-  { path = "config/settings.yaml" },
-  { path = "config/widgets.yaml" }
+  { path = "config/bookmarks.yaml", requires = "Restart" },
+  { path = "config/docker.yaml", requires = "Restart" },
+  { path = "config/services.yaml", requires = "Restart" },
+  { path = "config/settings.yaml", requires = "Restart" },
+  { path = "config/widgets.yaml", requires = "Restart" },
+  { path = "config/proxmox.yaml", requires = "Restart" }
 ]
 extra_args = ["--build"]
 build_extra_args = ["--build"]
@@ -187,8 +227,8 @@ HOMEPAGE_VAR_PAPERLESS_URL = [[HOMEPAGE_VAR_PAPERLESS_URL]]
 HOMEPAGE_VAR_PAPERLESS_KEY = [[HOMEPAGE_VAR_PAPERLESS_KEY]]
 
 # IMMICH
-HOMEPAGE_VAR_IMMICH_URL = [[HOMEPAGE_VAR_IMMICH_URL]]
-HOMEPAGE_VAR_IMMICH_KEY = [[HOMEPAGE_VAR_IMMICH_KEY]]
+## HOMEPAGE_VAR_IMMICH_URL = [[HOMEPAGE_VAR_IMMICH_URL]]
+## HOMEPAGE_VAR_IMMICH_KEY = [[HOMEPAGE_VAR_IMMICH_KEY]]
 
 # MEALIE
 HOMEPAGE_VAR_MEALIE_URL = [[HOMEPAGE_VAR_MEALIE_URL]]
@@ -236,6 +276,81 @@ HOMEPAGE_VAR_READARR_KEY = [[HOMEPAGE_VAR_READARR_KEY]]
 ##
 
 [[stack]]
+name = "immich"
+tags = ["prod"]
+[stack.config]
+server = "media"
+project_name = "immich"
+poll_for_updates = true
+destroy_before_deploy = true
+linked_repo = "Homelab"
+webhook_enabled = false
+run_directory = "docker/immich"
+environment = """
+  # VARIABLE = value
+
+PUID = 1000
+PGID = 1000
+
+  # The Immich version to use. You can pin this to a specific version like "v1.71.0"
+IMMICH_VERSION = "v2.4.1"
+
+  # Machine learning cache
+ML_MODEL_CACHE =
+
+  #Listens for other containers
+SERVER_HOST = [[IMMICH_SERVER_HOST]]
+
+  #Authkey for Tailscale VPN access
+TS_AUTHKEY = [[IMMICH_TS_AUTHKEY]]
+
+####
+# DB
+####
+
+DB_DATABASE_NAME = [[IMMICH_DB_DATABASE_NAME]]
+DB_USERNAME = [[IMMICH_DB_USERNAME]]
+
+  # Connection secret for postgres. You should change it to a random password
+  # Please use only the characters `A-Za-z0-9`, without special characters or spaces
+
+DB_PASSWORD = [[IMMICH_DB_PASSWORD]]
+
+
+##########################
+# Custom storage locations
+##########################
+
+# DO NOT CHANGE THE VARIABLE NAMES!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+# The location where your uploaded files are stored
+UPLOAD_LOCATION = [[IMMICH_UPLOAD_LOCATION]]
+
+ENCODED_VIDEO_LOCATION = [[IMMICH_UPLOAD_LOCATION]]/encoded-video
+
+# The location where your backups are stored
+BACKUP_LOCATION = [[IMMICH_UPLOAD_LOCATION]]/backups
+
+# The location where your database files are stored
+DB_DATA_LOCATION = /opt/appdata/immich/postgres
+
+# The location where your profiles are stored
+PROFILE_LOCATION = /opt/appdata/immich/profile
+
+# The location where your thumbnails are stored
+THUMB_LOCATION = /opt/appdata/immich/thumbs
+
+#################
+# Homepage labels
+#################
+
+HOMEPAGE_VAR_IMMICH_URL = [[HOMEPAGE_VAR_IMMICH_URL]]
+HOMEPAGE_VAR_IMMICH_KEY = [[HOMEPAGE_VAR_IMMICH_KEY]]
+"""
+
+##
+
+[[stack]]
 name = "jellyfin"
 template = true
 tags = ["prod"]
@@ -265,6 +380,7 @@ tags = ["prod"]
 [stack.config]
 server = "media"
 project_name = "karakeep"
+destroy_before_deploy = true
 linked_repo = "Homelab"
 run_directory = "docker/karakeep"
 environment = """
@@ -280,6 +396,11 @@ NEXTAUTH_SECRET = [[KARAKEEP_NEXTAUTH_SECRET]]
 NEXTAUTH_URL = [[KARAKEEP_NEXTAUTH_URL]]
 
 # OPENAI_API_KEY = <key>
+
+# homepage vars
+
+HOMEPAGE_VAR_KARAKEEP_URL = [[HOMEPAGE_VAR_KARAKEEP_URL]]
+HOMEPAGE_VAR_KARAKEEP_KEY = [[HOMEPAGE_VAR_KARAKEEP_KEY]]
 """
 
 ##
@@ -387,7 +508,7 @@ DB_BACKUPS_LOCATION = /mnt/backups/docker/paperless-ngx/db
 # WEBSERVER #
 #############
 
-PAPERLESS_MEDIA = /opt/appdata/paperless-ngx/media  # where your documents will be stored
+PAPERLESS_MEDIA = [[PAPERLESS_MEDIA]]  # where your documents will be stored
 PAPERLESS_EXPORT = [[PAPERLESS_EXPORT]]  # where paperless-ngx will export documents to and dump data
 PAPERLESS_CONSUME = [[PAPERLESS_CONSUME]]  # where paperless-ngx will automatically upload documents from
 """
