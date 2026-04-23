@@ -21,6 +21,8 @@ services:
       - postgres
       - meilisearch
     labels:
+      homepage.name: Linkwarden
+      homepage.group: Personal Media
       homepage.icon: linkwarden.png
       homepage.description: "Bookmark manager"
       homepage.href: ${HOMEPAGE_VAR_LINKWARDEN_URL}
