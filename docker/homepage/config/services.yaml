@@ -42,16 +42,6 @@
         href: {{HOMEPAGE_VAR_HOMEASSISTANT_URL}}
 
 - Personal Media:
-    # - Karakeep:
-
-    # - Linkwarden:
-        # icon: linkwarden.png
-        # description: Bookmark manager
-        # href: {{HOMEPAGE_VAR_LINKWARDEN_URL}}
-        # widget:
-            # type: linkwarden
-            # url: {{HOMEPAGE_VAR_LINKWARDEN_URL}}
-            # key: {{HOMEPAGE_VAR_LINKWARDEN_KEY}} # On your Linkwarden install, go to Settings > Access Tokens. Generate a token.
           
     - Paperless-ngx:
         icon: paperless.png
