@@ -42,9 +42,9 @@
         href: {{HOMEPAGE_VAR_HOMEASSISTANT_URL}}
 
 - Personal Media:
-    - Karakeep:
+    # - Karakeep:
 
-    - Linkwarden:
+    # - Linkwarden:
         # icon: linkwarden.png
         # description: Bookmark manager
         # href: {{HOMEPAGE_VAR_LINKWARDEN_URL}}
