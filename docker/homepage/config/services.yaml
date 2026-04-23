@@ -42,7 +42,7 @@
         href: {{HOMEPAGE_VAR_HOMEASSISTANT_URL}}
 
 - Personal Media:
-    # - Karakeep:
+    - Karakeep:
 
     - Linkwarden:
         icon: linkwarden.png
