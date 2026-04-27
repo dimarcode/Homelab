@@ -48,6 +48,7 @@ services:
       homepage.widget.type: hoarder 
       homepage.widget.url: ${HOMEPAGE_VAR_KARAKEEP_URL}
       homepage.widget.key: ${HOMEPAGE_VAR_KARAKEEP_KEY}
+      homepage.widget.version: 2
 
   karakeep-chrome:
     image: gcr.io/zenika-hub/alpine-chrome:123
