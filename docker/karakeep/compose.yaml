@@ -43,7 +43,7 @@ services:
       homepage.group: Personal Media
       homepage.name: Karakeep
       homepage.icon: hoarder.png
-      homepage.description: Bookmark-everything app
+      homepage.description: "Bookmark-everything app"
       homepage.href: ${HOMEPAGE_VAR_KARAKEEP_URL}
       homepage.widget.type: hoarder 
       homepage.widget.url: ${HOMEPAGE_VAR_KARAKEEP_URL}
