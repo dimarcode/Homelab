@@ -1,0 +1,23 @@
+#cloud-config
+# Copy to plex.yaml and add "plex" to the vms map in terraform.tfvars.
+hostname: plex
+timezone: America/New_York
+users:
+  - default
+  - name: ansible
+    groups:
+      - sudo
+    shell: /bin/bash
+    ssh_authorized_keys:
+      - ${ssh_public_key}
+    sudo: ALL=(ALL) NOPASSWD:ALL
+chpasswd:
+  list: |
+    ansible:${ansible_password}
+  expire: false
+package_update: true
+packages:
+  - qemu-guest-agent
+runcmd:
+  - systemctl enable qemu-guest-agent
+  - systemctl start qemu-guest-agent
