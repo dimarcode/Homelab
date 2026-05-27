@@ -10,7 +10,7 @@ resource "proxmox_virtual_environment_file" "user_data_cloud_config" {
   source_raw {
     data = <<-EOF
     #cloud-config
-    hostname: test-ubuntu
+    hostname: time-machine
     timezone: America/New_York
     users:
       - default
@@ -21,6 +21,18 @@ resource "proxmox_virtual_environment_file" "user_data_cloud_config" {
         ssh_authorized_keys:
           - ${trimspace(data.local_file.ssh_public_key.content)}
         sudo: ALL=(ALL) NOPASSWD:ALL
+      - name: time-machine
+        groups:
+          - sudo
+        shell: /bin/bash
+        ssh_authorized_keys:
+          - ${trimspace(data.local_file.ssh_public_key.content)}
+        sudo: ALL=(ALL) NOPASSWD:ALL
+    chpasswd:
+      list: |
+        ansible:${var.ansible_password}
+        time-machine:${var.time-machine_password}
+      expire: false
     package_update: true
     packages:
       - qemu-guest-agent

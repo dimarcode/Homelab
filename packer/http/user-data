@@ -17,6 +17,7 @@ autoinstall:
   late-commands:
   - curtin in-target -- systemctl enable qemu-guest-agent
   - curtin in-target -- systemctl start qemu-guest-agent
+  - curtin in-target -- apt-get install -y cloud-init=23.4.2-1ubuntu0~22.04.1
 
   storage:
     layout:
@@ -36,4 +37,4 @@ user-data:
       # passwd: your-password
       # - or -
       ssh_authorized_keys:
-        - "var.ssh_id_ed25519_pub_key"
+        - "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAINICfGyjRaIAJvIQd5ggsHalOeBPHQSi5rsqa4CdhPQm passwordless dimarcode login"

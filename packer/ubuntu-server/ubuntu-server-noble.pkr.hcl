@@ -2,14 +2,6 @@
 # ---
 # Packer Template to create an Ubuntu Server (Noble 24.04.x) on Proxmox
 
-packer {
-  required_plugins {
-    proxmox = {
-      version = "~> 1"
-      source  = "github.com/hashicorp/proxmox"
-    }
-  }
-}
 
 ######################
 # Variable Definitions

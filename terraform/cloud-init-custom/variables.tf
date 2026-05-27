@@ -13,3 +13,15 @@ variable "virtual_environment_username" {
   description = "The username for the Proxmox Virtual Environment API"
 }
 
+variable "ansible_password" {
+  type        = string
+  description = "Password for the ansible user"
+  sensitive   = true
+}
+
+variable "time-machine_password" {
+  type        = string
+  description = "Password for the time-machine backups user"
+  sensitive   = true
+}
+

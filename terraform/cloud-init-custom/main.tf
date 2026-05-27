@@ -1,5 +1,5 @@
 resource "proxmox_virtual_environment_vm" "ubuntu_vm" {
-  name      = "test-ubuntu"
+  name      = "time-machine"
   node_name = "proxmox-bertha"
 
   agent {
