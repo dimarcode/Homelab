@@ -21,9 +21,13 @@ services:
     # ports:
       # - "4533:4533"
     restart: unless-stopped
-    # environment:
+    environment:
       # Optional: put your config options customization here. Examples:
-      # ND_LOGLEVEL: debug
+      ND_LOGLEVEL: debug
+      ND_PLUGINS_ENABLED: true
+      ND_PLUGINS_FOLDER: /data/plugins
+      ND_PLUGINS_AUTORELOAD: true
+      ND_PLUGINS_LOGLEVEL: debug
     volumes:
       - /opt/appdata/navidrome/data:/data
       - ${MUSIC_LIBRARY}:/music:ro
