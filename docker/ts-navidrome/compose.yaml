@@ -25,7 +25,7 @@ services:
       # Optional: put your config options customization here. Examples:
       # ND_LOGLEVEL: debug
     volumes:
-      - /opt/appdata/navidrome/data:/data
+      - /opt/appdata/navidrome/data:/data-test
       - ${MUSIC_LIBRARY}:/music:ro
     network_mode: service:navidrome-ts
     # networks:
