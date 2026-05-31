@@ -1,0 +1,42 @@
+## Add your compose file here
+services:
+  
+  navidrome-ts:
+    image: tailscale/tailscale:latest
+    hostname: navidrome
+    environment:
+      - TS_AUTHKEY=${TS_AUTHKEY}
+      - TS_STATE_DIR=/var/lib/tailscale
+      - TS_SERVE_CONFIG=/config/navidrome.json
+      - TS_USERSPACE=true
+      - TS_AUTH_ONCE=true
+    volumes: 
+      - ./tailscale/config:/config
+      - /opt/appdata/navidrome/tailscale/ts-state:/var/lib/tailscale
+    restart: always
+  
+  navidrome-app:
+    image: deluan/navidrome:latest
+    user: 1000:1000 # should be owner of volumes
+    # ports:
+      # - "4533:4533"
+    restart: unless-stopped
+    # environment:
+      # Optional: put your config options customization here. Examples:
+      # ND_LOGLEVEL: debug
+    volumes:
+      - /opt/appdata/navidrome:/data
+      - ${MUSIC_LIBRARY}:/music:ro
+    network_mode: service:navidrome-ts
+    # networks:
+    #   - default
+    # ports:
+    #   - 3000:3000
+    # volumes:
+    #   - data:/data
+
+# networks:
+#   default: {}
+
+# volumes:
+#   data:
