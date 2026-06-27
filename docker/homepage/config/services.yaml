@@ -41,27 +41,6 @@
         icon: home-assistant.png
         href: {{HOMEPAGE_VAR_HOMEASSISTANT_URL}}
 
-#- Personal Media:
-
-    #- Paperless-ngx:
-    #    icon: paperless.png
-    #    description: Document manager
-    #    href: {{HOMEPAGE_VAR_PAPERLESS_URL}}
-    #    widget:
-    #        type: paperlessngx
-    #        url: {{HOMEPAGE_VAR_PAPERLESS_URL}}
-    #        key: {{HOMEPAGE_VAR_PAPERLESS_KEY}}
-
-    #- Mealie:
-    #    icon: mealie.png
-    #    description: Recipe manager
-    #    href: {{HOMEPAGE_VAR_MEALIE_URL}}
-    #    widget:
-    #        type: mealie
-    #        url: {{HOMEPAGE_VAR_MEALIE_URL}}
-    #        key: {{HOMEPAGE_VAR_MEALIE_KEY}}
-    #        version: 2
-
 - Servarr:
     - qBittorrent:
         icon: qbittorrent.png
