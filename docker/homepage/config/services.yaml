@@ -41,7 +41,7 @@
         icon: home-assistant.png
         href: {{HOMEPAGE_VAR_HOMEASSISTANT_URL}}
 
-- Personal Media:
+#- Personal Media:
 
     #- Paperless-ngx:
     #    icon: paperless.png
