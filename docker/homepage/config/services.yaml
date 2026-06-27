@@ -52,15 +52,15 @@
             url: {{HOMEPAGE_VAR_PAPERLESS_URL}}
             key: {{HOMEPAGE_VAR_PAPERLESS_KEY}}
 
-    - Mealie:
-        icon: mealie.png
-        description: Recipe manager
-        href: {{HOMEPAGE_VAR_MEALIE_URL}}
-        widget:
-            type: mealie
-            url: {{HOMEPAGE_VAR_MEALIE_URL}}
-            key: {{HOMEPAGE_VAR_MEALIE_KEY}}
-            version: 2
+    # - Mealie:
+    #    icon: mealie.png
+    #    description: Recipe manager
+    #    href: {{HOMEPAGE_VAR_MEALIE_URL}}
+    #    widget:
+    #        type: mealie
+    #        url: {{HOMEPAGE_VAR_MEALIE_URL}}
+    #        key: {{HOMEPAGE_VAR_MEALIE_KEY}}
+    #        version: 2
 
 - Servarr:
     - qBittorrent:
