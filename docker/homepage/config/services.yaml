@@ -43,14 +43,14 @@
 
 - Personal Media:
 
-    - Paperless-ngx:
-        icon: paperless.png
-        description: Document manager
-        href: {{HOMEPAGE_VAR_PAPERLESS_URL}}
-        widget:
-            type: paperlessngx
-            url: {{HOMEPAGE_VAR_PAPERLESS_URL}}
-            key: {{HOMEPAGE_VAR_PAPERLESS_KEY}}
+    #- Paperless-ngx:
+    #    icon: paperless.png
+    #    description: Document manager
+    #    href: {{HOMEPAGE_VAR_PAPERLESS_URL}}
+    #    widget:
+    #        type: paperlessngx
+    #        url: {{HOMEPAGE_VAR_PAPERLESS_URL}}
+    #        key: {{HOMEPAGE_VAR_PAPERLESS_KEY}}
 
     #- Mealie:
     #    icon: mealie.png
