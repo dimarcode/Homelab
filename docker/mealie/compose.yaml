@@ -37,3 +37,13 @@ services:
       PUID: ${PUID}
       PGID: ${PGID}
       TZ: America/New_York
+    labels:
+      homepage.group: Personal Media
+      homepage.name: Mealie
+      homepage.icon: mealie.png
+      homepage.description: Recipe manager
+      homepage.href: ${HOMEPAGE_VAR_MEALIE_URL}
+      homepage.widget.type: mealie
+      homepage.widget.url: ${HOMEPAGE_VAR_MEALIE_URL}
+      homepage.widget.key: ${HOMEPAGE_VAR_MEALIE_KEY}
+      homepage.widget.version: 2
