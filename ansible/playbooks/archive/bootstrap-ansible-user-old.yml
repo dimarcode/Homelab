@@ -1,33 +1,21 @@
 ---
-# Bootstrap the ansible service account and harden SSH on target hosts.
-#
-# Usage:
-#   ansible-playbook -i inventory bootstrap-ansible-user.yml -u root -k --limit <hosts>
-#
-# After this runs successfully, switch the target hosts over to
-# ansible_user=ansible in your inventory for all future plays.
-
+# Run this playbook on serv
 - name: Bootstrap ansible user and harden SSH
-  hosts: testing
+  hosts: test
   become: true
 
   vars:
     username: ansible
-    pubkey_name: id_ed25519_ansible
+    pubkey_name: ansible
     pubkey: "{{ lookup('file', lookup('env', 'HOME') ~ '/.ssh/' ~ pubkey_name ~ '.pub') }}"
     ssh_service_name: "{{ 'sshd' if ansible_facts.os_family in ['RedHat', 'Suse'] else 'ssh' }}"
-    # No AllowUsers directive is set below, so all existing local accounts
-    # keep SSH access (still key-only, since PasswordAuthentication is
-    # disabled). Add an AllowUsers/AllowGroups line here only if you
-    # deliberately want to restrict SSH to a specific set of accounts.
 
   tasks:
     - name: Ensure SSH public key exists on controller
       ansible.builtin.stat:
         path: "{{ lookup('env', 'HOME') }}/.ssh/{{ pubkey_name }}.pub"
       delegate_to: localhost
-      become: false
-      run_once: true # noqa: run-once[task]
+      run_once: true
       register: pubkey_stat
 
     - name: Abort if SSH public key is missing
@@ -35,29 +23,19 @@
         msg: "Missing SSH public key: ~/.ssh/{{ pubkey_name }}.pub"
       when: not pubkey_stat.stat.exists
 
-    - name: Ensure ansible group exists
-      ansible.builtin.group:
-        name: "{{ username }}"
-        system: true
-        state: present
-
     - name: Ensure ansible user exists
       ansible.builtin.user:
         name: "{{ username }}"
-        group: "{{ username }}"
-        system: true
         shell: /bin/bash
         create_home: true
         state: present
 
     - name: Install authorized SSH key
-      ansible.posix.authorized_key:
+      ansible.builtin.authorized_key:
         user: "{{ username }}"
         key: "{{ pubkey }}"
         manage_dir: true
         state: present
-        # exclusive: true   # uncomment once you're confident this is the
-                             # *only* key that should ever be on this account
 
     - name: Grant passwordless sudo
       ansible.builtin.copy:
@@ -85,21 +63,14 @@
         mode: "0644"
         block: |
           PermitRootLogin no
+          PasswordAuthentication no
           ChallengeResponseAuthentication no
-
-          # PasswordAuthentication is disabled only for the ansible service
-          # account. All other accounts keep whatever the global setting
-          # is (password or key), unaffected by this Match block. Match
-          # blocks in sshd apply to everything below them until the next
-          # Match/end of file, so keep this block last in this file and
-          # don't append further global directives after it.
-          Match User {{ username }}
-              PasswordAuthentication no
+          AllowUsers {{ username }}
         validate: "/usr/sbin/sshd -t -f %s"
       notify: restart ssh
 
   handlers:
-    - name: Restart ssh
+    - name: restart ssh
       ansible.builtin.service:
         name: "{{ ssh_service_name }}"
         state: restarted

@@ -1,4 +1,5 @@
 ---
 collections:
   - name: bitwarden.secrets
+  - name: ansible.posix
   

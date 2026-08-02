@@ -1,3 +1,6 @@
 {
-    "ansible.python.interpreterPath": "/home/cody/Homelab/.venv/bin/python"
+  "ansible.validation.enabled": true,
+  "ansible.validation.lint.enabled": true,
+  "ansible.validation.lint.path": "/home/cody/Homelab/.venv/bin/ansible-lint",
+  "ansible.python.interpreterPath": "/home/cody/Homelab/.venv/bin/python"
 }
