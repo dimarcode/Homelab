@@ -60,6 +60,15 @@ services:
       USERMAP_UID: ${USERMAP_UID}
       USERMAP_GID: ${USERMAP_GID}
       PAPERLESS_CONSUMER_POLLING: 30
+    labels:
+      homepage.group: Personal Media
+      homepage.name: Paperless-ngx
+      homepage.icon: paperless.png
+      homepage.description: Document manager
+      homepage.href: ${HOMEPAGE_VAR_PAPERLESS_URL}
+      homepage.widget.type: paperlessngx
+      homepage.widget.url: ${HOMEPAGE_VAR_PAPERLESS_URL}
+      homepage.widget.key: ${HOMEPAGE_VAR_PAPERLESS_KEY}
   
   paperless-broker:
     image: docker.io/library/redis:8
