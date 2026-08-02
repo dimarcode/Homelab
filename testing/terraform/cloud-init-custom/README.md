@@ -5,7 +5,7 @@
 ### Input secrets in terraform.tfvars**
 
 ```bash
-cp example.tfvars .tfvars && nano .tfvars
+cp terraform.tfvars.example terraform.tfvars && nano terraform.tfvars
 ```
 
 ## Run it:

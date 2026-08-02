@@ -14,8 +14,19 @@ variable "virtual_environment_username" {
 }
 
 variable "vm_passwords" {
-  type        = map(string)
-  sensitive   = true
-  default     = {}
-  description = "Optional per-VM passwords (not currently used by cloud-init)"
+  type      = map(string)
+  sensitive = true
+}
+
+variable "vms" {
+  type = map(object({
+    name            = string
+    node_name       = string
+    cpu_cores       = number
+    memory_mb       = number
+    disk_gb         = number
+    disk_datastore  = string
+    network_bridge  = string
+    ip              = string
+  }))
 }

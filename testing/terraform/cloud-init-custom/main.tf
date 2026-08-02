@@ -1,27 +1,26 @@
-resource "proxmox_virtual_environment_vm" "vm" {
-  for_each  = local.vms
-  name      = each.value.name
-  node_name = each.value.node_name
+resource "proxmox_virtual_environment_vm" "ubuntu_vm" {
+  name      = "test-ubuntu"
+  node_name = "proxmox-bertha"
 
   agent {
     enabled = true
   }
 
   cpu {
-    cores = each.value.cpu_cores
+    cores = 2
   }
 
   memory {
-    dedicated = each.value.memory_mb
+    dedicated = 2048
   }
 
   disk {
-    datastore_id = each.value.disk_datastore
+    datastore_id = "flash"
     import_from  = proxmox_virtual_environment_download_file.ubuntu_cloud_image.id
     interface    = "virtio0"
     iothread     = true
     discard      = "on"
-    size         = each.value.disk_gb
+    size         = 20
   }
 
   initialization {
@@ -30,16 +29,17 @@ resource "proxmox_virtual_environment_vm" "vm" {
 
     ip_config {
       ipv4 {
-        address = each.value.ip
+        address = "dhcp"
       }
     }
 
-    user_data_file_id = proxmox_virtual_environment_file.user_data_cloud_config[each.key].id
+    user_data_file_id = proxmox_virtual_environment_file.user_data_cloud_config.id
   }
 
   network_device {
-    bridge = each.value.network_bridge
+    bridge = "vmbr0"
   }
+
 }
 
 resource "proxmox_virtual_environment_download_file" "ubuntu_cloud_image" {
@@ -51,6 +51,6 @@ resource "proxmox_virtual_environment_download_file" "ubuntu_cloud_image" {
   file_name = "jammy-server-cloudimg-amd64.qcow2"
 }
 
-output "vm_ipv4_addresses" {
-  value = { for k, vm in proxmox_virtual_environment_vm.vm : k => vm.ipv4_addresses[1][0] }
+output "vm_ipv4_address" {
+  value = proxmox_virtual_environment_vm.ubuntu_vm.ipv4_addresses[1][0]
 }

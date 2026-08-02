@@ -3,15 +3,14 @@ data "local_file" "ssh_public_key" {
 }
 
 resource "proxmox_virtual_environment_file" "user_data_cloud_config" {
-  for_each     = local.vms
   content_type = "snippets"
   datastore_id = "local"
-  node_name    = each.value.node_name
+  node_name    = "proxmox-bertha"
 
   source_raw {
     data = <<-EOF
     #cloud-config
-    hostname: ${each.value.name}
+    hostname: test-ubuntu
     timezone: America/New_York
     users:
       - default
@@ -33,6 +32,6 @@ resource "proxmox_virtual_environment_file" "user_data_cloud_config" {
       - echo "done" > /tmp/cloud-config.done
     EOF
 
-    file_name = "user-data-${each.key}.yaml"
+    file_name = "user-data-cloud-config.yaml"
   }
 }
