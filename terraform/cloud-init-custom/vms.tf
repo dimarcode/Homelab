@@ -9,9 +9,10 @@ locals {
       disk_datastore = "flash"
       network_bridge = "vmbr0"
       ip             = "dhcp"
+      image_key      = "ubuntu"
     }
-    time-machine = {
-      name           = "time-machine"
+    test-debian = {
+      name           = "test-debian"
       node_name      = "proxmox-bertha"
       cpu_cores      = 2
       memory_mb      = 2048
@@ -19,6 +20,7 @@ locals {
       disk_datastore = "flash"
       network_bridge = "vmbr0"
       ip             = "dhcp"
+      image_key      = "debian"
     }
   }
 }

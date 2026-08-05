@@ -17,7 +17,7 @@ resource "proxmox_virtual_environment_vm" "vm" {
 
   disk {
     datastore_id = each.value.disk_datastore
-    import_from  = proxmox_virtual_environment_download_file.ubuntu_cloud_image.id
+    import_from  = proxmox_virtual_environment_download_file.cloud_image[each.value.image_key].id
     interface    = "virtio0"
     iothread     = true
     discard      = "on"
@@ -42,13 +42,15 @@ resource "proxmox_virtual_environment_vm" "vm" {
   }
 }
 
-resource "proxmox_virtual_environment_download_file" "ubuntu_cloud_image" {
+resource "proxmox_virtual_environment_download_file" "cloud_image" {
+  for_each = local.cloud_images
+
   content_type = "import"
   datastore_id = "local"
   node_name    = "proxmox-bertha"
-  url          = "https://cloud-images.ubuntu.com/jammy/current/jammy-server-cloudimg-amd64.img"
+  url          = each.value.url
   # need to rename the file to *.qcow2 to indicate the actual file format for import
-  file_name = "jammy-server-cloudimg-amd64.qcow2"
+  file_name = each.value.file_name
 }
 
 output "vm_ipv4_addresses" {

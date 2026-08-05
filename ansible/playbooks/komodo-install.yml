@@ -1,6 +1,9 @@
 ---
 - name: Manage Komodo Periphery Service
   hosts: komodo
+  vars_files:
+    - group_vars/all/vars.yml
+    - group_vars/all/vault.yml
   # vars:
   #   ansible_become_pass: "{{ ansible_become_pass }}"
   roles:

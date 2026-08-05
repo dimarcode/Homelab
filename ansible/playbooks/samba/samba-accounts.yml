@@ -1,0 +1,47 @@
+---
+- name: Manage Samba users and system accounts
+  hosts: testing
+  become: true
+  gather_facts: true
+
+  vars:
+    # Best practices:
+    # - Create the Linux system account first; the Samba collection does not create users for you.
+    # - Use dedicated accounts for people and separate service accounts for automation.
+    # - For interactive users, prefer /bin/bash. For service accounts, prefer /usr/sbin/nologin.
+    # - Use groups for share access rather than granting access directly to individual users whenever possible.
+    # - Store Samba passwords in Ansible Vault instead of plain text.
+    samba_accounts:
+      - name: cody
+        shell: /bin/bash
+        create_home: true
+        groups: data-shares
+        append: true
+      - name: svc-backup
+        shell: /usr/sbin/nologin
+        create_home: false
+        groups: smbsvc
+        append: true
+
+    # These values should come from a vaulted vars file or from inventory/group vars.
+    samba_users:
+      - name: cody
+        password: "{{ cody_samba_password | default('change-me') }}"
+      - name: svc-backup
+        password: "{{ svc_backup_samba_password | default('change-me') }}"
+
+  pre_tasks:
+    - name: Ensure Samba-related system accounts exist
+      ansible.builtin.user:
+        name: "{{ item.name }}"
+        state: present
+        shell: "{{ item.shell | default('/bin/bash') }}"
+        create_home: "{{ item.create_home | default(true) }}"
+        groups: "{{ item.groups | default(omit) }}"
+        append: "{{ item.append | default(true) }}"
+      loop: "{{ samba_accounts }}"
+      loop_control:
+        label: "{{ item.name }}"
+
+  roles:
+    - role: vladgh.samba.server
