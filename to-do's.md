@@ -8,10 +8,16 @@
 
 ### Configure ansible control nodes
 
-- Configure control nodes (media and servarr) to allow Komodo installation with Ansible role
-- Install Komodo periphery on control nodes
-- Webhooks
-- Automate Komodo server installation
+- [x] Configure control nodes (media and servarr) to allow Komodo installation with Ansible role
+- [x] Install Komodo periphery on control nodes
+- [ ] Webhooks
+- [ ] Automate Komodo server installation
+
+## Ansible
+
+- [ ] Samba
+- [ ] Mount network shares
+- [ ] Network shares for db backups
 
 ## Pi
 
