@@ -23,10 +23,16 @@
 
 ### NUT server on new pi?
 
-Goals:
+**Goals:**
+
 - [HA OS on pi](https://www.home-assistant.io/installation/raspberrypi)
 - [NUT integration for HA OS](https://www.home-assistant.io/integrations/nut/)
 - Automate smooth shutdown
 
-Other links:
+**Other links:**
 https://www.home-assistant.io/docs/energy/
+
+## Changelog
+
+- In the middle of configuring ansible to create network shares
+- Added group_vars files for media server and backup server groups to use when adding samba shares.
