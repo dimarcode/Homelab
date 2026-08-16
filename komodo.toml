@@ -499,7 +499,7 @@ POSTGRES_DB = paperless
 POSTGRES_USER = paperless
 POSTGRES_PASSWORD = [[PAPERLESS_POSTGRES_PASSWORD]]
 
-DB_BACKUPS_LOCATION = /mnt/backups/docker/paperless-ngx/db
+DB_BACKUPS_LOCATION = /mnt/backups/docker-backups/paperless-ngx/db
 
 #############
 # WEBSERVER #
