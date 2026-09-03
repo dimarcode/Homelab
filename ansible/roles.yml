@@ -1,4 +1,7 @@
+# install with `ansible-galaxy role install -r roles.yml`
 ---
 roles:
   - name: geerlingguy.docker
+  - name: geerlingguy.node_exporter
   - name: bpbradley.komodo
+  

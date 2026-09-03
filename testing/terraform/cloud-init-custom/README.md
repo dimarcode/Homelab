@@ -2,13 +2,13 @@
 
 ## Setup
 
-### Input secrets in terraform.tfvars**
+### Input secrets in terraform.tfvars
 
 ```bash
 cp example.tfvars .tfvars && nano .tfvars
 ```
 
-## Run it:
+## Run it
 
 ```bash
 terraform init

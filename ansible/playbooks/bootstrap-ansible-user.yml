@@ -8,7 +8,7 @@
 # ansible_user=ansible in your inventory for all future plays.
 
 - name: Bootstrap ansible user and harden SSH
-  hosts: testing
+  hosts: bootstrap
   become: true
 
   vars:

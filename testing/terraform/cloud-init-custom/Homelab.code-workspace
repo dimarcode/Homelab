@@ -1,0 +1,13 @@
+{
+	"folders": [
+		{
+			"path": "../../.."
+		},
+		{
+			"path": "../../../../../../opt/appdata"
+		}
+	],
+	"settings": {
+		"ansible.validation.enabled": true
+	}
+}
