@@ -2,7 +2,7 @@ name: scanopy
 
 services:
   daemon:
-    image: ghcr.cio/scanopy/scanopy/daemon:latest
+    image: ghcr.io/scanopy/scanopy/daemon:latest
     container_name: scanopy-daemon
     network_mode: host
     privileged: true
@@ -16,7 +16,7 @@ services:
       timeout: 3s
       retries: 15
     volumes:
-      - daemon-config:/root/.config/scanopy/daemon
+      - /opt/appdata/scanopy/daemon-config:/root/.config/scanopy/daemon
       # Comment out the line below to disable docker discovery
       - /var/run/docker.sock:/var/run/docker.sock:ro
 
@@ -27,7 +27,7 @@ services:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-password}
     volumes:
-      - postgres_data:/var/lib/postgresql/data
+      - /opt/appdata/scanopy/postgres_data:/var/lib/postgresql/data
     healthcheck:
       test: ["CMD-SHELL", "pg_isready -U postgres"]
       interval: 10s
@@ -55,7 +55,7 @@ services:
       SCANOPY_PUBLIC_URL: ${SCANOPY_PUBLIC_URL:-http://localhost:60072}
       SCANOPY_INTEGRATED_DAEMON_URL: http://host.docker.internal:60073
     volumes:
-      - ./data:/data
+      - /opt/appdata/scanopy/data:/data
     extra_hosts:
       - "host.docker.internal:host-gateway"
     depends_on:
@@ -67,10 +67,6 @@ services:
     networks:
       - scanopy
 
-volumes:
-  postgres_data:
-  daemon-config:
-
 networks:
   scanopy:
     driver: bridge
@@ -78,4 +74,4 @@ networks:
       config:
         - subnet: 172.31.0.0/16
           gateway: 172.31.0.1
-
+          
