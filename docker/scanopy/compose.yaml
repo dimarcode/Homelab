@@ -14,7 +14,7 @@ services:
     volumes:
       - /opt/appdata/scanopy/daemon-config:/root/.config/scanopy/daemon
       - /var/run/docker.sock:/var/run/docker.sock:ro
-      - /opt/appdata/scanopy/logs:/var/log/scanopy
+      - /opt/appdata/scanopy/log:/var/log/scanopy
 
   postgres:
     image: postgres:17-alpine
