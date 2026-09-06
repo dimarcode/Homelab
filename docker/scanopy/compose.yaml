@@ -9,27 +9,12 @@ services:
     restart: unless-stopped
     environment:
       - SCANOPY_SERVER_URL=http://localhost:60072
-      - SCANOPY_DAEMON_API_KEY=
+      - SCANOPY_DAEMON_API_KEY=${SCANOPY_DAEMON_API_KEY}
       - SCANOPY_LOG_FILE=/var/log/scanopy/scanopy-daemon-home-network.log
     volumes:
-      - daemon-config:/root/.config/scanopy/daemon
+      - /opt/appdata/scanopy/daemon-config:/root/.config/scanopy/daemon
       - /var/run/docker.sock:/var/run/docker.sock:ro
       - /var/log/scanopy:/var/log/scanopy
-  
-  # daemon:
-    # image: ghcr.io/scanopy/scanopy/daemon:latest
-    # container_name: scanopy-daemon
-    # network_mode: host
-    # privileged: true
-    # restart: unless-stopped
-    # environment:
-      # - SCANOPY_SERVER_URL=http://localhost:60072
-      # - SCANOPY_DAEMON_API_KEY=scp_d_mpTyUx5fCRYXoKstQecQgiRykj5WXTO5
-      # - SCANOPY_LOG_FILE=/var/log/scanopy/scanopy-daemon-home-network.log
-    # volumes:
-      # - daemon-config:/root/.config/scanopy/daemon
-      # - /var/run/docker.sock:/var/run/docker.sock:ro
-      # - /var/log/scanopy:/var/log/scanopy
 
   postgres:
     image: postgres:17-alpine
