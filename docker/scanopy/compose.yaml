@@ -35,8 +35,6 @@ services:
       # - /var/run/docker.sock:/var/run/docker.sock:ro
       # - /var/log/scanopy:/var/log/scanopy
 
-volumes:
-  daemon-config:
   postgres:
     image: postgres:17-alpine
     environment:
