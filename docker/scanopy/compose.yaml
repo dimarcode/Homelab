@@ -8,17 +8,13 @@ services:
     privileged: true
     restart: unless-stopped
     environment:
-      SCANOPY_LOG_LEVEL: ${SCANOPY_LOG_LEVEL:-info}
-      SCANOPY_SERVER_URL: http://127.0.0.1:60072
-    healthcheck:
-      test: ["CMD-SHELL", "curl -f http://localhost:60072/api/health || exit 1"]
-      interval: 5s
-      timeout: 3s
-      retries: 15
+      - SCANOPY_SERVER_URL=http://localhost:60072
+      - SCANOPY_DAEMON_API_KEY=
+      - SCANOPY_LOG_FILE=/var/log/scanopy/scanopy-daemon-home-network.log
     volumes:
-      - /opt/appdata/scanopy/daemon-config:/root/.config/scanopy/daemon
-      # Comment out the line below to disable docker discovery
+      - daemon-config:/root/.config/scanopy/daemon
       - /var/run/docker.sock:/var/run/docker.sock:ro
+      - /var/log/scanopy:/var/log/scanopy
   
   # daemon:
     # image: ghcr.io/scanopy/scanopy/daemon:latest
