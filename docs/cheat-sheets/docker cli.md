@@ -2,7 +2,7 @@
 
 Find docker-compose files in [[Portainer]]:
 
-```
+```bash
 sudo ls /var/lib/docker/volumes/portainer_data/_data/compose/<stack number>
 ```
 
