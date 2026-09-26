@@ -4,7 +4,7 @@
 - Each router along the path is required to decrement the TTL in an IP packet by at least 1 before forwarding it. Effectively, the TTL is a maximum link counter.
 - When the TTL on a packet reaches 0, the router is expected to return an ICMP time Exceeded message to the source computer.
 
-```
+```bash
 tracert [/d] [/h <maximumhops>] [/j <hostlist>] [/w <timeout>] [/R] [/S <srcaddr>] [/4][/6] <targetname>
 ```
 
@@ -29,13 +29,13 @@ Note:
 
 To trace the path to the host named `www.microsoft.com`, type:
 
-```
+```bash
 tracert www.microsoft.com
 ```
 
 Here's an example output:
 
-```
+```bash
 Tracing route to e13678.dscb.akamaiedge.net [23.216.93.114]
 over a maximum of 30 hops:
 
@@ -68,12 +68,12 @@ The end column displays either the IP address or the hostname of the router or i
 
 - To trace the path to the host named `www.microsoft.com` and prevent the resolution of each IP address to its name, type:
 
-```
+```bash
 tracert /d www.microsoft.com
 ```
 
 - To trace the path to the host named `www.microsoft.com` and use the loose source route _10.12.0.1/10.29.3.1/10.1.44.1_, type:
 
-```
+```bash
 tracert /j 10.12.0.1 10.29.3.1 10.1.44.1 www.microsoft.com
 ```
