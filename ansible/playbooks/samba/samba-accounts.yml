@@ -23,12 +23,13 @@
         groups: smbsvc
         append: true
 
-    # These values should come from a vaulted vars file or from inventory/group vars.
+    # Passwords come from inventory/group_vars/all (vault-backed). No default on
+    # purpose: a missing vault value should fail the play, not set a weak password.
     samba_users:
       - name: cody
-        password: "{{ cody_samba_password | default('change-me') }}"
+        password: "{{ cody_samba_password }}"
       - name: svc-backup
-        password: "{{ svc_backup_samba_password | default('change-me') }}"
+        password: "{{ svc_backup_samba_password }}"
 
   pre_tasks:
     - name: Ensure Samba-related system accounts exist

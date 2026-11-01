@@ -1,0 +1,14 @@
+ansible_user: ansible
+ansible_ssh_private_key_file: ~/.ssh/id_ed25519_ansible
+ansible_python_interpreter: /usr/bin/python3
+
+# Secrets live encrypted in vault.yml next to this file, prefixed vault_.
+# Map them to readable names here so you can grep for where they're used
+# without decrypting anything.
+
+## Komodo vars
+komodo_passkey: "{{ vault_komodo_passkey }}"
+
+## Samba vars
+cody_samba_password: "{{ vault_cody_samba_password }}"
+svc_backup_samba_password: "{{ vault_svc_backup_samba_password }}"

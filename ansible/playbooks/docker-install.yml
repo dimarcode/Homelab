@@ -4,5 +4,3 @@
   become: true
   roles:
     - geerlingguy.docker
-  vars:
-    ansible_become_pass: "{{ ansible_become_pass }}"

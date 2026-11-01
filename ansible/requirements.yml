@@ -1,0 +1,14 @@
+# Galaxy roles and collections. Installed by setup.sh, or manually with:
+#   ansible-galaxy install -r requirements.yml
+---
+roles:
+  - name: geerlingguy.docker
+  - name: geerlingguy.node_exporter
+  - name: bpbradley.komodo
+
+collections:
+  - name: ansible.posix
+  - name: artis3n.tailscale
+    version: "1.2.0"
+  - name: vladgh.samba
+    version: "3.5.8"

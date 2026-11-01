@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+# Blocks commits that would add an unencrypted Ansible Vault file.
+# Installed by ansible/setup.sh as a symlink in the repo's .git/hooks.
+set -euo pipefail
+
+status=0
+while IFS= read -r -d '' path; do
+  case "$(basename "$path")" in
+    vault.yml | vault.yaml | *.vault.yml | *.vault.yaml) ;;
+    *) continue ;;
+  esac
+  # Check the staged content, not the working copy
+  if ! git show ":$path" | head -n 1 | grep -q '^\$ANSIBLE_VAULT;'; then
+    echo "pre-commit: $path is not encrypted. Run: ansible-vault encrypt $path" >&2
+    status=1
+  fi
+done < <(git diff --cached --name-only --diff-filter=ACMR -z)
+
+exit "$status"

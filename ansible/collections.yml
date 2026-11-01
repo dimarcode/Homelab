@@ -1,8 +1,0 @@
----
-collections:
-  - name: bitwarden.secrets
-  - name: ansible.posix
-  - name: vladgh.samba
-    version: ">=3.1.1"
-  
-  

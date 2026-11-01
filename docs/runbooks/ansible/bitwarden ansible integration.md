@@ -1,5 +1,7 @@
 # bitwarden-ansible integration
 
+>[!note] Not used anymore. Secrets are now in Ansible Vault, and only the vault password comes from Bitwarden Secrets Manager. See [Using Ansible Vault](using%20ansible%20vault.md). Kept for reference on the `bitwarden.secrets` lookup plugin.
+
 - [Bitwarden docs](https://bitwarden.com/help/ansible-integration/)
 - [Install the Bitwarden Ansible collection](bitwarden%20ansible%20integration.md#Install%20the%20Bitwarden%20Ansible%20collection)
 - [Fetch Bitwarden secrets](bitwarden%20ansible%20integration.md#Fetch%20Bitwarden%20secrets)

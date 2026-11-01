@@ -2,36 +2,33 @@
 
 - [Ansible docs](https://docs.ansible.com/)
 - [Setup Ansible](ansible%20setup.md)
-- [Bitwarden-Ansible integration](bitwarden%20ansible%20integration.md)
+- [Using Ansible Vault](using%20ansible%20vault.md)
 
 ## Easy way to install packages/collections/roles:
 
-### Install python packages from file
+Run from the root of the ansible project directory. It creates `.venv`, installs **requirements.txt** and **requirements.yml**, links the pre-commit hook and checks the vault password:
 
-Activate the venv
+```bash
+./setup.sh
+```
+
+Then activate the venv:
 
 ```bash
 source .venv/bin/activate
 ```
 
-After filling in **requirements.txt**, run the following commands within the root of the ansible project directory:
+### Doing it by hand
 
 ```bash
+python3 -m venv .venv && source .venv/bin/activate
 pip install -r requirements.txt
 ```
 
-### Install Ansible collections and roles
-
-After filling in **roles.yml** and **collections.yml**, run the following commands within the root of the ansible project directory:
-
-Commands
+**requirements.yml** holds both roles and collections:
 
 ```bash
-mkdir {collections,roles,inventory}
-```
-
-```bash
-ansible-galaxy role install -r roles.yml && ansible-galaxy collection install -r collections.yml
+ansible-galaxy install -r requirements.yml
 ```
 
 # Useful Roles

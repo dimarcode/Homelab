@@ -38,25 +38,16 @@ vault_password_file
 .vault_pass.txt
 roles
 collections
-host_vars
 .vault_pass
 *.vault_pass
 
-# Local inventories (keep if generated per-env, ignore otherwise)
-inventory.ini
-inventory.yml
-inventory.yaml
-hosts
+# Inventory (ansible/inventory/), host_vars and vault.yml files are committed.
+# Vault files must be encrypted; ansible/hooks/pre-commit enforces this.
 .local_inventory.yml
-inventory/
 
-
-# Ansible Vault / secrets
+# Old plaintext secrets files
 secrets.yml
 .secrets.yaml
-vault.yml
-.vault.yaml
-*.vault.yml
 sudo-secrets.yml
 
 
