@@ -1,0 +1,4 @@
+# The node logs in as cody (see hosts.yml), which needs a sudo password.
+# Goes away once the node has an ansible user like the other hosts.
+# omit until the vault has it: become then fails with "Missing sudo password".
+ansible_become_pass: "{{ vault_ansible_node_become_pass | default(omit) }}"

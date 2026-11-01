@@ -78,6 +78,8 @@ else
   [[ -n "$token" ]] || fail "no token entered"
   mkdir -p "$(dirname "$BWS_TOKEN_FILE")"
   chmod 700 "$(dirname "$BWS_TOKEN_FILE")"
+  # Remove first: writing into an existing (e.g. empty) file would keep its old, looser mode
+  rm -f "$BWS_TOKEN_FILE"
   (umask 077 && printf '%s\n' "$token" >"$BWS_TOKEN_FILE")
   unset token
   new_token=1
