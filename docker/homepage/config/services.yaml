@@ -5,7 +5,7 @@
 
 - Management:
 
-    - Proxmox Virtual Environment:
+    - PVE-NAS:
         icon: proxmox.png
         description: PVE
         href: {{HOMEPAGE_VAR_PVE_URL}}
