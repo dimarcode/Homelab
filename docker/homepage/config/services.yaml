@@ -15,7 +15,27 @@
             username: {{HOMEPAGE_VAR_PVE_NAS_USERNAME}}
             password: {{HOMEPAGE_VAR_PVE_NAS_PASSWORD}}
             # fields: ["vms", "lxc", "resources.cpu", "resources.mem"]
-    
+        # - PVE-Compute:
+        # icon: proxmox.png
+        # description: PVE
+        # href: {{HOMEPAGE_VAR_PVE_COMPUTE_URL}}
+        # widget:
+            # type: proxmox
+            # url: {{HOMEPAGE_VAR_PVE_COMPUTE_URL}}
+            # username: {{HOMEPAGE_VAR_PVE_COMPUTE_USERNAME}}
+            # password: {{HOMEPAGE_VAR_PVE_COMPUTE_PASSWORD}}
+            # fields: ["vms", "lxc", "resources.cpu", "resources.mem"]
+
+    # - PVE-Nuc:
+        # icon: proxmox.png
+        # description: PVE
+        # href: {{HOMEPAGE_VAR_PVE_NUC_URL}}
+        # widget:
+            # type: proxmox
+            # url: {{HOMEPAGE_VAR_PVE_NUC_URL}}
+            # username: {{HOMEPAGE_VAR_PVE_NUC_USERNAME}}
+            # password: {{HOMEPAGE_VAR_PVE_NUC_PASSWORD}}
+            # fields: ["vms", "lxc", "resources.cpu", "resources.mem"]
     - Proxmox Backup Server:
         icon: proxmox.png
         description: PBS 
